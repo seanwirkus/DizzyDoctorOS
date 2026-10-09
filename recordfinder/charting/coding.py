@@ -146,17 +146,38 @@ def code_note(values: dict, payer: str = "") -> Coding:
     treatment = str(v.get("goggle-treatment-x", "")).lower()
     bppv = any(v.get(k) for k in ("imp-rightpost", "imp-leftpost", "imp-rightcupu", "imp-leftcupu", "imp-leftlateral",
                                   "imp-rightlateral", "imp-leftanterior", "imp-rightanterior"))
-    if re.search(r"epley|maneuver|reposition|semont|bbq|gufoni|crp", treatment) or (bppv and treatment and "no treatment" not in treatment):
+    is_neg_treatment = bool(re.search(r"\bno(?:ne|\s+repositioning|\s+treatment)?\b|diagnostic\s+only", treatment))
+    has_treatment = not is_neg_treatment and bool(
+        re.search(r"epley|maneuver|reposition|semont|bbq|gufoni|crp", treatment) or (bppv and treatment)
+    )
+    if has_treatment:
         c.procedures.append(Suggestion("95992", "Canalith repositioning procedure",
                                        "A repositioning maneuver is documented in the oculography section.", verify=True))
+
+    # ---- Decipher goggles study vs chair testing and treatment
+    is_chair = bool(v.get("see-epley") or any(re.search(r"epley chair|crm chair|omniax|rotational chair", t, re.I) for t in lines))
+    goggles_done = bool(v.get("goggle-dr") or v.get("goggle-date")) or any(
+        v.get(k) for k in v if k.startswith(("dixhall-", "supine-", "gaze-", "imp-")) and k != "imp-mp" and v.get(k))
+
+    if goggles_done and has_treatment:
+        # Per clinic rule: if we do a goggles study and treatment, do NOT bill chair (92546); bill goggles (92542) + treatment (95992)
+        c.procedures = [p for p in c.procedures if p.code != "92546"]
+        if not any(p.code == "92542" for p in c.procedures):
+            c.procedures.append(Suggestion("92542", "Positional nystagmus test with recording (IR oculography)",
+                                           "IR oculography with same-day repositioning treatment: chair code excluded per practice rule.", verify=True))
+    elif is_chair and not has_treatment:
+        # Diagnostic chair testing without repositioning treatment: bill chair 92546, not goggles 92542 or treatment 95992
+        c.procedures = [p for p in c.procedures if p.code not in ("92542", "95992")]
+        if not any(p.code == "92546" for p in c.procedures):
+            c.procedures.append(Suggestion("92546", "Rotational chair testing",
+                                           "Epley Chair / CRM Chair testing documented on the note.", verify=True))
+
     if c.procedures and c.em:
         c.em.modifier = "25"
         c.warnings.append("E/M with a same-day procedure: append modifier 25 to the visit code and keep the procedure "
                           "time out of the E/M total (the note's separate-time lines do this).")
 
     # ---- missed procedures: documented but no separate-time line
-    goggles_done = bool(v.get("goggle-dr") or v.get("goggle-date")) or any(
-        v.get(k) for k in v if k.startswith(("dixhall-", "supine-", "gaze-", "imp-")) and k != "imp-mp" and v.get(k))
     if goggles_done and not any(re.search(r"oculography|epley chair", t, re.I) for t in lines):
         c.warnings.append("IR oculography / positional testing is documented on page 3 but there is no separate-time "
                           "statement for it on page 4 (15 minutes IR/oculography).")

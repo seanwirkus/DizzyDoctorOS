@@ -9215,9 +9215,9 @@
    ],
    "rect": [
     22,
-    646,
+    648,
     591,
-    657
+    659
    ],
    "section": "orders",
    "label": "Imaging / order 1",
@@ -9245,7 +9245,7 @@
    ],
    "rect": [
     22,
-    658,
+    659,
     591,
     669
    ],
@@ -9306,9 +9306,9 @@
    ],
    "rect": [
     18,
-    771,
+    752,
     31,
-    781
+    764
    ],
    "section": "attestation",
    "label": "Attestation",
@@ -9322,9 +9322,9 @@
    ],
    "rect": [
     32,
-    771,
+    752,
     574,
-    782
+    764
    ],
    "section": "attestation",
    "label": "Attending statement",

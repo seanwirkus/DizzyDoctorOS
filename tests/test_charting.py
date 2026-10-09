@@ -154,6 +154,33 @@ class CodingTests(unittest.TestCase):
         self.assertEqual(c.em.modifier, "25")
         self.assertEqual([p.code for p in c.procedures], ["92542", "95992"])
 
+    def test_goggles_and_treatment_excludes_chair_on_superbill(self):
+        c = coding.code_note(self.note(**{
+            "see-epley": True,
+            "goggle-dr": "Jake Perkins, PA-C",
+            "dixhall-right-torsion": True,
+            "goggle-treatment-x": "Canalith repositioning procedure (Epley) performed.",
+            "imp-rightpost": True,
+            "time-proc1": True,
+            "addnl-time": note.FIELDS["addnl-time"]["options"][0]
+        }))
+        codes = [p.code for p in c.procedures]
+        self.assertNotIn("92546", codes)
+        self.assertIn("92542", codes)
+        self.assertIn("95992", codes)
+
+    def test_chair_testing_without_treatment_bills_chair_code(self):
+        c = coding.code_note(self.note(**{
+            "see-epley": True,
+            "goggle-treatment-x": "Diagnostic testing only. No repositioning treatment required.",
+            "time-proc1": True,
+            "addnl-time": note.FIELDS["addnl-time"]["options"][0]
+        }))
+        codes = [p.code for p in c.procedures]
+        self.assertIn("92546", codes)
+        self.assertNotIn("92542", codes)
+        self.assertNotIn("95992", codes)
+
     def test_g2211(self):
         c = coding.code_note(self.note(**{"time-proc1": True, "addnl-time": "Longitudinal services were provided to patient in clinic today"}))
         self.assertEqual([a.code for a in c.addons], ["G2211"])

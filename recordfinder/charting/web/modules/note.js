@@ -392,15 +392,15 @@
                     ["tinnitus", "Tinnitus", 2], ["gait", "Gait", 2], ["headache", "Headache", 2], ["history", "History", 2],
                     ["exam", "Exam", 3], ["oculography", "Oculography", 3], ["studies", "Studies", 4], ["plan", "Plan", 4]];
   const PAGES = { 1: "HPI, medications", 2: "Symptoms, history", 3: "Exam, testing", 4: "Impression, plan" };
-  // Build is the note's home: the HPI at its top decides the rest. "Full note" is the PDF's four pages to work through.
-  const VIEWS = [["build", "Build"], ["note", "Full note"], ["billing", "Check"], ["superbill", "Superbill"], ["preview", "PDF"]];
+  // Build is the note's home: the HPI at its top decides the rest. Demographics populates patient identity, coverage & referral.
+  const VIEWS = [["build", "Build"], ["patient", "Demographics"], ["note", "Full note"], ["billing", "Check"], ["superbill", "Superbill"], ["preview", "PDF"]];
   // The patient's chart, shown in the same panel: [id, label, shell module]
   const CHART = [["chart:snapshot", "SnapShot", "snapshot"], ["chart:review", "Chart review", "review"], ["chart:testing", "Results / testing", "testing"]];
   // What dictation fills in each part (dictation.py's sections), and the parts' older names (saved tabs, links).
   const DICTATE_SECTION = { patient: "hpi", story: "hpi", meds: "meds", dizziness: "dizziness", hearing: "hearing", tinnitus: "tinnitus", gait: "gait",
                             headache: "headache", history: "pmh", exam: "exam", oculography: "goggles", studies: "studies", plan: "impression",
                             build: "impression", billing: "plan", superbill: "plan", preview: "impression" };
-  const OLD_STEPS = { summary: "patient", hpi: "story", symptoms: "dizziness", testing: "oculography" };
+  const OLD_STEPS = { summary: "patient", hpi: "story", symptoms: "dizziness", testing: "oculography", demographics: "patient" };
   const isSection = (id) => SECTIONS.some(([k]) => k === id);
 
   function renderNav() {
@@ -562,13 +562,22 @@
     id = OLD_STEPS[id] || id;
     const p = $("#panel");
     if (!p) return;
-    if (id === "note" || isSection(id)) { goSection(id === "note" ? S.at : id, { focus: false }); renderNav(); return; }
+    if (id === "patient" || id === "demographics") {
+      S.tab = "patient"; S.section = "hpi"; S.focus = "";
+      p.innerHTML = ""; S.inputs.clear();
+      renderNav();
+      p.dataset.mode = "patient";
+      renderDemographicsTab(p);
+      p.scrollTop = 0;
+      return;
+    }
+    if (id === "note" || (isSection(id) && id !== "patient")) { goSection(id === "note" ? S.at : id, { focus: false }); renderNav(); return; }
     S.tab = id; S.section = DICTATE_SECTION[id] || "hpi"; S.focus = "";
     p.innerHTML = ""; S.inputs.clear();
     renderNav();
     if (id.startsWith("chart:")) { closeReport(); p.dataset.mode = "chart"; renderChart(id); p.scrollTop = 0; return; }   // chart screens have their own viewer
     p.dataset.mode = id;
-    ({ billing: renderBilling, preview: renderPreview, build: renderBuild, superbill: renderSuperbill })[id]?.();
+    ({ billing: renderBilling, preview: renderPreview, build: renderBuild, superbill: renderSuperbill, patient: renderDemographicsTab })[id]?.(p);
     p.scrollTop = 0;
   }
   // Redraw whatever is on screen after a change made elsewhere, without losing the place.
@@ -674,6 +683,169 @@
       textField("NeuroConsultReqBy", { span: 6, list: ["Self", "Friend"] }), textField("NeuroConsultPMD", { span: 6 }),
       textArea("NeuroConsultCC-1", { span: 4, labelText: "CC 1" }), textArea("NeuroConsultCC-2", { span: 4, labelText: "CC 2" }), textArea("NeuroConsultCC-3", { span: 4, labelText: "CC 3" }),
     )), ["neuro-consult", "neuro-eval"], () => on("neuro-consult") || on("neuro-eval"), consult));
+  }
+
+  function renderDemographicsTab(p) {
+    p = p || $("#panel");
+    if (!p) return;
+    p.innerHTML = "";
+
+    // 1. Directory Search Bar Card
+    const searchInp = h("input", {
+      type: "search",
+      placeholder: "Search directory by last name, first name, Pt # or DOB to populate note...",
+      autocomplete: "off",
+      spellcheck: "false",
+      style: "width:100%"
+    });
+    const results = h("div", { class: "results", hidden: true });
+    let searchTimer;
+    searchInp.addEventListener("input", () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(async () => {
+        const q = searchInp.value.trim();
+        if (!q) { results.hidden = true; return; }
+        let rows = [];
+        try { rows = await api.get("/api/patients?q=" + encodeURIComponent(q)); } catch { rows = []; }
+        results.innerHTML = "";
+        if (!rows.length) results.append(h("button", { disabled: true }, "No matches in the patient directory"));
+        for (const r of rows) {
+          results.append(h("button", {
+            type: "button",
+            onclick: async () => {
+              results.hidden = true;
+              searchInp.value = `${r.last}, ${r.first}`;
+              await pickPatient(r);
+              toast(`Populated note with demographics for ${r.last}, ${r.first}`);
+              renderDemographicsTab(p);
+            }
+          }, h("span", {}, `${r.last}, ${r.first}`), h("small", {}, [r.dob, r.acct ? "Pt # " + r.acct : "", r.last_visit ? "last " + r.last_visit : ""].filter(Boolean).join(" · "))));
+        }
+        results.hidden = false;
+      }, 180);
+    });
+    const searchCard = card("Directory search & patient assignment", [
+      h("p", { class: "fine", style: "margin:0 0 8px 0; color:var(--muted)" }, "Assigning a patient from the practice directory automatically populates their demographics across the note and superbill."),
+      h("div", { style: "position:relative" }, searchInp, results)
+    ]);
+
+    // 2. Patient Demographics & Date of Service
+    const P = S.phrases;
+    const phoneInp = h("input", {
+      type: "text",
+      value: S.patient?.phone || S.values.phone || "",
+      placeholder: "(555) 000-0000",
+      autocomplete: "off"
+    });
+    phoneInp.addEventListener("input", () => {
+      setValue("phone", phoneInp.value);
+      if (S.patient) S.patient.phone = phoneInp.value;
+    });
+
+    const acctInp = h("input", {
+      type: "text",
+      value: S.patient?.acct || S.values.acct || "",
+      placeholder: "e.g. 102435",
+      autocomplete: "off"
+    });
+    acctInp.addEventListener("input", () => {
+      setValue("acct", acctInp.value);
+      if (S.patient) S.patient.acct = acctInp.value;
+    });
+
+    const demoCard = card("Patient demographics", [
+      h("div", { class: "grid" },
+        textField("Name", { span: 6, placeholder: "Last, First" }),
+        dateField("DOB", { span: 3, dob: true }),
+        ageField({ span: 3 }),
+        dateField("Date", { span: 3, labelText: "Date of service" }),
+        h("div", { class: "f s3" }, h("label", {}, "Sex"), segmented(["hpi-male", "hpi-female"])),
+        h("div", { class: "f s3" }, h("label", {}, "Phone"), phoneInp),
+        h("div", { class: "f s3" }, h("label", {}, "Account / Pt #"), acctInp)
+      )
+    ]);
+
+    // 3. Insurance Coverage Card
+    const insInp = h("input", {
+      type: "text",
+      value: S.patient?.insurance || S.values.insurance || "",
+      placeholder: "Primary insurance (e.g. Medicare, SCMG, Anthem)",
+      autocomplete: "off"
+    });
+    insInp.addEventListener("input", () => {
+      setValue("insurance", insInp.value);
+      if (S.patient) S.patient.insurance = insInp.value;
+    });
+
+    const insIdInp = h("input", {
+      type: "text",
+      value: S.patient?.id1 || S.values.insurance_id || "",
+      placeholder: "Member ID / Policy #",
+      autocomplete: "off"
+    });
+    insIdInp.addEventListener("input", () => {
+      setValue("insurance_id", insIdInp.value);
+      if (S.patient) S.patient.id1 = insIdInp.value;
+    });
+
+    const secInp = h("input", {
+      type: "text",
+      value: S.patient?.secondary || S.values.secondary || "",
+      placeholder: "Secondary insurance (optional)",
+      autocomplete: "off"
+    });
+    secInp.addEventListener("input", () => {
+      setValue("secondary", secInp.value);
+      if (S.patient) S.patient.secondary = secInp.value;
+    });
+
+    const secIdInp = h("input", {
+      type: "text",
+      value: S.patient?.id2 || S.values.secondary_id || "",
+      placeholder: "Secondary Member ID",
+      autocomplete: "off"
+    });
+    secIdInp.addEventListener("input", () => {
+      setValue("secondary_id", secIdInp.value);
+      if (S.patient) S.patient.id2 = secIdInp.value;
+    });
+
+    const insCard = card("Insurance & billing coverage", [
+      h("div", { class: "grid" },
+        h("div", { class: "f s6" }, h("label", {}, "Primary insurance"), insInp),
+        h("div", { class: "f s6" }, h("label", {}, "Primary member ID"), insIdInp),
+        h("div", { class: "f s6" }, h("label", {}, "Secondary insurance"), secInp),
+        h("div", { class: "f s6" }, h("label", {}, "Secondary member ID"), secIdInp)
+      )
+    ]);
+
+    // 4. Visit Classification & Clinical Presentation
+    const visitCard = card("Visit details & referral", [
+      h("div", { class: "grid" },
+        h("div", { class: "f s12" }, h("label", {}, "Visit type"), visitPicker()),
+        textField("ChiefComplaint", { span: 6, list: ["Dizziness", "Vertigo", "Multiple complaints", "Headaches", "Migraines", "Imbalance", "Neuropathy", "Cognitive difficulties", "Tinnitus", "Hearing loss"] }),
+        textField("OnsetDate", { span: 3, list: P.ONSET_WORDS }),
+        allergySummary(),
+        textField("referral1-doc", { span: 6, labelText: "Referring physician", placeholder: "Dr. Name" }),
+        textField("referral1-spec", { span: 6, labelText: "Referring specialty", placeholder: "e.g. Neurology, ENT, PCP" })
+      )
+    ]);
+
+    // 5. Actions / Confirmation Footer
+    const footCard = card("Note & Superbill synchronization", [
+      h("div", { style: "display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;" },
+        h("div", { style: "display:flex; align-items:center; gap:8px;" },
+          h("span", { class: "tag green", style: "font-weight:600;" }, "Synced"),
+          h("span", { style: "font-size:13px; color:var(--ink2);" }, "Demographics and visit details populate the Progress Note and Superbill in real time.")
+        ),
+        h("div", { style: "display:flex; gap:8px;" },
+          h("button", { class: "btn", type: "button", onclick: () => showTab("build") }, "Go to Note Builder (Build) \u2192"),
+          h("button", { class: "btn primary", type: "button", onclick: () => showTab("superbill") }, "Go to Superbill \u2192")
+        )
+      )
+    ]);
+
+    p.append(searchCard, demoCard, insCard, visitCard, footCard);
   }
 
   // Allergies live on Meds; the Patient step shows them and links there.
@@ -1147,16 +1319,179 @@
       table.append(tr);
       if (row.normal === "normal27") table.append(...earRows());
     }
+    const focalStatus = () => {
+      if (S.values["exam-focal-status"]) return S.values["exam-focal-status"];
+      const neuroAbn = S.schema.exam_rows.some(r => r.group === "Neurologic" && S.values[r.abnormal]);
+      return neuroAbn ? "focal" : "non-focal";
+    };
+
+    const focalBanner = h("div", { class: "focal-banner", style: "display:flex; align-items:center; gap:10px; margin-bottom:12px; padding:10px 14px; background:var(--field); border:1px solid var(--hair); border-radius:var(--r2); flex-wrap:wrap" });
+    const updateFocalBanner = () => {
+      focalBanner.innerHTML = "";
+      const cur = focalStatus();
+      const nonFocalBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (cur === "non-focal" ? " on tag green" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          setValue("exam-focal-status", "non-focal");
+          for (const r of S.schema.exam_rows) {
+            if (r.group === "Neurologic") {
+              if (r.normal) setValue(r.normal, true, { silent: true });
+              if (r.abnormal) setValue(r.abnormal, "", { silent: true });
+            }
+          }
+          onChange("normal1");
+          toast("Exam set to Non-focal: CN II-XII intact, symmetric motor/sensory, no focal deficits.");
+          updateFocalBanner();
+        }
+      }, "Non-focal neurological exam");
+
+      const focalBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (cur === "focal" ? " on tag orange" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          setValue("exam-focal-status", "focal");
+          toast("Focal deficits flagged on neurological exam.");
+          updateFocalBanner();
+        }
+      }, "Focal deficits");
+
+      const badge = h("span", {
+        class: "tag " + (cur === "non-focal" ? "green" : "orange"),
+        style: "margin-left:auto; font-weight:600;"
+      }, cur === "non-focal" ? "Non-focal: No localized deficit" : "Focal deficit flagged");
+
+      focalBanner.append(h("b", { style: "font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted)" }, "Neurologic findings:"), nonFocalBtn, focalBtn, badge);
+
+      if (cur === "focal") {
+        const quickFocal = h("div", { class: "chips", style: "width:100%; margin-top:8px; display:flex; gap:6px; flex-wrap:wrap" },
+          [
+            ["Facial asymmetry (CN VII)", "normal26", "abnormal26", "findings26", "Right facial weakness / asymmetry noted."],
+            ["Motor asymmetry (4/5)", "normal31", "abnormal31", "findings31", "Focal motor weakness: Right upper extremity 4/5."],
+            ["Sensory deficit", "normal33", "abnormal33", "findings33", "Decreased sensation to light touch / pinprick."],
+            ["Asymmetric hyperreflexia", "normal36", "abnormal36", "findings36", "3+ hyperreflexia with positive Hoffman/Babinski."],
+            ["Dysmetria / ataxia", "normal38", "abnormal38", "findings38", "Dysmetria on finger-to-nose testing."]
+          ].map(([label, nor, abn, find, desc]) => {
+            return h("button", {
+              type: "button",
+              class: "chip small pos",
+              onclick: () => {
+                setValue(nor, false, { silent: true });
+                setValue(abn, "X", { silent: true });
+                setValue(find, desc);
+                toast("Added focal finding: " + label);
+              }
+            }, "+ " + label);
+          })
+        );
+        focalBanner.append(quickFocal);
+      }
+    };
+    updateFocalBanner();
+
     const tools = [h("button", { class: "tool", type: "button", onclick: () => { for (const r of S.schema.exam_rows) { if (S.values[r.abnormal]) continue; if (r.normal) setValue(r.normal, true, { silent: true }); } onChange("normal1"); toast("Rows not marked abnormal set to normal"); } }, icon("check"), "Rest normal"),
                    h("button", { class: "tool", type: "button", onclick: () => { for (const side of ["r", "l"]) for (const k of ["bi", "tri", "br", "pat", "ach"]) setValue(`dtr-${side}-${k}`, "2", { silent: true }); onChange("dtr-r-bi"); } }, "DTRs 2 throughout")];
-    p.append(card("Otoneurologic exam", table, { tools }));
+    p.append(card("Otoneurologic exam", [focalBanner, table], { tools }));
   }
 
   // ------------------------------------------------------------------ Testing (goggles + studies)
   function renderOculography(p) {
     const P = S.phrases;
     const posRow = (title, prefix) => h("div", { class: "pos-row" }, h("div", { class: "lbl" }, title), h("div", { class: "chips" }, byPrefix(prefix).map(n => check(n))));
+
+    const hasTreatment = () => {
+      const t = String(S.values["goggle-treatment-x"] || "").toLowerCase();
+      const bppv = ["imp-rightpost", "imp-leftpost", "imp-rightcupu", "imp-leftcupu", "imp-leftlateral", "imp-rightlateral", "imp-leftanterior", "imp-rightanterior"].some(k => S.values[k]);
+      return /epley|maneuver|reposition|semont|bbq|gufoni|crp/i.test(t) || (bppv && t && !t.includes("no treatment"));
+    };
+
+    const studyBanner = h("div", { class: "study-banner", style: "display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:10px 14px; background:var(--field); border:1px solid var(--hair); border-radius:var(--r2); flex-wrap:wrap" });
+    const updateStudyBanner = () => {
+      studyBanner.innerHTML = "";
+      const isChair = !!S.values["see-epley"];
+      const treats = hasTreatment();
+
+      const gogglesBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (!isChair ? " on tag blue" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          setValue("see-epley", false);
+          if (!S.values["addnl-time"]) setValue("addnl-time", "15 minutes of separate time IR/oculography and/or Epley Chair testing");
+          toast("Selected IR Goggles study (manual positional oculography).");
+          updateStudyBanner();
+          recode();
+        }
+      }, "IR Goggles study");
+
+      const chairBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (isChair ? " on tag blue" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          setValue("see-epley", true);
+          toast("Selected Epley Chair / CRM Chair test.");
+          updateStudyBanner();
+          recode();
+        }
+      }, "Epley / Omniax Chair");
+
+      const noTreatBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (!treats ? " on tag green" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          setValue("goggle-treatment-x", "Diagnostic testing only. No repositioning treatment required.");
+          toast("Set to diagnostic testing (no treatment).");
+          updateStudyBanner();
+          recode();
+        }
+      }, "Diagnostic (No treatment)");
+
+      const treatBtn = h("button", {
+        type: "button",
+        class: "seg-btn" + (treats ? " on tag orange" : ""),
+        style: "font-weight:650; padding:6px 12px; cursor:pointer;",
+        onclick: () => {
+          const prev = String(S.values["goggle-treatment-x"] || "");
+          setValue("goggle-treatment-x", prev.replace(/diagnostic testing only\.?|no treatment required\.?/gi, "").trim() || "Canalith repositioning procedure (CRP / Epley maneuver) performed today.");
+          toast("Set to treatment performed (CRP / Epley).");
+          updateStudyBanner();
+          recode();
+        }
+      }, "Treatment performed (CRP / Epley)");
+
+      let badgeText = "", badgeClass = "tag";
+      if (!isChair && treats) {
+        badgeText = "Superbill: Goggles (92542) + Treatment (95992) · Chair excluded";
+        badgeClass = "tag green";
+      } else if (isChair && !treats) {
+        badgeText = "Superbill: Chair test (92546)";
+        badgeClass = "tag blue";
+      } else if (!isChair && !treats) {
+        badgeText = "Superbill: IR Goggles (92542)";
+        badgeClass = "tag blue";
+      } else {
+        badgeText = "Superbill: Treatment (95992) + Goggles (92542)";
+        badgeClass = "tag green";
+      }
+      const badge = h("span", { class: badgeClass, style: "margin-left:auto; font-weight:600;" }, badgeText);
+
+      studyBanner.append(
+        h("b", { style: "font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted)" }, "Study:"),
+        gogglesBtn, chairBtn,
+        h("span", { style: "color:var(--hair2); margin:0 4px;" }, "|"),
+        h("b", { style: "font-size:12px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted)" }, "Treatment:"),
+        noTreatBtn, treatBtn,
+        badge
+      );
+    };
+    updateStudyBanner();
+
     p.append(card("IR oculography / positional testing", [
+      studyBanner,
       h("div", { class: "grid" }, textField("goggle-dr", { span: 4, list: ["Jake Perkins, PA-C", "Touraj Yari, PA-C", "Carter Copeland, PA-C", "Evan Camarillo, PA-C", "Ian Purcell, MD, PhD", "Monali Patel, MD"] }), dateField("goggle-date", { span: 3 }), h("div", { class: "f s5", style: "justify-content:flex-end" }, h("div", { class: "row" }, check("see-epley")))),
       h("div", { class: "subhead" }, "Dix-Hallpike"), posRow("Right", "dixhall-right-"), posRow("Left", "dixhall-left-"),
       h("div", { class: "subhead" }, "Supine positional"), posRow("Head center", "supine-center-"), posRow("Head right", "supine-right-"), posRow("Head left", "supine-left-"),

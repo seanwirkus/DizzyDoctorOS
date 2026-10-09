@@ -149,8 +149,8 @@ class ShellStaticTests(unittest.TestCase):
         # the Scope HPI goes into the story so Build drafts the HPI from it, instead of a card the builder writes over
         self.assertIn('pr.id === "scope-hpi"', note)
         self.assertIn("build-parts", note)                         # the HPI's paragraphs, one tick each
-        # Build is the note's home: first tab, the HPI on top, and the complaints it names decide the boxes below
-        self.assertIn('const VIEWS = [["build", "Build"], ["note", "Full note"]', note)
+        # Build is the note's home: first tab, demographics beside it, and the complaints it names decide the boxes below
+        self.assertIn('const VIEWS = [["build", "Build"], ["patient", "Demographics"], ["note", "Full note"]', note)
         self.assertIn("function hpiCard(", note)
         self.assertIn("function complaintBlocks(", note)
         self.assertIn("Complaints from the HPI", note)
