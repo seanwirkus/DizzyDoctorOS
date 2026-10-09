@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical AI Assistant — CranialVIII</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">VIII</div>
+        <div>
+          <div class="brand-title">CranialVIII</div>
+          <div class="brand-subtitle">PaperEpley Core</div>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="/"><span>📊</span> Dashboard</a></li>
+        <li class="nav-item"><a href="/worklist"><span>📋</span> Clinical Worklist</a></li>
+        <li class="nav-item"><a href="/conflicts"><span>⚖️</span> Conflict Review</a></li>
+        <li class="nav-item"><a href="/assistant" class="active"><span>🧠</span> Clinical AI Assistant</a></li>
+      </ul>
+
+      <div class="offline-badge">
+        <div class="status-dot"></div>
+        <div>AIR-GAPPED OFFLINE</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Sovereign Clinical Assistant</h1>
+          <p class="page-desc">Direct local inference for otoneurology, BPPV canal localization, HINTS triage, and complex neurology.</p>
+        </div>
+      </header>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatBox">
+          <div class="chat-bubble ai">
+            <strong>CranialVIII Core:</strong><br>
+            Offline clinical reasoning engine initialized. How can I assist with patient findings, vestibular differentials, or chart synthesis today?
+          </div>
+        </div>
+
+        <div class="chat-input-row">
+          <input type="text" id="userInput" class="chat-input" placeholder="Enter clinical case (e.g. 'Right Dix-Hallpike positive with upbeating torsional nystagmus, 15s latency...')" onkeydown="if(event.key==='Enter') sendPrompt()">
+          <button class="btn btn-primary" onclick="sendPrompt()">Consult AI</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    async function sendPrompt() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBox = document.getElementById('chatBox');
+      
+      // Append user bubble
+      const userBubble = document.createElement('div');
+      userBubble.className = 'chat-bubble user';
+      userBubble.textContent = text;
+      chatBox.appendChild(userBubble);
+      input.value = '';
+
+      // Append typing placeholder
+      const aiBubble = document.createElement('div');
+      aiBubble.className = 'chat-bubble ai';
+      aiBubble.innerHTML = '<em>Analyzing clinical neuro-anatomy on local model...</em>';
+      chatBox.appendChild(aiBubble);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const res = await fetch('/api/assistant/ask', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ prompt: text })
+        });
+        const data = await res.json();
+        aiBubble.innerHTML = `<strong>CranialVIII:</strong><br>${data.response.replace(/\n/g, '<br>')}`;
+      } catch (err) {
+        aiBubble.innerHTML = `<span style="color: var(--accent-rose)">Local inference error: ${err.message}</span>`;
+      }
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>

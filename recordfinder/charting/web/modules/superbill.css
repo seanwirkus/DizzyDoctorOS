@@ -1,0 +1,102 @@
+/* Provider superbill creation: a page laid out like the PDF it files (superbill.fill()).
+   Sizes are in the PDF's points: --pt is one point at the page's on-screen width (612pt = the whole page),
+   so the sheet is the filed page scaled, with a floor on the type so it stays easy to edit when narrow. */
+.sb-wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 900px; margin: 0 auto; padding: 4px 0 24px; }
+.sb-wrap > * { grid-column: 1 / -1; }   /* one column: .card's 'span 12' would otherwise make 12 implicit tracks */
+
+/* ---------- above the sheet */
+.sb-toolbar { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 12px; background: var(--card); border: 1px solid var(--hair); border-radius: var(--radius); box-shadow: var(--shadow); }
+.sb-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.sb-group:first-child { flex: 1 1 420px; }
+.sb-group-end { margin-left: auto; justify-content: flex-end; }
+.sb-toolbar .btn { white-space: nowrap; }
+.sb-assign { flex: 1 1 200px; min-width: 170px; max-width: 320px; }
+.sb-payer-in { width: 130px; height: 34px; border: 1px solid var(--line); border-radius: var(--r2); padding: 0 10px; font-size: 13px; background: var(--card); outline: none; }
+.sb-payer-in:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.sb-status { white-space: nowrap; }
+.sb-view button { min-width: 58px; }
+
+.sb-search { position: relative; }
+.sb-search input[type="search"] { width: 100%; height: 34px; border: 1px solid var(--line); border-radius: var(--r2); padding: 0 12px; font-size: 13.5px; outline: none; background: var(--field); }
+.sb-search input[type="search"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); background: var(--card); }
+.sb-search .results { position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 30; max-height: 300px; overflow: auto; background: var(--card); border: 1px solid var(--line); border-radius: var(--r2); box-shadow: var(--shadow-pop); padding: 4px; }
+.sb-search .results button { display: flex; width: 100%; gap: 8px; align-items: baseline; text-align: left; padding: 7px 10px; border-radius: 6px; border: 0; background: none; cursor: pointer; font-size: 13px; }
+.sb-search .results button:hover { background: var(--field); }
+.sb-search .results button small { color: var(--muted); margin-left: auto; white-space: nowrap; }
+
+/* ---------- the page */
+.sb-page { container-type: inline-size; width: 100%; max-width: 816px; margin: 0 auto; }
+.sb-sheet {
+  --pt: calc(100cqw / 612);
+  --ink: #0a1f2b; --faint: #738c99; --rule: #ccd6d9; --red: #a61a1a;
+  position: relative; display: flex; flex-direction: column; min-height: calc(792 * var(--pt));
+  padding: calc(22 * var(--pt)) calc(40 * var(--pt)) calc(24 * var(--pt));
+  background: #fff; color: var(--ink); border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 10px 30px -14px rgba(0,0,0,.35);
+  font-family: Helvetica, Arial, var(--font); font-size: max(12px, calc(9 * var(--pt))); line-height: 1.35;
+}
+.sb-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.sb-title { font-size: max(19px, calc(17 * var(--pt))); font-weight: 700; letter-spacing: .01em; line-height: 1.1; }
+.sb-practice { margin-top: calc(3 * var(--pt)); font-size: max(10.5px, calc(8 * var(--pt))); color: var(--faint); }
+.sb-dos { margin-top: calc(4 * var(--pt)); font-size: max(13px, calc(11 * var(--pt))); font-weight: 700; white-space: nowrap; }
+.sb-rule { height: 0; border-top: 0.8px solid var(--rule); margin: calc(8 * var(--pt)) 0 calc(12 * var(--pt)); }
+.sb-name { font-size: max(15px, calc(13 * var(--pt))); font-weight: 700; margin-bottom: calc(3 * var(--pt)); }
+.sb-line { display: flex; align-items: baseline; flex-wrap: wrap; row-gap: 2px; margin-top: calc(3 * var(--pt)); white-space: pre; }
+.sb-line.faint { color: var(--faint); }
+.sb-line.strong { color: var(--ink); font-weight: 700; margin-top: calc(6 * var(--pt)); }
+.sb-dot { color: var(--faint); white-space: pre; }
+.sb-line > .sb-in, .sb-name > .sb-in, .sb-dos > .sb-in { flex: none; }   /* sized to their text; the line wraps rather than squeezing them */
+
+/* a blank on the sheet: the sheet's own type, no box; a hairline shows while hovered or typed in */
+.sb-in { font: inherit; color: inherit; background: transparent; border: 0; border-bottom: 1px solid transparent; border-radius: 0; padding: 0 1px; margin: 0; min-width: 2ch; max-width: 100%; outline: none; height: auto; line-height: inherit; }
+.sb-in::placeholder { color: #b8c4ca; font-weight: inherit; }
+.sb-in:hover { border-bottom-color: var(--rule); }
+.sb-in:focus { border-bottom-color: var(--accent); background: rgba(0,113,227,.05); }
+.sb-name .sb-in { font-weight: 700; }
+.sb-dos .sb-in { font-weight: 700; }
+.sb-select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 2px; }
+
+/* ---------- the tables: the PDF's columns and type */
+.sb-sec { margin-top: calc(16 * var(--pt)); }
+.sb-sec h3 { margin: 0 0 calc(6 * var(--pt)); font-size: max(13px, calc(11 * var(--pt))); font-weight: 700; color: var(--ink); }
+.sb-table { display: grid; }
+.sb-th, .sb-tr { display: grid; align-items: baseline; column-gap: calc(8 * var(--pt)); position: relative; }
+.sb-dx .sb-th, .sb-dx .sb-tr { grid-template-columns: calc(20 * var(--pt)) calc(68 * var(--pt)) minmax(0, 1fr); }          /* 28 · 76 · 428 pt */
+.sb-px .sb-th, .sb-px .sb-tr { grid-template-columns: calc(62 * var(--pt)) calc(36 * var(--pt)) calc(36 * var(--pt)) calc(36 * var(--pt)) minmax(0, 1fr); }   /* 70 · 44 · 44 · 44 · 330 pt */
+.sb-th { padding-bottom: calc(4 * var(--pt)); border-bottom: 0.8px solid var(--rule); margin-bottom: calc(4 * var(--pt)); font-size: max(10.5px, calc(8 * var(--pt))); color: var(--faint); }
+.sb-tr { padding: calc(2 * var(--pt)) 0; }
+.sb-tr .sb-num { color: var(--ink); }
+.sb-cell { width: 100%; min-width: 0; }
+.sb-cell.code { font-weight: 700; }
+.sb-x { position: absolute; right: calc(-30 * var(--pt)); top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border: 0; border-radius: 6px; background: none; color: var(--faint); font-size: 16px; line-height: 1; cursor: pointer; opacity: 0; }
+.sb-tr:hover .sb-x, .sb-x:focus-visible { opacity: 1; }
+.sb-x:hover { background: var(--red-soft); color: var(--red); }
+
+/* adding a line: the table's last row, dashed until used */
+.sb-add { display: flex; align-items: center; gap: 6px; margin-top: calc(4 * var(--pt)); }
+.sb-add .sb-plus { color: var(--faint); font-weight: 700; width: 12px; text-align: center; }
+.sb-add input[type="search"] { flex: 1; height: 28px; font-size: max(12px, calc(9 * var(--pt))); background: transparent; border: 1px dashed var(--rule); padding: 0 8px; color: var(--ink); font-family: inherit; }
+.sb-add input[type="search"]:focus { border-style: solid; background: #fff; }
+.sb-add .results { font-family: var(--font); }
+
+.sb-notes { display: block; width: 100%; resize: none; overflow: hidden; min-height: 2.6em; }
+
+/* the foot of the page, where the PDF prints it */
+.sb-foot { margin-top: auto; padding-top: calc(20 * var(--pt)); }
+.sb-draft { color: var(--red); font-size: max(11px, calc(8 * var(--pt))); margin-bottom: calc(5 * var(--pt)); }
+.sb-meta { color: var(--faint); font-size: max(10px, calc(7 * var(--pt))); }
+
+/* the real PDF, in the same frame */
+.sb-pdf { display: grid; gap: 14px; }
+.sb-pdf img { display: block; width: 100%; height: auto; background: #fff; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 10px 30px -14px rgba(0,0,0,.35); }
+.sb-loading { align-items: center; justify-content: center; gap: 10px; color: var(--faint); }
+
+/* ---------- below the sheet */
+.sb-onfile { max-width: 816px; width: 100%; margin: 0 auto; }
+.sb-rows { display: flex; flex-direction: column; gap: 6px; }
+.sb-row { display: flex; gap: 10px; align-items: center; padding: 7px 10px; border: 1px solid var(--hair); border-radius: var(--r2); background: var(--field); }
+.sb-row .sb-desc { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@container (max-width: 520px) { .sb-x { right: -18px; } }
+/* blanks with suggestions (providers, visit) drop the picker arrow: the suggestions still show while typing */
+.sb-in[list]::-webkit-calendar-picker-indicator { display: none !important; }
+.sb-in[list]::-webkit-list-button { display: none !important; }

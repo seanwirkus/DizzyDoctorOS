@@ -1,0 +1,80 @@
+/* Vestibular Testing screen. Everything is scoped under .vt (the activity body) and uses the shell's tokens only,
+   so light and dark mode follow the shell. */
+.vt .vt-notice { grid-column: span 12; padding: 9px 14px; border-radius: var(--r2); background: var(--field); color: var(--muted); font-size: 12.5px; }
+.vt .vt-notice b { color: var(--ink); font-weight: 600; }
+
+/* canal map */
+.vt .vt-map .card-head { flex-wrap: wrap; }
+.vt .vt-ears { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.vt .vt-ear { text-align: center; min-width: 0; }
+.vt .vt-ear svg { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; }
+.vt .vt-ear-title { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.vt .vt-canal { fill: none; stroke: var(--hair2); stroke-width: 7; transition: stroke .2s; }
+.vt .vt-canal.on { stroke: var(--accent); }
+.vt .vt-glow { fill: none; stroke: var(--accent-soft); stroke-width: 18; }
+.vt .vt-utricle { fill: var(--field); stroke: var(--hair2); stroke-width: 1.5; }
+.vt .vt-ear.lit .vt-utricle { fill: var(--accent-soft); stroke: var(--accent); }
+.vt .vt-cochlea { fill: none; stroke: var(--hair); stroke-width: 5; stroke-linecap: round; }
+.vt .vt-lbl { font-family: var(--font); font-size: 10.5px; font-weight: 500; fill: var(--muted); }
+.vt .vt-lbl.on { fill: var(--accent); font-weight: 600; }
+.vt .vt-ampulla { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.vt .vt-status { margin-top: 2px; display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; font-size: 12.5px; min-height: 22px; }
+.vt .vt-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.vt .vt-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.vt .vt-sw { display: inline-block; width: 18px; height: 7px; border-radius: 4px; background: var(--hair2); }
+.vt .vt-sw.on { background: var(--accent); }
+.vt .vt-sw.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--card), 0 0 0 3px var(--accent-soft); }
+.vt .vt-other { margin-top: 10px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12.5px; }
+.vt .vt-foot { margin-top: 10px; font-size: 11.5px; line-height: 1.4; }
+
+/* positional findings */
+.vt .vt-findings .table { width: 100%; border-collapse: collapse; }
+.vt .vt-findings .table th { text-align: left; padding: 6px 10px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--hair); }
+.vt .vt-findings .table td { padding: 7px 10px; }
+.vt .vt-findings tr.vt-group td { padding: 12px 10px 4px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-bottom: 0; }
+.vt .vt-findings tr.vt-group:first-child td { padding-top: 6px; }
+.vt .vt-findings td.vt-pos { width: 112px; font-weight: 500; white-space: nowrap; }
+.vt .vt-hint { margin-top: 5px; font-size: 11.5px; line-height: 1.4; color: var(--muted); }
+
+/* impression */
+.vt .vt-sub { margin-top: 14px; margin-bottom: 4px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.vt .vt-treat { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.45; }
+.vt .vt-epley { margin-top: 10px; }
+.vt .vt-kvs { margin-top: 14px; border-top: 1px solid var(--hair); padding-top: 6px; }
+.vt .vt-kv { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; font-size: 12.5px; }
+.vt .vt-kv span { color: var(--muted); flex: none; }
+.vt .vt-kv b { font-weight: 500; text-align: right; overflow-wrap: anywhere; }
+
+/* results timeline */
+.vt .vt-tl { list-style: none; margin: 0; padding: 0; }
+.vt .vt-tl li { position: relative; display: grid; grid-template-columns: 104px 14px minmax(0, 1fr); gap: 0 10px; padding: 9px 0; }
+.vt .vt-tl li + li { border-top: 1px solid var(--hair); }
+.vt .vt-date { font-size: 12px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.vt .vt-dot { position: static; width: 10px; height: 10px; margin: 5px 2px 0; border-radius: 50%; background: var(--card); box-shadow: inset 0 0 0 2px var(--hair2); }
+.vt .vt-dot.on { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+/* the line runs from under this dot to just above the next one, whatever the entry's height */
+.vt .vt-tl li:not(:last-child) .vt-dot::after { content: ""; position: absolute; left: calc(104px + 10px + 7px); top: 28px; bottom: -11px; width: 1.5px; background: var(--hair); transform: translateX(-50%); }
+.vt .vt-item { min-width: 0; }
+.vt .vt-item-head { gap: 8px; }
+.vt .vt-item-head b { font-weight: 600; overflow-wrap: anywhere; }
+.vt .vt-score { display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 6px; margin-top: 4px; }
+.vt .vt-score b { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.vt .vt-score .muted { font-size: 12px; }
+.vt .vt-bar { grid-column: 1 / -1; height: 6px; max-width: 240px; margin-top: 6px; border-radius: 3px; background: var(--field); overflow: hidden; }
+.vt .vt-bar i { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
+.vt .vt-result { margin-top: 4px; line-height: 1.45; overflow-wrap: anywhere; }
+.vt .vt-empty-sm { padding: 28px 16px; }
+
+/* interpretation guide */
+.vt .vt-guide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.35fr); gap: 20px; }
+@media (max-width: 1500px) { .vt .vt-guide { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vt .vt-guide > div:last-child { grid-column: 1 / -1; } }
+@media (max-width: 1180px) { .vt .vt-guide { grid-template-columns: 1fr; } }
+.vt .vt-guide h3 { margin: 0 0 8px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.vt .vt-guide p { margin: 0 0 8px; font-size: 12.5px; line-height: 1.5; }
+.vt .vt-guide p:last-child { margin-bottom: 0; }
+.vt .vt-guide b { font-weight: 600; }
+.vt .vt-mini { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.vt .vt-mini td { padding: 5px 8px 5px 0; border-bottom: 1px solid var(--hair); vertical-align: top; line-height: 1.45; }
+.vt .vt-mini tr:last-child td { border-bottom: 0; }
+.vt .vt-mini td:first-child { font-weight: 600; white-space: nowrap; width: 1%; }
+.vt .vt-small { font-size: 11.5px; margin-top: 8px; }

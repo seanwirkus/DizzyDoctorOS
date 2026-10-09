@@ -1,0 +1,40 @@
+# CranialVIII Local Environment & PHI Protection
+.env
+.env.local
+*.pem
+*.key
+*.kek
+keys/*.kek
+pgpass.conf
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Local LLM weights & caches (Ollama / GGUF / HuggingFace)
+models/*.gguf
+models/*.bin
+models/*.safetensors
+.cache/
+
+# PHI Data Protection (Strict HIPAA - Never commit medical records)
+data/raw/
+data/faxes/
+data/temp/
+data/cache/
+*.pdf
+*.tiff
+*.tif
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+/* Settings screen. Everything is scoped under .settings / .settings-* so nothing leaks into other activities. */
+/* The page scrolls; cards keep their natural height (a grid with a fixed height squeezed them and clipped them). */
+.settings { display: grid; gap: 14px; max-width: 880px; margin-inline: 0; min-width: 0; padding-top: 4px; align-content: start; grid-auto-rows: max-content; --settings-off: rgba(120,120,128,.32); }
+@media (prefers-color-scheme: dark) { .settings { --settings-off: rgba(120,120,128,.5); } }
+/* one column: .card's 'span 12' would otherwise make 12 implicit tracks and squeeze the page title into the first */
+.settings { grid-template-columns: minmax(0, 1fr); }
+.settings > .card, .settings > .day-head { grid-column: 1 / -1; }
+.settings > .day-head { margin-bottom: 0; }
+
+/* cards: full-bleed hairline rows, like a System Settings pane */
+.settings-card { padding: 0; overflow: hidden; }
+.settings-card .card-head { padding: 14px 16px 12px; margin: 0; }
+.settings-head h2 { margin: 0; }
+.settings-head p { margin: 2px 0 0; font-size: 12.5px; line-height: 1.4; }
+.settings-row { display: grid; grid-template-columns: minmax(180px, 2fr) minmax(0, 3fr); gap: 6px 22px; align-items: start; padding: 12px 16px; border-top: 1px solid var(--hair); }
+.settings-row-text { min-width: 0; }
+.settings-row-text b { display: block; font-weight: 600; font-size: 13.5px; line-height: 1.35; }
+.settings-row-text .muted { font-size: 12px; line-height: 1.45; margin-top: 2px; }
+.settings-row-control { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.settings-value { font-size: 13.5px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-height: 24px; }
+.settings-value .tag { margin-right: 2px; }
+.settings-foot { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-top: 1px solid var(--hair); background: var(--field); }
+.settings-foot .spacer { flex: 1; }
+.settings-foot .settings-hint { flex: 1; min-width: 0; }
+.settings-foot .settings-hint ~ .spacer { display: none; }   /* the hint already takes the free space */
+.settings-hint { font-size: 12px; line-height: 1.4; }
+.settings-state { font-size: 12px; font-weight: 500; white-space: nowrap; }
+.settings-state:empty { display: none; }
+@media (prefers-color-scheme: dark) { .settings-foot { background: rgba(255,255,255,.03); } }
+
+/* fields */
+.settings-input { width: 100%; min-height: 34px; border: 1px solid var(--line); border-radius: var(--r2); padding: 6px 10px; background: var(--card); outline: none; line-height: 1.4; transition: border-color .12s, box-shadow .12s; }
+.settings-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); background: var(--card); }
+.settings-input.invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,59,48,.14); }
+.settings-input::placeholder { color: var(--muted); opacity: .7; }
+textarea.settings-input { resize: vertical; min-height: 76px; font-size: 12.5px; }
+.settings-input.mono { font-size: 12.5px; }
+.settings-input.short { max-width: 150px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+.settings-error { color: var(--red); font-size: 12px; line-height: 1.35; }
+
+/* model picker: a radio list with a check, like a Settings sheet */
+.settings-options { display: grid; gap: 6px; }
+.settings-option { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 10px; align-items: center; width: 100%; text-align: left; padding: 8px 12px; border: 1px solid var(--hair); border-radius: var(--r2); background: var(--card); color: var(--ink); transition: background .12s, border-color .12s; }
+.settings-option:hover { background: var(--field); }
+.settings-option:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-soft); border-color: var(--accent); }
+.settings-option[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.settings-check { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--hair2); display: grid; place-items: center; color: transparent; background: var(--card); }
+.settings-check svg { width: 11px; height: 11px; }
+.settings-option[aria-checked="true"] .settings-check { background: var(--accent); border-color: var(--accent); color: #fff; }
+.settings-option-text { min-width: 0; }
+.settings-option-text b { font-weight: 600; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.settings-option-id { font-size: 11.5px; color: var(--muted); font-weight: 500; }
+.settings-option-text small { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; margin-top: 1px; }
+.settings-option-size { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+
+/* switch */
+.settings-switch { width: 42px; height: 26px; padding: 0; border: 0; border-radius: 999px; background: var(--settings-off); position: relative; flex: none; transition: background .18s; }
+.settings-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: transform .18s; }
+.settings-switch[aria-checked="true"] { background: var(--green); }
+.settings-switch[aria-checked="true"]::after { transform: translateX(16px); }
+.settings-switch:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* about */
+.settings-kbd { display: inline-flex; align-items: center; gap: 2px; margin-right: 14px; white-space: nowrap; }
+.settings-kbd kbd { margin-right: 2px; }
+
+
+/* narrow window: labels stack over their controls */
+@media (max-width: 900px) {
+  .settings-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+
+/* one folder per line: a long path scrolls inside the box instead of looking like two folders */
+textarea.settings-input.mono { white-space: pre; overflow-wrap: normal; overflow-x: auto; }

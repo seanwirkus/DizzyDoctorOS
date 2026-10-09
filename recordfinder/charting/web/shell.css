@@ -1,0 +1,305 @@
+/* DizzyDoctor window, laid out like Windows File Explorer: tabs across the top (Home and one per open patient), a left
+   pane, the screen, and a status bar along the bottom. */
+.app { height: 100%; display: flex; flex-direction: column; min-width: 0; }
+.view { flex: 1; min-width: 0; min-height: 0; overflow: hidden; }
+#headTools { display: flex; gap: 8px; align-items: center; align-self: center; }
+#headTools:empty { display: none; }
+
+/* tab bar: the open tab is joined to the window below it */
+.tabbar { flex: none; height: 50px; display: flex; align-items: flex-end; gap: 12px; padding: 0 12px; background: #e4e6ea; border-bottom: 1px solid var(--hair2); position: relative; z-index: 5; }
+.app-brand { display: flex; align-items: center; gap: 9px; flex: none; align-self: center; }
+.app-brand img { width: 26px; height: 26px; border-radius: 7px; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+.app-brand b { font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+.demo-badge { font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); background: var(--orange-soft); padding: 2px 6px; border-radius: 6px; }
+.tabstrip { display: flex; align-items: flex-end; gap: 2px; min-width: 0; flex: 1 1 auto; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; height: 100%; padding-top: 8px; }
+.tabstrip::-webkit-scrollbar { display: none; }
+.tab { display: flex; align-items: center; gap: 8px; height: 41px; min-width: 72px; max-width: 230px; margin-bottom: -1px; padding: 0 6px 0 12px; border: 1px solid transparent; border-bottom: 0;
+       border-radius: 9px 9px 0 0; background: transparent; color: var(--ink2); font-weight: 600; flex: 0 1 auto; position: relative; }
+.tab:hover { background: rgba(255,255,255,.55); }
+.tab.active { background: var(--card); color: var(--ink); border-color: var(--hair2); }
+.tab-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.home-tab { flex: none; min-width: 0; padding-right: 14px; }
+.home-tab .icon { width: 17px; height: 17px; }
+.tab-close { width: 22px; height: 22px; border-radius: 6px; display: inline-grid; place-items: center; color: var(--muted); flex: none; }
+.tab-close:hover { background: rgba(0,0,0,.08); color: var(--ink); }
+.tab-close .icon { width: 13px; height: 13px; }
+.tab-dot { width: 7px; height: 7px; border-radius: 50%; background: #ff9500; flex: none; }
+/* the visit type's colour on the tab: a short bar, the same colour as the calendar event and the note header */
+.tab-kind { width: 4px; height: 16px; border-radius: 2px; background: var(--kind, var(--line2)); flex: none; margin-left: -4px; }
+.tab-new { width: 32px; height: 32px; margin: 0 0 5px 2px; border: 0; border-radius: 8px; background: transparent; color: var(--ink2); display: grid; place-items: center; flex: none; }
+.tab-new:hover { background: rgba(255,255,255,.65); color: var(--ink); }
+.tabbar .patient-search { flex: 0 1 300px; min-width: 170px; align-self: center; }
+.bar-btn { flex: none; height: 34px; padding: 0 10px; color: var(--ink2); align-self: center; }
+.bar-btn:hover { background: rgba(255,255,255,.65); }
+.bar-btn.active { background: var(--card); color: var(--ink); }
+
+/* Home: the left pane (Today, Patients, Saved notes) and the screen */
+.home-view { height: 100%; min-height: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+.home-content { min-height: 0; min-width: 0; overflow: hidden; background: var(--bg); }
+.home-content > .notes, .home-content > .settings { height: 100%; overflow: auto; padding: 20px 24px 40px; box-sizing: border-box; }
+.step-ico { width: 20px; display: inline-grid; place-items: center; color: var(--muted); flex: none; }
+.step-ico .icon { width: 17px; height: 17px; }
+.steps button.step.active .step-ico { color: var(--accent); }
+
+/* status bar */
+.statusbar { flex: none; height: 26px; display: flex; align-items: center; gap: 18px; padding: 0 14px; background: #f7f8fa; border-top: 1px solid var(--hair); color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; }
+.statusbar .spacer { flex: 1; }
+.statusbar span:empty:not(.spacer) { display: none; }
+
+.document-view { height: 100%; min-height: 0; }
+.document-view > .note-app { height: 100%; }
+
+/* ---------------------------------------------------------------- the note screen */
+.note-app { height: 100%; min-height: 0; min-width: 0; display: flex; flex-direction: column; background: var(--bg); }
+.note-head { flex: none; display: flex; align-items: center; gap: 12px; padding: 6px 12px; background: var(--card); border-bottom: 1px solid var(--hair); min-width: 0; }
+.note-patient { min-width: 0; flex: 1 1 260px; }
+/* the name as the note prints it: Last, First in bold */
+.np-name { font-size: 21px; font-weight: 750; letter-spacing: -.02em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np-name.empty { color: var(--muted); font-weight: 600; }
+.np-meta { display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; margin-top: 3px; color: var(--ink2); font-size: 13px; min-height: 20px; }
+.np-meta > span:empty { display: none; }
+.np-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.note-visit { display: flex; gap: 18px; margin: 0; flex: none; }
+.note-visit > div { min-width: 0; }
+.note-visit dt { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.note-visit dd { margin: 2px 0 0; font-weight: 650; font-size: 13.5px; white-space: nowrap; }
+.note-clock { display: flex; align-items: center; gap: 6px; flex: none; padding-left: 16px; border-left: 1px solid var(--hair); }
+.timer-clock { font-size: 18px; font-weight: 650; min-width: 54px; font-variant-numeric: tabular-nums; }
+.em-chip { font-weight: 650; font-size: 12.5px; padding: 5px 10px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); border: 0; white-space: nowrap; }
+.em-chip.warn { background: var(--orange-soft); color: var(--orange); }
+.note-actions { display: flex; gap: 5px; flex: none; align-items: center; }
+.note-actions .btn { height: 28px; padding: 0 9px; border-radius: 7px; gap: 5px; font-size: 12px; }
+.note-actions .btn .icon { width: 14px; height: 14px; }
+.note-actions .history-btn { width: 28px; padding: 0; }
+.note-head > .em-chip { flex: none; }
+.act-sep { width: 1px; height: 22px; background: var(--hair2); margin: 0 2px; }
+.visit.on { border-color: var(--red); background: var(--red); color: #fff; font-variant-numeric: tabular-nums; }
+.visit.on:hover { filter: brightness(1.08); background: var(--red); }
+.visit.busy { color: var(--orange); }
+/* the consent question before a visit is recorded */
+.modal { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.32); display: grid; place-items: center; padding: 16px; }
+.modal-box { width: min(480px, 100%); background: var(--card); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow-pop); }
+.modal-box h2 { margin: 0 0 8px; font-size: 17px; }
+.modal-box p { margin: 0 0 16px; color: var(--ink2); line-height: 1.5; }
+.modal-actions { justify-content: flex-end; }
+/* what was heard, on top of Build */
+.heard-text { font-size: 14px; line-height: 1.55; white-space: pre-wrap; }
+.heard-text.visit { max-height: 180px; overflow-y: auto; padding: 8px 10px; background: var(--field); border-radius: var(--r2); color: var(--ink2); }
+.card.ai { border-left: 3px solid var(--accent); }
+.mic .mic-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+.mic.on { border-color: var(--red); background: var(--red-soft); color: var(--red); }
+.mic.on .mic-dot { background: var(--red); animation: pulse 1s infinite; }
+.mic.busy .mic-dot { background: var(--orange); }
+@media (max-width: 1320px) { .note-visit { display: none; } }
+@media (max-width: 1160px) { .note-actions .btn .btn-text { display: none; } .note-actions .btn { padding: 0 10px; } }
+/* The header follows its own width (a narrow window, or a report open beside the note): buttons go to icons first,
+   and the identity line shortens with an ellipsis instead of stacking word by word. */
+.note-head { container-type: inline-size; }
+@container (max-width: 1400px) { #superbillBtn .btn-text, #previewBtn .btn-text { display: none; } #superbillBtn, #previewBtn { padding: 0 10px; } }
+@container (max-width: 1100px) { .note-actions .btn .btn-text { display: none; } .note-actions .btn { padding: 0 10px; } }
+#sbIdent { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* name with its tags on one line; the identity line under it has the full width and shortens with an ellipsis */
+/* the whole name first; each tag shows whole or moves to a hidden second row (never cut in half) */
+.np-top { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; column-gap: 5px; row-gap: 0; height: calc(21px * 1.15); overflow: hidden; min-width: 0; }
+.np-top .np-name { flex: 0 1 auto; min-width: 0; margin-right: 5px; }   /* a name too long even alone ends in an ellipsis */
+.np-top .np-tags { display: contents; }
+/* the visit type beside the name, in its colour; a click goes to Patient to change it */
+.visit-badge { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 9px 0 7px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--kind, var(--line2)) 45%, transparent); background: color-mix(in srgb, var(--kind, var(--line2)) 12%, #fff); color: color-mix(in srgb, var(--kind, var(--ink2)) 80%, #000); font-size: 12px; font-weight: 650; white-space: nowrap; margin-right: 5px; }
+.visit-badge:hover { background: color-mix(in srgb, var(--kind, var(--line2)) 20%, #fff); }
+.visit-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--kind, var(--line2)); }
+.visit-badge small { font-weight: 500; color: var(--muted); font-size: 11px; }
+@container (max-width: 1100px) { #clockUse { display: none; } }   /* "From timer" in Encounter time does the same */
+@container (max-width: 680px) { .note-clock { display: none; } }   /* a very narrow header keeps the name readable; the clock keeps counting */
+.np-meta { flex-wrap: nowrap; }
+/* icon-only header buttons are all the same square */
+@container (max-width: 1100px) { .note-actions .btn:not(#saveDraft):not(#fileNote) { width: 38px; padding: 0; justify-content: center; } }
+.sb-notes .new-visit { text-wrap: balance; }
+
+.note-body { flex: 1; min-height: 0; min-width: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+.steps { min-height: 0; overflow-y: auto; border-right: 1px solid var(--hair); background: var(--story); padding: 12px 10px; display: flex; flex-direction: column; gap: 2px; }
+.step-list { display: flex; flex-direction: column; gap: 2px; }
+.steps button.step { display: flex; align-items: center; gap: 8px; width: 100%; border: 0; background: none; padding: 6px 10px 6px 12px; border-radius: 7px; text-align: left; font-weight: 550; color: var(--ink2); font-size: 13px; }
+.steps button.step:hover { background: rgba(0,0,0,.05); }
+.steps button.step.active { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
+/* Note / Build / Check / Superbill / PDF: tabs above the note */
+.view-tabs { flex: none; display: flex; align-items: flex-end; gap: 2px; padding: 0 20px; background: var(--card); border-bottom: 1px solid var(--hair); overflow-x: auto; }
+.view-tabs button { position: relative; border: 0; background: none; padding: 6px 11px 5px; font-size: 12px; font-weight: 600; color: var(--muted); white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.view-tabs button:hover { color: var(--ink); }
+.view-tabs button.on { color: var(--accent); border-bottom-color: var(--accent); }
+.view-tabs .step-badge { margin-left: 6px; font-size: 10.5px; padding: 0 6px; }
+.step-list.dim .step:not(:hover) { color: var(--muted); }
+/* the note's parts, grouped by the PDF page they print on */
+.nav-page { display: flex; align-items: baseline; gap: 6px; margin: 12px 6px 3px; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav-page:first-child { margin-top: 0; }
+.nav-page b { font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink2); }
+.sec-mark { margin-left: auto; width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.sec-mark.pos { background: var(--red); }
+.sec-mark.neg { background: var(--green); }
+.step-n { width: 20px; height: 20px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 11px; font-weight: 700; background: var(--field); color: var(--muted); flex: none; border: 1px solid var(--hair); }
+
+.step-badge { margin-left: auto; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px; background: var(--orange-soft); color: var(--orange); }
+.steps button.step.active .step-badge { background: var(--card); }
+.steps-section { margin-top: 14px; padding: 10px 0 0; border-top: 1px solid var(--hair); }   /* same left edge as the page list */
+.steps-title { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin: 0 6px 6px; }
+.sb-notes { display: flex; flex-direction: column; gap: 1px; }
+.sb-notes button { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 8px; border: 0; background: none; border-radius: 7px; text-align: left; font-size: 12.5px; color: var(--ink2); }
+.sb-notes button:hover { background: rgba(0,0,0,.05); }
+.sb-notes small { color: var(--muted); }
+.sb-notes .new-visit { color: var(--accent); font-weight: 650; gap: 6px; justify-content: flex-start; }
+.sb-notes .muted { font-size: 12.5px; padding: 2px 8px; }
+.sb-foot { margin-top: auto; padding: 10px 6px 0; font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+.workspace { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+/* the note itself: the PDF's four pages in one scroll, a page's width wide with even margins */
+.panel[data-mode="note"] { display: block; padding: 0 0 72px; scroll-behavior: auto; }
+.note-doc { max-width: 1080px; margin: 0 auto; padding: 22px 32px 0; display: grid; gap: 26px; }
+.sheet { display: grid; gap: 14px; }
+.sheet-head { display: flex; align-items: baseline; gap: 10px; padding: 10px 2px 0; border-top: 1px solid var(--hair2); color: var(--muted); font-size: 12px; }
+.sheet-head b { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink2); }
+.note-sec { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; scroll-margin-top: 12px; container-type: inline-size; }
+/* side-by-side cards stack when the note itself is narrow (a narrow window, or a report open beside it).
+   976px is the note's width in a 1240px window, where the window rule for the other screens stacks them too. */
+@container (max-width: 976px) { .note-sec > .card.half, .note-sec > .card.third, .note-sec > .card.twothirds { grid-column: span 12; } }
+.note-sec:empty { display: none; }
+.note-doc > .card { grid-column: auto; }
+@media (max-width: 1180px) { .note-doc { padding: 18px 20px 0; } }
+.panel { flex: 1; overflow-y: auto; padding: 16px 20px 32px; display: grid; gap: 14px; align-content: start; grid-template-columns: repeat(12, minmax(0, 1fr)); min-width: 0; }
+.step-nav { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; padding-top: 4px; }
+.step-nav .spacer { flex: 1; }
+.step-nav .hint { color: var(--muted); font-size: 12px; }
+.sec-anchor { grid-column: 1 / -1; height: 0; overflow: hidden; }
+/* chart screens (SnapShot, Chart review, Results / testing) fill the panel and scroll on their own */
+.panel[data-mode="chart"] { display: block; padding: 0; overflow: hidden; }
+.chart-host { height: 100%; overflow: auto; }
+.chart-host > .review { height: 100%; }
+.step-n.chart-dot { width: 8px; height: 8px; margin: 0 6px; border: 0; background: var(--line2); }
+.steps button.step.active .step-n.chart-dot { background: #fff; }
+.chart-host .cards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; padding: 16px 20px 32px; align-content: start; }
+.chart-host .cards > .card:not(.half):not(.third):not(.twothirds) { grid-column: span 12; }
+.chart-host .stack { padding: 16px 20px 32px; }
+.vt-actions { grid-column: span 12; display: flex; justify-content: flex-end; }
+
+/* ---------------------------------------------------------------- other screens */
+.view-scroll { height: 100%; overflow: auto; padding: 20px 24px 48px; min-width: 0; }
+.day-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.day-head h1 { margin: 0; font-size: 24px; letter-spacing: -.02em; font-weight: 700; }
+.day-head p { margin: 4px 0 0; color: var(--muted); }
+.legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); }
+.legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: 1px; }
+.legend .red { background: var(--red); } .legend .amber { background: #ff9f0a; } .legend .green { background: #34c759; }
+.legend .blue { background: var(--accent); } .legend .grey { background: #8e8e93; }
+
+.slot { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; background: #fff; border: 1px solid var(--hair); border-left-width: 4px; border-radius: 12px; padding: 12px 14px; margin: 0 0 8px; box-shadow: var(--shadow); }
+.slot:hover { border-color: var(--hair2); }
+.slot.tone-red { border-left-color: var(--red); }
+.slot.tone-amber { border-left-color: #ff9f0a; }
+.slot.tone-green { border-left-color: #34c759; }
+.slot.tone-blue { border-left-color: var(--accent); }
+.slot.tone-grey { border-left-color: #8e8e93; }
+.slot .when { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 15px; letter-spacing: -.02em; }
+.slot .cal { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+.slot .who { font-weight: 700; font-size: 15.5px; letter-spacing: -.02em; }
+.slot .meta { color: var(--muted); font-size: 12.5px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot .pills { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.pill { font-size: 11.5px; padding: 3px 8px; border-radius: 999px; background: var(--field); max-width: 280px; }
+.pill.red { background: var(--red-soft); color: var(--red); }
+.pill.amber { background: var(--orange-soft); color: var(--orange); }
+.pill.blue { background: var(--accent-soft); color: var(--accent); }
+.pill.green { background: var(--green-soft); color: var(--green); }
+.pill.grey { background: var(--field); color: var(--muted); }
+
+.search-page { max-width: 720px; }
+.search-page input[type="search"] { width: 100%; height: 38px; border: 1px solid var(--line); border-radius: 10px; padding: 0 12px; background: #fff; outline: none; margin: 8px 0 12px; }
+.search-page input[type="search"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.plist { display: flex; width: 100%; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--hair); background: #fff; text-align: left; }
+.plist:hover, .plist:focus { background: var(--accent-soft); outline: none; }
+.plist { align-items: baseline; }
+.plist > span { flex: none; }
+.plist small { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.results .plist { border-bottom: 0; border-radius: 8px; background: none; }
+/* the search dropdown is narrow: name on one line, details under it */
+.results .plist { flex-direction: column; align-items: stretch; gap: 1px; }
+.results .plist > span { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tabbar .results { left: auto; min-width: 380px; }
+
+.chart-layout { height: 100%; display: grid; grid-template-columns: 268px minmax(0, 1fr); min-width: 0; min-height: 0; }
+.chart-story { border-right: 1px solid var(--hair); background: var(--story); overflow: auto; padding: 18px 16px 24px; min-width: 0; }
+.chart-story .pname { font-size: 21px; font-weight: 750; letter-spacing: -.02em; line-height: 1.15; }
+.chart-story .psub { color: var(--muted); margin: 4px 0 12px; }
+.kv { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--hair); font-size: 13px; }
+.kv span { color: var(--muted); flex: none; }
+.kv b { font-weight: 600; text-align: right; }
+.chart-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.activity-bar { display: flex; gap: 4px; padding: 8px 12px 0; flex: none; overflow-x: auto; }
+.activity-bar button { border: 0; background: transparent; color: var(--muted); font-weight: 600; padding: 8px 12px; border-radius: 10px 10px 0 0; }
+.activity-bar button.active { color: var(--ink); background: #fff; box-shadow: inset 0 0 0 1px var(--hair); }
+.panes { flex: 1; min-height: 0; min-width: 0; position: relative; }
+.pane { position: absolute; inset: 0; min-width: 0; overflow: auto; }
+.pane.note-host { display: flex; flex-direction: column; overflow: hidden; padding: 0; }
+
+.stack { display: grid; gap: 12px; padding: 14px 16px 28px; align-content: start; }
+.stack .card { grid-column: auto; }
+.dx { padding: 8px 0; border-top: 1px solid var(--hair); }
+.dx:first-child { border-top: 0; padding-top: 0; }
+.dx b { font-weight: 650; }
+.dx .plan { color: var(--muted); margin-top: 2px; }
+.med { padding: 3px 0; }
+.sym-line { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; }
+.sym-line em { font-style: normal; font-weight: 650; }
+.sym-line em.present { color: var(--red); }
+.sym-line em.denies { color: var(--muted); }
+
+.review { display: grid; grid-template-columns: minmax(220px, 320px) minmax(0, 1fr); height: 100%; min-height: 0; }
+.review-list { overflow: auto; border-right: 1px solid var(--hair); min-width: 0; }
+.review-list h3 { margin: 0; padding: 12px 12px 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.review-list button { display: block; width: 100%; text-align: left; border: 0; background: transparent; padding: 8px 12px; border-bottom: 1px solid var(--hair); }
+.review-list button:hover, .review-list button.on { background: var(--accent-soft); }
+.review-list button small { display: block; color: var(--muted); margin-top: 2px; }
+.review-group { padding: 10px 12px 4px; font-size: 12px; font-weight: 600; color: var(--ink2); background: var(--field); border-bottom: 1px solid var(--hair); }
+.review-list button > span { overflow-wrap: anywhere; }
+.review-list small .rv-part { white-space: nowrap; }
+.review-preview { overflow: auto; min-width: 0; padding: 16px; }
+.readonly-banner { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 10px; width: min(100%, 860px); margin: 0 auto 10px; padding: 8px 11px; border: 1px solid var(--hair2); border-radius: 8px; background: rgba(255,255,255,.96); box-shadow: var(--shadow); }
+.readonly-banner b { color: var(--green); }
+.readonly-banner span { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-pages { display: grid; gap: 12px; justify-items: center; }
+.doc-pages img { width: min(100%, 860px); height: auto; background: #fff; border-radius: 8px; box-shadow: 0 8px 28px -12px rgba(0,0,0,.35); }
+.placeholder-file { background: #fff; border: 1px dashed var(--hair2); border-radius: 12px; padding: 22px; color: var(--muted); }
+.placeholder-file b { display: block; color: var(--ink); margin-bottom: 6px; }
+
+.bill-code { font-family: var(--mono); font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+.fine { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+
+@media (max-width: 1320px) {
+  .tabbar { gap: 8px; }
+  .bar-btn .btn-text { display: none; }
+  .search-key { display: none; }
+}
+@media (max-width: 1220px) {
+  .app-brand b { display: none; }
+}
+@media (max-width: 1180px) {
+  .home-view { grid-template-columns: 170px minmax(0, 1fr); }
+  .chart-layout { grid-template-columns: 220px minmax(0, 1fr); }
+  .review { grid-template-columns: clamp(200px, 30%, 320px) minmax(0, 1fr); }
+  .note-body { grid-template-columns: 170px minmax(0, 1fr); }
+  .search-key { display: none; }
+}
+
+/* Many patient tabs in a narrow window: Home is an icon, inactive tabs hide their close button until hovered. */
+@media (max-width: 1100px) {
+  .home-tab .tab-label { display: none; }
+  .home-tab { padding-right: 6px; }
+  .tab:not(.active):not(:hover):not(:focus-within) .tab-close { display: none; }
+  .tab { gap: 6px; padding-left: 10px; }
+  .tabbar .patient-search { flex-basis: 220px; min-width: 140px; }
+}
+
+/* the note's view tabs do nothing on a chart screen (SnapShot, Chart review, Results): hide them there */
+.workspace:has(> .panel[data-mode="chart"]) > .view-tabs { display: none; }
+/* SnapShot: labels stay near their values on wide windows */
+.chart-host .stack .kv, .chart-host .sym-line { max-width: 520px; }
+
+/* Check (and the other note views) follow the panel's own width, e.g. with a report open beside the note */
+.panel { container-type: inline-size; }
+@container (max-width: 976px) { .panel > .card.half, .panel > .card.third, .panel > .card.twothirds { grid-column: span 12; } }

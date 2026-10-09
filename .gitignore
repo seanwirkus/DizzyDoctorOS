@@ -1,0 +1,42 @@
+__pycache__/
+build/
+dist/
+*.spec
+config.json
+*.txt
+!requirements.txt
+
+# server pipeline (server/): secrets, keys and data never go in git
+.env
+*.env
+!*.env.example
+keys/
+*.kek
+*.pem
+*.key
+pgpass.conf
+*.sql.gz
+*.dump
+data/
+
+# local clinical material and generated artifacts (never publish)
+output/
+uploads/
+imports/
+exports/
+logs/
+patient-data/
+*.db
+*.sqlite
+*.sqlite3
+*.csv
+*.tsv
+*.jsonl
+*.log
+
+# local test environment
+.venv/
+
+# macOS Finder
+.DS_Store
+tmp/

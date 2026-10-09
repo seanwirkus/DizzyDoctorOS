@@ -1,0 +1,25 @@
+{
+  "_about": "DizzyDoctor settings for this office. Put this next to DizzyDoctor.exe as config.json; each person then sets their initials in Settings. No patient data belongs here.",
+  "search_folders": ["S:\\Patients", "\\\\CLINIC-SERVER\\Scans"],
+  "missing_folder": "",
+  "per_patient_subfolder": false,
+  "staff_names": [],
+  "reindex_hours": 12,
+  "skip_folders": [],
+  "superbill_root": "S:\\Superbills All Providers",
+  "notes_folders": ["S:\\Progress Notes"],
+  "office_copy_folder": "S:\\Billing Office",
+  "billing_folder": "",
+  "roster": [
+    {"code": "DR", "name": "Dana Reed, MD, PhD", "kind": "physician", "calendar": "DR", "column": "DR", "side": "left",
+     "aliases": ["Dr. Reed", "Reed"]},
+    {"code": "SL", "name": "Sam Lee, MD", "kind": "physician", "calendar": "Dr. Lee", "column": "SL", "side": "right",
+     "aliases": ["Dr. Lee", "Lee"], "codes": ["SL 2"]},
+    {"code": "AB", "name": "Alex Brown, PA-C", "kind": "pa", "calendar": "Alex Brown"}
+  ],
+  "attending_rules": {
+    "default": "DR",
+    "payer_excludes": {"SOME HMO": ["SL"]},
+    "present_categories": {"DR has to be present": "DR", "SL TO BE PRESENT": "SL"}
+  }
+}

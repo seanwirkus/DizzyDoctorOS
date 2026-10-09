@@ -1,0 +1,3502 @@
+{
+ "name": "older",
+ "size": [
+  610.9199829101562,
+  792.0
+ ],
+ "dpi": 100,
+ "cells": [
+  {
+   "code": "99204",
+   "label": "New patient level 4 (45 min)",
+   "box": "visit",
+   "rect": [
+    134.5,
+    87.5,
+    153.0,
+    94.9
+   ]
+  },
+  {
+   "code": "99205",
+   "label": "New patient level 5 (60 min)",
+   "box": "visit",
+   "rect": [
+    135.4,
+    99.0,
+    152.8,
+    106.2
+   ]
+  },
+  {
+   "code": "99213",
+   "label": "Follow-up level 3 (20-29 min)",
+   "box": "visit",
+   "rect": [
+    134.9,
+    118.6,
+    152.6,
+    125.9
+   ]
+  },
+  {
+   "code": "99214",
+   "label": "Follow-up level 4 (30-39 min)",
+   "box": "visit",
+   "rect": [
+    135.8,
+    131.2,
+    153.4,
+    137.5
+   ]
+  },
+  {
+   "code": "99215",
+   "label": "Follow-up level 5 (40-54 min)",
+   "box": "visit",
+   "rect": [
+    135.0,
+    145.4,
+    152.8,
+    152.8
+   ]
+  },
+  {
+   "code": "G2211",
+   "label": "Add-on G2211",
+   "box": "visit",
+   "rect": [
+    135.4,
+    168.4,
+    152.9,
+    175.5
+   ]
+  },
+  {
+   "code": "MOD25 EMG/NCV",
+   "label": "EMG/NCV Add Mod 25",
+   "box": "visit",
+   "rect": [
+    130.0,
+    179.8,
+    160.0,
+    187.0
+   ]
+  },
+  {
+   "code": "MOD25 TYMP",
+   "label": "TYMP Add Mod 25",
+   "box": "visit",
+   "rect": [
+    130.0,
+    191.3,
+    160.0,
+    198.5
+   ]
+  },
+  {
+   "code": "MOD25 VNG",
+   "label": "VNG Add Mod 25",
+   "box": "visit",
+   "rect": [
+    130.0,
+    202.5,
+    160.0,
+    210.5
+   ]
+  },
+  {
+   "code": "MOD25 CDP",
+   "label": "CDP Add Mod 25",
+   "box": "visit",
+   "rect": [
+    130.0,
+    214.1,
+    160.0,
+    221.4
+   ]
+  },
+  {
+   "code": "MOD25 EEG",
+   "label": "EEG Add Mod 25",
+   "box": "visit",
+   "rect": [
+    130.0,
+    225.1,
+    160.0,
+    233.1
+   ]
+  },
+  {
+   "code": "92285",
+   "label": "Eye photography",
+   "box": "goggle",
+   "rect": [
+    255.4,
+    85.4,
+    273.7,
+    93.9
+   ]
+  },
+  {
+   "code": "92541",
+   "label": "Spontaneous nystagmus",
+   "box": "goggle",
+   "rect": [
+    255.4,
+    97.3,
+    273.6,
+    105.6
+   ]
+  },
+  {
+   "code": "92542",
+   "label": "Positional nystagmus",
+   "box": "goggle",
+   "rect": [
+    255.4,
+    108.9,
+    273.9,
+    117.1
+   ]
+  },
+  {
+   "code": "92546",
+   "label": "Chair",
+   "box": "goggle",
+   "rect": [
+    255.5,
+    120.5,
+    273.8,
+    128.3
+   ]
+  },
+  {
+   "code": "95992",
+   "label": "Canalith repositioning",
+   "box": "goggle",
+   "rect": [
+    256.6,
+    131.6,
+    276.5,
+    139.6
+   ]
+  },
+  {
+   "code": "95886",
+   "label": "EMG 5 or more muscles",
+   "box": "goggle",
+   "rect": [
+    256.6,
+    170.6,
+    277.1,
+    179.3
+   ]
+  },
+  {
+   "code": "95908",
+   "label": "NCV 3-4 studies",
+   "box": "goggle",
+   "rect": [
+    257.5,
+    181.1,
+    277.0,
+    189.1
+   ]
+  },
+  {
+   "code": "95909",
+   "label": "NCV 5-6 studies",
+   "box": "goggle",
+   "rect": [
+    256.3,
+    191.6,
+    274.2,
+    199.3
+   ]
+  },
+  {
+   "code": "95910",
+   "label": "NCV 7-8 studies",
+   "box": "goggle",
+   "rect": [
+    255.3,
+    202.2,
+    274.1,
+    211.0
+   ]
+  },
+  {
+   "code": "95911",
+   "label": "NCV 9-10 studies",
+   "box": "goggle",
+   "rect": [
+    255.3,
+    211.9,
+    275.9,
+    220.9
+   ]
+  },
+  {
+   "code": "95913",
+   "label": "NCV >12 studies",
+   "box": "goggle",
+   "rect": [
+    255.4,
+    222.5,
+    273.7,
+    230.8
+   ]
+  },
+  {
+   "code": "64405-50",
+   "label": "Occipital nerve block, bilateral",
+   "box": "procedures",
+   "rect": [
+    288.5,
+    87.5,
+    310.5,
+    95.4
+   ]
+  },
+  {
+   "code": "64405",
+   "label": "Occipital nerve block, unilateral",
+   "box": "procedures",
+   "rect": [
+    423.2,
+    87.3,
+    440.9,
+    95.5
+   ]
+  },
+  {
+   "code": "64400-50",
+   "label": "Supraorbital nerve block, bilateral",
+   "box": "procedures",
+   "rect": [
+    288.7,
+    97.6,
+    310.5,
+    104.4
+   ]
+  },
+  {
+   "code": "64400",
+   "label": "Supraorbital nerve block, unilateral",
+   "box": "procedures",
+   "rect": [
+    423.3,
+    97.3,
+    441.7,
+    105.0
+   ]
+  },
+  {
+   "code": "20552",
+   "label": "Trigger point inj 1-2",
+   "box": "procedures",
+   "rect": [
+    291.4,
+    107.6,
+    307.2,
+    115.2
+   ]
+  },
+  {
+   "code": "20553",
+   "label": "Trigger point inj 3+",
+   "box": "procedures",
+   "rect": [
+    423.4,
+    107.6,
+    441.2,
+    115.2
+   ]
+  },
+  {
+   "code": "20526-50",
+   "label": "Carpal tunnel injection, bilateral",
+   "box": "procedures",
+   "rect": [
+    289.1,
+    117.5,
+    310.5,
+    124.4
+   ]
+  },
+  {
+   "code": "20526",
+   "label": "Carpal tunnel injection, unilateral",
+   "box": "procedures",
+   "rect": [
+    422.4,
+    117.6,
+    441.5,
+    125.6
+   ]
+  },
+  {
+   "code": "69210",
+   "label": "Cerumen impaction removal",
+   "box": "procedures",
+   "rect": [
+    423.4,
+    128.0,
+    441.2,
+    135.2
+   ]
+  },
+  {
+   "code": "95977",
+   "label": "Neurostimulator programming (Inspire)",
+   "box": "procedures",
+   "rect": [
+    422.4,
+    147.6,
+    440.8,
+    155.7
+   ]
+  },
+  {
+   "code": "95970",
+   "label": "Neurophysiological monitoring (Inspire)",
+   "box": "procedures",
+   "rect": [
+    423.4,
+    158.2,
+    441.6,
+    164.8
+   ]
+  },
+  {
+   "code": "M54.81",
+   "label": "Occipital neuralgia",
+   "box": "procedure dx",
+   "rect": [
+    569.9,
+    87.2,
+    589.1,
+    94.7
+   ]
+  },
+  {
+   "code": "M79.2",
+   "label": "Neuralgia & neuritis",
+   "box": "procedure dx",
+   "rect": [
+    571.4,
+    97.7,
+    587.9,
+    105.2
+   ]
+  },
+  {
+   "code": "M79.10",
+   "label": "Myalgia",
+   "box": "procedure dx",
+   "rect": [
+    569.9,
+    107.8,
+    589.6,
+    115.1
+   ]
+  },
+  {
+   "code": "M54.2",
+   "label": "Cervicalgia",
+   "box": "procedure dx",
+   "rect": [
+    571.1,
+    117.8,
+    588.0,
+    124.7
+   ]
+  },
+  {
+   "code": "R51",
+   "label": "Headache",
+   "box": "procedure dx",
+   "rect": [
+    574.1,
+    150.4,
+    584.9,
+    156.8
+   ]
+  },
+  {
+   "code": "G56.01",
+   "label": "RT carpal tunnel syndrome",
+   "box": "procedure dx",
+   "rect": [
+    452.1,
+    127.9,
+    468.3,
+    134.7
+   ]
+  },
+  {
+   "code": "G56.02",
+   "label": "LT carpal tunnel syndrome",
+   "box": "procedure dx",
+   "rect": [
+    569.9,
+    127.7,
+    589.4,
+    134.6
+   ]
+  },
+  {
+   "code": "G43.719",
+   "label": "Chronic migraine w/o aura",
+   "box": "procedure dx",
+   "rect": [
+    568.6,
+    138.5,
+    590.7,
+    146.0
+   ]
+  },
+  {
+   "code": "H61.23",
+   "label": "Cerumen impaction, bilateral",
+   "box": "procedure dx",
+   "rect": [
+    570.4,
+    161.5,
+    589.0,
+    168.4
+   ]
+  },
+  {
+   "code": "H61.21",
+   "label": "Impacted cerumen, right",
+   "box": "procedure dx",
+   "rect": [
+    452.3,
+    172.8,
+    468.3,
+    179.4
+   ]
+  },
+  {
+   "code": "H61.22",
+   "label": "Impacted cerumen, left",
+   "box": "procedure dx",
+   "rect": [
+    570.0,
+    172.7,
+    589.5,
+    179.9
+   ]
+  },
+  {
+   "code": "96116",
+   "label": "Montreal Cognitive Assessment",
+   "box": "procedure dx",
+   "rect": [
+    571.4,
+    183.6,
+    588.7,
+    190.8
+   ]
+  },
+  {
+   "code": "64640",
+   "label": "Qutenza patch",
+   "box": "procedure dx",
+   "rect": [
+    571.0,
+    195.0,
+    588.4,
+    202.6
+   ]
+  },
+  {
+   "code": "H81.10",
+   "label": "BPPV, unspecified",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    260.5,
+    193.9,
+    266.3
+   ]
+  },
+  {
+   "code": "H81.11",
+   "label": "BPPV, right",
+   "box": "otoneurology",
+   "rect": [
+    31.2,
+    270.6,
+    48.0,
+    277.2
+   ]
+  },
+  {
+   "code": "H81.12",
+   "label": "BPPV, left",
+   "box": "otoneurology",
+   "rect": [
+    176.1,
+    270.0,
+    193.6,
+    277.1
+   ]
+  },
+  {
+   "code": "H81.13",
+   "label": "BPPV, bilateral",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    280.1,
+    193.3,
+    287.0
+   ]
+  },
+  {
+   "code": "H82.9",
+   "label": "Vertiginous syndrome",
+   "box": "otoneurology",
+   "rect": [
+    176.9,
+    290.5,
+    191.0,
+    296.9
+   ]
+  },
+  {
+   "code": "H81.93",
+   "label": "Unsp disorder vestibular function",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    300.8,
+    193.2,
+    307.1
+   ]
+  },
+  {
+   "code": "R42",
+   "label": "Dizziness and giddiness",
+   "box": "otoneurology",
+   "rect": [
+    176.5,
+    311.2,
+    187.2,
+    316.9
+   ]
+  },
+  {
+   "code": "H83.2X9",
+   "label": "Labyrinthine dysfunction unsp",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    321.5,
+    193.5,
+    327.3
+   ]
+  },
+  {
+   "code": "H83.2X1",
+   "label": "Labyrinthine dysfunction, right",
+   "box": "otoneurology",
+   "rect": [
+    32.8,
+    330.2,
+    47.8,
+    336.4
+   ]
+  },
+  {
+   "code": "H83.2X2",
+   "label": "Labyrinthine dysfunction, left",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    331.7,
+    193.3,
+    337.5
+   ]
+  },
+  {
+   "code": "H81.4",
+   "label": "Vertigo of central origin",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    342.4,
+    191.0,
+    348.2
+   ]
+  },
+  {
+   "code": "R11.11",
+   "label": "Vomiting w/o nausea",
+   "box": "otoneurology",
+   "rect": [
+    27.0,
+    353.6,
+    45.1,
+    359.8
+   ]
+  },
+  {
+   "code": "R11.2",
+   "label": "Nausea with vomiting",
+   "box": "otoneurology",
+   "rect": [
+    176.9,
+    352.8,
+    192.2,
+    359.7
+   ]
+  },
+  {
+   "code": "R27.8",
+   "label": "Other lack of coordination",
+   "box": "otoneurology",
+   "rect": [
+    176.0,
+    362.8,
+    192.1,
+    371.1
+   ]
+  },
+  {
+   "code": "R26.0",
+   "label": "Ataxic gait",
+   "box": "otoneurology",
+   "rect": [
+    176.0,
+    372.8,
+    192.2,
+    381.0
+   ]
+  },
+  {
+   "code": "R26.89",
+   "label": "Other abnormalities of gait",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    383.5,
+    193.2,
+    389.6
+   ]
+  },
+  {
+   "code": "H90.5",
+   "label": "SNHL",
+   "box": "otoneurology",
+   "rect": [
+    176.5,
+    393.7,
+    193.0,
+    400.8
+   ]
+  },
+  {
+   "code": "H93.19",
+   "label": "Tinnitus",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    403.0,
+    193.3,
+    409.3
+   ]
+  },
+  {
+   "code": "H92.09",
+   "label": "Otalgia",
+   "box": "otoneurology",
+   "rect": [
+    177.1,
+    413.9,
+    191.0,
+    420.1
+   ]
+  },
+  {
+   "code": "H69.80",
+   "label": "Eustachian tube dysfunction",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    423.7,
+    193.2,
+    430.5
+   ]
+  },
+  {
+   "code": "D33.3",
+   "label": "Acoustic neuroma",
+   "box": "otoneurology",
+   "rect": [
+    176.1,
+    433.3,
+    193.1,
+    441.5
+   ]
+  },
+  {
+   "code": "R51.9",
+   "label": "Headache",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    453.0,
+    190.8,
+    459.8
+   ]
+  },
+  {
+   "code": "G43.909",
+   "label": "Migraine, not intractable",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    463.4,
+    194.0,
+    469.6
+   ]
+  },
+  {
+   "code": "G43.719",
+   "label": "Chronic migraine w/o aura",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    473.5,
+    194.2,
+    479.7
+   ]
+  },
+  {
+   "code": "G43.109",
+   "label": "Migraine w/ aura",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    483.9,
+    193.6,
+    489.9
+   ]
+  },
+  {
+   "code": "G43.819",
+   "label": "Migraine variant",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    493.9,
+    194.1,
+    500.1
+   ]
+  },
+  {
+   "code": "F07.81",
+   "label": "Postconcussive syndrome",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    503.9,
+    193.2,
+    510.8
+   ]
+  },
+  {
+   "code": "J32.9",
+   "label": "Sinusitis, chronic",
+   "box": "otoneurology",
+   "rect": [
+    175.9,
+    514.6,
+    191.0,
+    523.2
+   ]
+  },
+  {
+   "code": "I69.90",
+   "label": "Stroke, unspecified",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    534.8,
+    193.3,
+    542.0
+   ]
+  },
+  {
+   "code": "G45.9",
+   "label": "TIA",
+   "box": "otoneurology",
+   "rect": [
+    176.8,
+    545.0,
+    193.1,
+    552.3
+   ]
+  },
+  {
+   "code": "G30.9",
+   "label": "Alzheimer's",
+   "box": "otoneurology",
+   "rect": [
+    176.8,
+    565.0,
+    193.2,
+    572.9
+   ]
+  },
+  {
+   "code": "F01.50",
+   "label": "Vascular dementia",
+   "box": "otoneurology",
+   "rect": [
+    177.1,
+    575.0,
+    193.2,
+    581.8
+   ]
+  },
+  {
+   "code": "F02.80",
+   "label": "Dementia in other diseases",
+   "box": "otoneurology",
+   "rect": [
+    176.9,
+    584.5,
+    193.1,
+    591.6
+   ]
+  },
+  {
+   "code": "R41.2",
+   "label": "Retrograde amnesia",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    595.9,
+    192.2,
+    602.9
+   ]
+  },
+  {
+   "code": "G31.84",
+   "label": "Mild cognitive impairment",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    605.1,
+    193.2,
+    611.9
+   ]
+  },
+  {
+   "code": "R41.3",
+   "label": "Memory difficulties",
+   "box": "otoneurology",
+   "rect": [
+    176.6,
+    615.4,
+    192.4,
+    622.5
+   ]
+  },
+  {
+   "code": "R41.82",
+   "label": "Altered mental status",
+   "box": "otoneurology",
+   "rect": [
+    177.1,
+    625.7,
+    193.3,
+    631.6
+   ]
+  },
+  {
+   "code": "F41.1",
+   "label": "Anxiety",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    637.2,
+    191.9,
+    643.7
+   ]
+  },
+  {
+   "code": "F32.9",
+   "label": "Depressive disorder",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    646.5,
+    192.1,
+    653.4
+   ]
+  },
+  {
+   "code": "R45.86",
+   "label": "Emotional lability",
+   "box": "otoneurology",
+   "rect": [
+    176.9,
+    656.8,
+    193.2,
+    662.8
+   ]
+  },
+  {
+   "code": "G91.1",
+   "label": "Obstructive hydrocephalus",
+   "box": "otoneurology",
+   "rect": [
+    177.1,
+    667.2,
+    193.1,
+    674.1
+   ]
+  },
+  {
+   "code": "G91.2",
+   "label": "Normal pressure hydrocephalus",
+   "box": "otoneurology",
+   "rect": [
+    177.1,
+    677.5,
+    193.1,
+    684.2
+   ]
+  },
+  {
+   "code": "H81.23",
+   "label": "Vestibular neuronitis, bilateral",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    697.0,
+    193.3,
+    703.5
+   ]
+  },
+  {
+   "code": "H81.311",
+   "label": "Vestibular neuronitis, right (as printed)",
+   "box": "otoneurology",
+   "rect": [
+    24.8,
+    708.2,
+    43.7,
+    714.9
+   ]
+  },
+  {
+   "code": "H81.312",
+   "label": "Vestibular neuronitis, left (as printed)",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    706.9,
+    196.5,
+    713.7
+   ]
+  },
+  {
+   "code": "H83.09",
+   "label": "Labyrinthitis",
+   "box": "otoneurology",
+   "rect": [
+    177.0,
+    717.3,
+    193.4,
+    723.6
+   ]
+  },
+  {
+   "code": "H81.01",
+   "label": "Meniere's, right",
+   "box": "otoneurology",
+   "rect": [
+    24.9,
+    728.9,
+    43.4,
+    735.7
+   ]
+  },
+  {
+   "code": "H81.02",
+   "label": "Meniere's, left",
+   "box": "otoneurology",
+   "rect": [
+    177.2,
+    727.1,
+    193.8,
+    733.8
+   ]
+  },
+  {
+   "code": "H81.03",
+   "label": "Meniere's, bilateral",
+   "box": "otoneurology",
+   "rect": [
+    177.3,
+    737.3,
+    193.4,
+    743.9
+   ]
+  },
+  {
+   "code": "H81.09",
+   "label": "Meniere's, unspecified ear",
+   "box": "otoneurology",
+   "rect": [
+    178.0,
+    747.2,
+    193.4,
+    754.1
+   ]
+  },
+  {
+   "code": "M48.02",
+   "label": "Cervical spinal stenosis",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    260.0,
+    404.9,
+    266.9
+   ]
+  },
+  {
+   "code": "M48.04",
+   "label": "Thoracic spinal stenosis",
+   "box": "nerve",
+   "rect": [
+    386.7,
+    269.7,
+    405.1,
+    278.1
+   ]
+  },
+  {
+   "code": "M48.06",
+   "label": "Lumbar spinal stenosis",
+   "box": "nerve",
+   "rect": [
+    387.6,
+    279.9,
+    405.0,
+    287.1
+   ]
+  },
+  {
+   "code": "G54.2",
+   "label": "Cervical foraminal stenosis",
+   "box": "nerve",
+   "rect": [
+    387.6,
+    289.8,
+    402.6,
+    297.9
+   ]
+  },
+  {
+   "code": "G54.3",
+   "label": "Thoracic foraminal stenosis",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    300.4,
+    402.6,
+    307.9
+   ]
+  },
+  {
+   "code": "G54.4",
+   "label": "Lumbosacral foraminal stenosis",
+   "box": "nerve",
+   "rect": [
+    388.1,
+    310.5,
+    402.6,
+    317.3
+   ]
+  },
+  {
+   "code": "M54.16",
+   "label": "Radiculopathy, lumbar",
+   "box": "nerve",
+   "rect": [
+    219.6,
+    320.6,
+    239.2,
+    327.5
+   ]
+  },
+  {
+   "code": "M54.12",
+   "label": "Radiculopathy, cervical",
+   "box": "nerve",
+   "rect": [
+    386.6,
+    320.6,
+    407.4,
+    328.8
+   ]
+  },
+  {
+   "code": "M54.2",
+   "label": "Cervicalgia",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    330.0,
+    402.8,
+    337.0
+   ]
+  },
+  {
+   "code": "M79.10",
+   "label": "Myalgia",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    340.3,
+    405.2,
+    347.5
+   ]
+  },
+  {
+   "code": "M54.81",
+   "label": "Occipital neuralgia",
+   "box": "nerve",
+   "rect": [
+    387.9,
+    352.8,
+    405.0,
+    359.0
+   ]
+  },
+  {
+   "code": "M79.2",
+   "label": "Neuralgia & neuritis",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    363.0,
+    402.7,
+    369.4
+   ]
+  },
+  {
+   "code": "M54.6",
+   "label": "Pain in thoracic spine",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    372.5,
+    402.7,
+    379.9
+   ]
+  },
+  {
+   "code": "M54.5",
+   "label": "Low back pain",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    382.9,
+    402.7,
+    389.7
+   ]
+  },
+  {
+   "code": "G60.9",
+   "label": "Peripheral neuropathy",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    392.1,
+    402.7,
+    399.0
+   ]
+  },
+  {
+   "code": "G57.30",
+   "label": "Peroneal neuropathy",
+   "box": "nerve",
+   "rect": [
+    388.2,
+    402.4,
+    405.0,
+    409.4
+   ]
+  },
+  {
+   "code": "G56.01",
+   "label": "Carpal tunnel, right",
+   "box": "nerve",
+   "rect": [
+    217.7,
+    413.5,
+    235.7,
+    421.3
+   ]
+  },
+  {
+   "code": "G56.02",
+   "label": "Carpal tunnel, left",
+   "box": "nerve",
+   "rect": [
+    387.6,
+    412.8,
+    406.8,
+    422.0
+   ]
+  },
+  {
+   "code": "R20.1",
+   "label": "Hypoesthesia",
+   "box": "nerve",
+   "rect": [
+    387.1,
+    423.0,
+    405.3,
+    431.2
+   ]
+  },
+  {
+   "code": "R20.2",
+   "label": "Paresthesia",
+   "box": "nerve",
+   "rect": [
+    386.5,
+    433.3,
+    404.7,
+    441.3
+   ]
+  },
+  {
+   "code": "R20.9",
+   "label": "Unspecified disturbance of skin",
+   "box": "nerve",
+   "rect": [
+    387.4,
+    443.7,
+    403.9,
+    451.2
+   ]
+  },
+  {
+   "code": "G50.0",
+   "label": "Trigeminal neuralgia",
+   "box": "nerve",
+   "rect": [
+    387.8,
+    453.4,
+    404.5,
+    461.5
+   ]
+  },
+  {
+   "code": "G51.0",
+   "label": "Bell's palsy",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    463.6,
+    404.4,
+    471.6
+   ]
+  },
+  {
+   "code": "I65.21",
+   "label": "Carotid stenosis, right",
+   "box": "nerve",
+   "rect": [
+    217.8,
+    484.7,
+    235.7,
+    491.5
+   ]
+  },
+  {
+   "code": "I65.22",
+   "label": "Carotid stenosis, left",
+   "box": "nerve",
+   "rect": [
+    387.6,
+    484.0,
+    405.1,
+    492.5
+   ]
+  },
+  {
+   "code": "I65.23",
+   "label": "Carotid stenosis, bilateral",
+   "box": "nerve",
+   "rect": [
+    387.4,
+    494.2,
+    405.0,
+    502.6
+   ]
+  },
+  {
+   "code": "I65.29",
+   "label": "Carotid stenosis, unspecified",
+   "box": "nerve",
+   "rect": [
+    387.1,
+    503.8,
+    405.4,
+    512.7
+   ]
+  },
+  {
+   "code": "I67.1",
+   "label": "Cerebral aneurysm",
+   "box": "nerve",
+   "rect": [
+    387.1,
+    514.1,
+    402.2,
+    522.1
+   ]
+  },
+  {
+   "code": "D33.2",
+   "label": "Benign neoplasm of brain",
+   "box": "nerve",
+   "rect": [
+    387.0,
+    533.9,
+    404.4,
+    542.8
+   ]
+  },
+  {
+   "code": "D33.0",
+   "label": "Benign neoplasm, supratentorial",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    544.6,
+    404.5,
+    552.2
+   ]
+  },
+  {
+   "code": "D33.1",
+   "label": "Benign neoplasm, infratentorial",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    554.5,
+    404.5,
+    562.4
+   ]
+  },
+  {
+   "code": "H53.121",
+   "label": "Transient visual loss, right",
+   "box": "nerve",
+   "rect": [
+    387.7,
+    574.2,
+    407.3,
+    581.7
+   ]
+  },
+  {
+   "code": "H53.122",
+   "label": "Transient visual loss, left",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    584.3,
+    407.7,
+    591.8
+   ]
+  },
+  {
+   "code": "H53.123",
+   "label": "Transient visual loss, bilateral",
+   "box": "nerve",
+   "rect": [
+    387.9,
+    594.5,
+    407.4,
+    601.5
+   ]
+  },
+  {
+   "code": "H53.129",
+   "label": "Transient visual loss, unspecified",
+   "box": "nerve",
+   "rect": [
+    388.0,
+    604.4,
+    407.4,
+    611.2
+   ]
+  },
+  {
+   "code": "H53.2",
+   "label": "Diplopia",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    614.3,
+    404.5,
+    623.4
+   ]
+  },
+  {
+   "code": "H54.7",
+   "label": "Visual loss",
+   "box": "nerve",
+   "rect": [
+    388.4,
+    625.1,
+    404.5,
+    632.0
+   ]
+  },
+  {
+   "code": "H53.9",
+   "label": "Visual disturbance",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    636.1,
+    404.6,
+    644.2
+   ]
+  },
+  {
+   "code": "M26.60",
+   "label": "TMJ disorder",
+   "box": "nerve",
+   "rect": [
+    388.0,
+    655.7,
+    405.5,
+    662.9
+   ]
+  },
+  {
+   "code": "G47.9",
+   "label": "Sleep disorder",
+   "box": "nerve",
+   "rect": [
+    387.5,
+    666.2,
+    404.5,
+    674.5
+   ]
+  },
+  {
+   "code": "G47.01",
+   "label": "Insomnia due to medical condition",
+   "box": "nerve",
+   "rect": [
+    388.3,
+    676.5,
+    404.9,
+    682.4
+   ]
+  },
+  {
+   "code": "G47.419",
+   "label": "Narcolepsy",
+   "box": "nerve",
+   "rect": [
+    388.7,
+    685.7,
+    407.9,
+    692.7
+   ]
+  },
+  {
+   "code": "G47.61",
+   "label": "PLMS",
+   "box": "nerve",
+   "rect": [
+    388.7,
+    696.1,
+    405.0,
+    702.9
+   ]
+  },
+  {
+   "code": "G47.33",
+   "label": "Obstructive sleep apnea",
+   "box": "nerve",
+   "rect": [
+    388.4,
+    706.4,
+    405.4,
+    713.3
+   ]
+  },
+  {
+   "code": "G25.81",
+   "label": "Restless leg syndrome",
+   "box": "nerve",
+   "rect": [
+    388.7,
+    715.7,
+    404.2,
+    722.6
+   ]
+  },
+  {
+   "code": "G40.909",
+   "label": "Epilepsy, unspecified",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    259.2,
+    590.6,
+    265.9
+   ]
+  },
+  {
+   "code": "G40.309",
+   "label": "Generalized epilepsy",
+   "box": "epilepsy",
+   "rect": [
+    571.8,
+    269.1,
+    588.7,
+    275.6
+   ]
+  },
+  {
+   "code": "G40.209",
+   "label": "Complex partial",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    280.0,
+    590.3,
+    286.6
+   ]
+  },
+  {
+   "code": "G40.109",
+   "label": "Simple partial",
+   "box": "epilepsy",
+   "rect": [
+    571.3,
+    289.9,
+    590.6,
+    296.3
+   ]
+  },
+  {
+   "code": "R56.9",
+   "label": "Convulsion",
+   "box": "epilepsy",
+   "rect": [
+    571.1,
+    300.3,
+    587.2,
+    308.1
+   ]
+  },
+  {
+   "code": "R53.82",
+   "label": "Chronic fatigue",
+   "box": "epilepsy",
+   "rect": [
+    571.7,
+    319.9,
+    587.8,
+    326.7
+   ]
+  },
+  {
+   "code": "R55",
+   "label": "Syncope",
+   "box": "epilepsy",
+   "rect": [
+    571.4,
+    330.7,
+    582.5,
+    338.0
+   ]
+  },
+  {
+   "code": "I95.1",
+   "label": "Orthostatic hypotension",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    340.8,
+    585.5,
+    347.8
+   ]
+  },
+  {
+   "code": "R03.0",
+   "label": "Elevated blood pressure",
+   "box": "epilepsy",
+   "rect": [
+    571.2,
+    352.7,
+    587.1,
+    359.3
+   ]
+  },
+  {
+   "code": "I49.9",
+   "label": "Cardiac arrhythmia",
+   "box": "epilepsy",
+   "rect": [
+    571.8,
+    362.7,
+    585.7,
+    369.3
+   ]
+  },
+  {
+   "code": "G25.0",
+   "label": "Essential tremor",
+   "box": "epilepsy",
+   "rect": [
+    571.7,
+    372.6,
+    587.7,
+    379.8
+   ]
+  },
+  {
+   "code": "R25.1",
+   "label": "Tremor",
+   "box": "epilepsy",
+   "rect": [
+    571.3,
+    382.9,
+    586.7,
+    389.8
+   ]
+  },
+  {
+   "code": "G21.19",
+   "label": "Drug-induced parkinsonism",
+   "box": "epilepsy",
+   "rect": [
+    571.6,
+    392.6,
+    588.5,
+    399.2
+   ]
+  },
+  {
+   "code": "G21.8",
+   "label": "Other secondary parkinsonism",
+   "box": "epilepsy",
+   "rect": [
+    571.6,
+    403.0,
+    587.6,
+    410.1
+   ]
+  },
+  {
+   "code": "R47.01",
+   "label": "Aphasia",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    413.4,
+    589.2,
+    420.1
+   ]
+  },
+  {
+   "code": "R47.1",
+   "label": "Dysarthria",
+   "box": "epilepsy",
+   "rect": [
+    571.1,
+    423.3,
+    586.5,
+    430.0
+   ]
+  },
+  {
+   "code": "M62.83",
+   "label": "Muscle spasm",
+   "box": "epilepsy",
+   "rect": [
+    570.6,
+    433.1,
+    590.8,
+    441.2
+   ]
+  },
+  {
+   "code": "G25.3",
+   "label": "Myoclonus",
+   "box": "epilepsy",
+   "rect": [
+    571.0,
+    443.6,
+    587.5,
+    451.8
+   ]
+  },
+  {
+   "code": "R29.2",
+   "label": "Abnormal reflex",
+   "box": "epilepsy",
+   "rect": [
+    571.1,
+    453.3,
+    587.1,
+    461.3
+   ]
+  },
+  {
+   "code": "M62.81",
+   "label": "Generalized muscle weakness",
+   "box": "epilepsy",
+   "rect": [
+    571.8,
+    463.7,
+    590.2,
+    470.6
+   ]
+  },
+  {
+   "code": "I69.359",
+   "label": "Hemiparesis after stroke",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    474.0,
+    591.5,
+    481.1
+   ]
+  },
+  {
+   "code": "D51.9",
+   "label": "B12 deficiency anemia",
+   "box": "epilepsy",
+   "rect": [
+    571.5,
+    484.3,
+    587.3,
+    490.9
+   ]
+  },
+  {
+   "code": "G80.8",
+   "label": "Cerebral palsy",
+   "box": "epilepsy",
+   "rect": [
+    571.7,
+    504.3,
+    587.7,
+    511.0
+   ]
+  },
+  {
+   "code": "G20.A1",
+   "label": "PD w/o dyskinesia, w/o fluctuations",
+   "box": "epilepsy",
+   "rect": [
+    423.8,
+    524.4,
+    442.1,
+    531.8
+   ]
+  },
+  {
+   "code": "G20.A2",
+   "label": "PD w/o dyskinesia, with fluctuations",
+   "box": "epilepsy",
+   "rect": [
+    571.9,
+    524.1,
+    590.1,
+    531.1
+   ]
+  },
+  {
+   "code": "G20.B1",
+   "label": "PD with dyskinesia, w/o fluctuations",
+   "box": "epilepsy",
+   "rect": [
+    424.2,
+    534.0,
+    442.6,
+    541.8
+   ]
+  },
+  {
+   "code": "G20.B2",
+   "label": "PD with dyskinesia, with fluctuations",
+   "box": "epilepsy",
+   "rect": [
+    572.2,
+    534.3,
+    590.5,
+    540.9
+   ]
+  },
+  {
+   "code": "G20.C",
+   "label": "Parkinsonism, unspecified",
+   "box": "epilepsy",
+   "rect": [
+    571.9,
+    544.5,
+    587.7,
+    551.3
+   ]
+  },
+  {
+   "code": "G35",
+   "label": "Multiple sclerosis",
+   "box": "epilepsy",
+   "rect": [
+    571.8,
+    494.1,
+    583.4,
+    501.7
+   ]
+  }
+ ],
+ "anchors": [
+  [
+   "PROCEDURES",
+   364.7,
+   81.2
+  ],
+  [
+   "GOGGLE",
+   212.1,
+   79.8
+  ],
+  [
+   "DIAGNOSIS",
+   536.4,
+   81.0
+  ],
+  [
+   "EVALUATION",
+   104.9,
+   80.2
+  ],
+  [
+   "92285",
+   264.6,
+   89.7
+  ],
+  [
+   "PHOTOGRAPHY",
+   216.7,
+   90.9
+  ],
+  [
+   "64405",
+   432.1,
+   91.2
+  ],
+  [
+   "99204",
+   143.7,
+   91.3
+  ],
+  [
+   "SPONTANEOUS",
+   197.6,
+   101.7
+  ],
+  [
+   "64400",
+   432.5,
+   101.2
+  ],
+  [
+   "92541",
+   264.7,
+   101.4
+  ],
+  [
+   "99205",
+   144.1,
+   102.6
+  ],
+  [
+   "TRIGGER",
+   353.6,
+   112.3
+  ],
+  [
+   "POINT",
+   371.5,
+   112.3
+  ],
+  [
+   "20553",
+   432.3,
+   111.4
+  ],
+  [
+   "20552",
+   299.4,
+   111.7
+  ],
+  [
+   "92542",
+   264.7,
+   112.8
+  ],
+  [
+   "FOLLOW",
+   85.0,
+   112.2
+  ],
+  [
+   "POSITIONAL",
+   197.6,
+   113.4
+  ],
+  [
+   "2052650",
+   299.7,
+   120.9
+  ],
+  [
+   "20526",
+   432.2,
+   121.6
+  ],
+  [
+   "2029",
+   80.1,
+   122.1
+  ],
+  [
+   "99213",
+   143.8,
+   122.2
+  ],
+  [
+   "92546",
+   264.8,
+   124.4
+  ],
+  [
+   "CHAIR",
+   211.6,
+   124.4
+  ],
+  [
+   "69210",
+   432.3,
+   131.6
+  ],
+  [
+   "REMOVAL",
+   389.5,
+   131.8
+  ],
+  [
+   "3039",
+   80.2,
+   134.8
+  ],
+  [
+   "CANALITH",
+   189.1,
+   136.1
+  ],
+  [
+   "REPOSITIONING",
+   216.3,
+   135.8
+  ],
+  [
+   "99214",
+   144.6,
+   134.5
+  ],
+  [
+   "INSPIRE",
+   355.4,
+   141.7
+  ],
+  [
+   "DEVICE",
+   375.6,
+   141.9
+  ],
+  [
+   "NOTE",
+   180.2,
+   145.3
+  ],
+  [
+   "MUST",
+   194.7,
+   145.5
+  ],
+  [
+   "DOCUMENT",
+   211.4,
+   145.3
+  ],
+  [
+   "99215",
+   143.9,
+   149.1
+  ],
+  [
+   "4054",
+   80.2,
+   149.3
+  ],
+  [
+   "NEUROSTIMULATOR",
+   313.3,
+   151.4
+  ],
+  [
+   "ANALYSIS",
+   346.2,
+   151.3
+  ],
+  [
+   "PROGRAMMING",
+   368.0,
+   151.4
+  ],
+  [
+   "PROCEDUREINSPIRE",
+   398.8,
+   151.4
+  ],
+  [
+   "95977",
+   431.7,
+   151.8
+  ],
+  [
+   "BILL",
+   229.9,
+   153.5
+  ],
+  [
+   "INTRAOPERATIVE",
+   320.5,
+   161.3
+  ],
+  [
+   "NEUROPHYSIOLOGICAL",
+   353.0,
+   161.2
+  ],
+  [
+   "MONITORINGINSPIRE",
+   389.5,
+   161.3
+  ],
+  [
+   "95970",
+   432.5,
+   161.6
+  ],
+  [
+   "H6123",
+   579.7,
+   165.0
+  ],
+  [
+   "G2211",
+   144.3,
+   172.0
+  ],
+  [
+   "ADDON",
+   61.9,
+   172.6
+  ],
+  [
+   "MORE",
+   213.9,
+   174.5
+  ],
+  [
+   "MUSCLES",
+   231.4,
+   174.5
+  ],
+  [
+   "IMPACTED",
+   509.1,
+   176.6
+  ],
+  [
+   "H6121",
+   460.4,
+   176.0
+  ],
+  [
+   "H6122",
+   579.8,
+   176.2
+  ],
+  [
+   "EMGNCV",
+   63.7,
+   183.5
+  ],
+  [
+   "95908",
+   266.9,
+   184.9
+  ],
+  [
+   "MONTREAL",
+   494.0,
+   187.6
+  ],
+  [
+   "ASSESSMENT",
+   542.3,
+   188.3
+  ],
+  [
+   "96116",
+   580.0,
+   187.3
+  ],
+  [
+   "95909",
+   265.0,
+   195.4
+  ],
+  [
+   "TYMP",
+   60.3,
+   195.0
+  ],
+  [
+   "QUTENZA",
+   499.2,
+   199.1
+  ],
+  [
+   "PATCH",
+   517.3,
+   199.1
+  ],
+  [
+   "64640",
+   579.7,
+   198.6
+  ],
+  [
+   "95910",
+   265.0,
+   206.6
+  ],
+  [
+   "95911",
+   266.0,
+   216.3
+  ],
+  [
+   "95913",
+   264.7,
+   226.6
+  ],
+  [
+   "PROBLENS",
+   323.9,
+   250.3
+  ],
+  [
+   "OTONEUROLOGY",
+   111.9,
+   252.0
+  ],
+  [
+   "G40909",
+   581.1,
+   262.4
+  ],
+  [
+   "M4802",
+   396.4,
+   263.5
+  ],
+  [
+   "H8110",
+   185.4,
+   263.4
+  ],
+  [
+   "G40309",
+   580.3,
+   272.2
+  ],
+  [
+   "M4804",
+   396.0,
+   273.8
+  ],
+  [
+   "H8111",
+   39.6,
+   274.1
+  ],
+  [
+   "G40209",
+   581.1,
+   283.1
+  ],
+  [
+   "COMPLEX",
+   469.3,
+   284.8
+  ],
+  [
+   "M4806",
+   396.4,
+   283.6
+  ],
+  [
+   "G542",
+   395.1,
+   293.8
+  ],
+  [
+   "G40109",
+   581.1,
+   292.9
+  ],
+  [
+   "SIMPLE",
+   466.8,
+   295.0
+  ],
+  [
+   "H829",
+   183.9,
+   293.7
+  ],
+  [
+   "VERTIGINOUS",
+   68.3,
+   295.1
+  ],
+  [
+   "CONVULSION",
+   472.4,
+   304.8
+  ],
+  [
+   "G543",
+   395.2,
+   304.2
+  ],
+  [
+   "R569",
+   579.1,
+   304.1
+  ],
+  [
+   "FUNCTION",
+   125.0,
+   304.9
+  ],
+  [
+   "H8193",
+   185.2,
+   304.0
+  ],
+  [
+   "LUMBOSACRAL",
+   263.9,
+   314.4
+  ],
+  [
+   "DIZZINESS",
+   66.5,
+   314.4
+  ],
+  [
+   "GIDDINESS",
+   100.6,
+   314.5
+  ],
+  [
+   "MISC",
+   510.4,
+   314.4
+  ],
+  [
+   "G544",
+   395.3,
+   314.0
+  ],
+  [
+   "R5382",
+   579.8,
+   323.2
+  ],
+  [
+   "M5412",
+   397.0,
+   324.6
+  ],
+  [
+   "M5416",
+   229.6,
+   324.2
+  ],
+  [
+   "RADICULOPATHY",
+   312.1,
+   325.2
+  ],
+  [
+   "FATIGUE",
+   487.4,
+   325.2
+  ],
+  [
+   "H832X9",
+   185.3,
+   324.4
+  ],
+  [
+   "SYNCOPE",
+   468.5,
+   335.5
+  ],
+  [
+   "COLLAPSE",
+   495.9,
+   335.5
+  ],
+  [
+   "H832X1",
+   40.2,
+   333.1
+  ],
+  [
+   "H832X2",
+   185.3,
+   334.4
+  ],
+  [
+   "ORTHOSTATIC",
+   472.6,
+   344.7
+  ],
+  [
+   "HYPOTENSION",
+   502.2,
+   344.9
+  ],
+  [
+   "1951",
+   578.6,
+   344.4
+  ],
+  [
+   "H814",
+   184.0,
+   345.3
+  ],
+  [
+   "VERTIGO",
+   64.4,
+   346.4
+  ],
+  [
+   "CENTRAL",
+   89.8,
+   346.4
+  ],
+  [
+   "ORIGIN",
+   108.1,
+   346.4
+  ],
+  [
+   "ELEVATED",
+   469.5,
+   355.9
+  ],
+  [
+   "BLOOD",
+   488.7,
+   356.0
+  ],
+  [
+   "PRESSURE",
+   507.2,
+   355.9
+  ],
+  [
+   "NAUSEA",
+   113.4,
+   356.7
+  ],
+  [
+   "R030",
+   579.2,
+   356.0
+  ],
+  [
+   "RILII",
+   36.1,
+   356.6
+  ],
+  [
+   "CARDIAC",
+   468.2,
+   367.1
+  ],
+  [
+   "ARRHYTHMIA",
+   492.5,
+   367.0
+  ],
+  [
+   "1499",
+   578.8,
+   365.9
+  ],
+  [
+   "LACK",
+   77.1,
+   366.6
+  ],
+  [
+   "COORDINATION",
+   106.4,
+   366.6
+  ],
+  [
+   "R278",
+   184.1,
+   366.8
+  ],
+  [
+   "ESSENTIAL",
+   469.7,
+   376.9
+  ],
+  [
+   "G250",
+   579.7,
+   376.2
+  ],
+  [
+   "SPINE",
+   296.9,
+   377.6
+  ],
+  [
+   "M546",
+   395.3,
+   376.3
+  ],
+  [
+   "ATAXIC",
+   63.0,
+   378.3
+  ],
+  [
+   "GAIT",
+   77.9,
+   378.3
+  ],
+  [
+   "R260",
+   184.1,
+   376.9
+  ],
+  [
+   "BACK",
+   267.0,
+   387.8
+  ],
+  [
+   "LUMBAGO",
+   299.6,
+   387.9
+  ],
+  [
+   "R251",
+   579.0,
+   386.3
+  ],
+  [
+   "ABNORMALITIES",
+   85.4,
+   387.4
+  ],
+  [
+   "GAITMOBILITY",
+   122.5,
+   387.1
+  ],
+  [
+   "R2689",
+   185.0,
+   386.7
+  ],
+  [
+   "DRUGINDUCED",
+   524.1,
+   396.4
+  ],
+  [
+   "G609",
+   395.2,
+   395.6
+  ],
+  [
+   "PERIPHERAL",
+   261.0,
+   397.6
+  ],
+  [
+   "NEUOPATHYPOLYNEUROPATHY",
+   307.0,
+   397.5
+  ],
+  [
+   "G2119",
+   580.1,
+   395.9
+  ],
+  [
+   "H905",
+   184.6,
+   397.2
+  ],
+  [
+   "SNHL",
+   62.3,
+   397.3
+  ],
+  [
+   "H9319",
+   185.2,
+   406.3
+  ],
+  [
+   "G5730",
+   396.5,
+   405.9
+  ],
+  [
+   "G218",
+   579.6,
+   406.7
+  ],
+  [
+   "TINNITUS",
+   66.2,
+   407.9
+  ],
+  [
+   "NEUROPATHY",
+   286.0,
+   407.7
+  ],
+  [
+   "R4701",
+   580.7,
+   416.7
+  ],
+  [
+   "APHASIA",
+   468.6,
+   417.6
+  ],
+  [
+   "OTALGIA",
+   64.9,
+   418.6
+  ],
+  [
+   "DYSARTHRIA",
+   471.2,
+   427.6
+  ],
+  [
+   "ANARTHRIA",
+   502.9,
+   427.6
+  ],
+  [
+   "R471",
+   579.0,
+   426.8
+  ],
+  [
+   "H6980",
+   185.0,
+   427.1
+  ],
+  [
+   "EUSTACHIAN",
+   68.7,
+   427.3
+  ],
+  [
+   "TUBE",
+   88.8,
+   427.5
+  ],
+  [
+   "SPASMS",
+   486.3,
+   437.8
+  ],
+  [
+   "D333",
+   184.6,
+   437.4
+  ],
+  [
+   "ACOUSTIC",
+   123.9,
+   438.3
+  ],
+  [
+   "NEUROMA",
+   147.8,
+   438.1
+  ],
+  [
+   "PARESTHESIA",
+   262.8,
+   437.3
+  ],
+  [
+   "M6283",
+   580.7,
+   437.0
+  ],
+  [
+   "R209",
+   395.7,
+   447.3
+  ],
+  [
+   "G253",
+   579.2,
+   447.7
+  ],
+  [
+   "MYOCLONUS",
+   471.7,
+   448.2
+  ],
+  [
+   "R519",
+   183.9,
+   456.5
+  ],
+  [
+   "G500",
+   396.1,
+   457.3
+  ],
+  [
+   "ABNORMAL",
+   469.7,
+   456.1
+  ],
+  [
+   "REFLEX",
+   487.7,
+   456.4
+  ],
+  [
+   "INCL",
+   500.1,
+   456.5
+  ],
+  [
+   "HYPERREFLEXIA",
+   519.7,
+   456.5
+  ],
+  [
+   "R292",
+   579.4,
+   457.2
+  ],
+  [
+   "TRIGEMINAL",
+   261.3,
+   458.6
+  ],
+  [
+   "BELLS",
+   255.3,
+   467.9
+  ],
+  [
+   "WEAKNESS",
+   517.6,
+   467.3
+  ],
+  [
+   "M6281",
+   581.1,
+   467.2
+  ],
+  [
+   "G43909",
+   185.6,
+   466.4
+  ],
+  [
+   "G510",
+   396.0,
+   467.8
+  ],
+  [
+   "INTRACTABLE",
+   115.4,
+   469.0
+  ],
+  [
+   "HEMIPARESIS",
+   473.5,
+   478.1
+  ],
+  [
+   "SIDE",
+   533.6,
+   478.1
+  ],
+  [
+   "169359",
+   581.6,
+   477.5
+  ],
+  [
+   "BOTOX",
+   129.6,
+   478.8
+  ],
+  [
+   "16522",
+   396.3,
+   488.1
+  ],
+  [
+   "DEFICIENCY",
+   482.6,
+   488.4
+  ],
+  [
+   "ANEMIA",
+   505.0,
+   488.5
+  ],
+  [
+   "D519",
+   579.4,
+   487.5
+  ],
+  [
+   "G43109",
+   185.4,
+   486.8
+  ],
+  [
+   "16521",
+   226.8,
+   488.1
+  ],
+  [
+   "16523",
+   396.2,
+   498.4
+  ],
+  [
+   "G43819",
+   185.6,
+   497.0
+  ],
+  [
+   "VARIANT",
+   86.9,
+   499.3
+  ],
+  [
+   "SCLEROSIS",
+   490.3,
+   498.9
+  ],
+  [
+   "F0781",
+   185.0,
+   507.4
+  ],
+  [
+   "16529",
+   396.3,
+   508.3
+  ],
+  [
+   "G808",
+   579.7,
+   507.7
+  ],
+  [
+   "POSTCONCUSSIVE",
+   72.9,
+   509.3
+  ],
+  [
+   "1671",
+   394.6,
+   518.1
+  ],
+  [
+   "SINUSITIS",
+   66.1,
+   519.1
+  ],
+  [
+   "ANEURYSM",
+   282.9,
+   518.6
+  ],
+  [
+   "NONRUPTURED",
+   312.7,
+   518.6
+  ],
+  [
+   "1329",
+   183.4,
+   519.0
+  ],
+  [
+   "MASS",
+   255.0,
+   528.3
+  ],
+  [
+   "LESION",
+   277.1,
+   528.4
+  ],
+  [
+   "G20A1",
+   433.1,
+   528.1
+  ],
+  [
+   "G20A2",
+   581.1,
+   527.7
+  ],
+  [
+   "G20B1",
+   433.2,
+   538.0
+  ],
+  [
+   "D332",
+   395.7,
+   538.3
+  ],
+  [
+   "16990",
+   185.0,
+   538.6
+  ],
+  [
+   "G20B2",
+   581.3,
+   537.4
+  ],
+  [
+   "G459",
+   184.9,
+   548.6
+  ],
+  [
+   "D330",
+   396.3,
+   548.6
+  ],
+  [
+   "SUPRATENTORIAL",
+   329.1,
+   549.5
+  ],
+  [
+   "ISCHEMIA",
+   110.7,
+   548.7
+  ],
+  [
+   "ICD10",
+   518.4,
+   558.2
+  ],
+  [
+   "INFRATENTORIAL",
+   327.8,
+   559.0
+  ],
+  [
+   "D331",
+   396.0,
+   558.4
+  ],
+  [
+   "G309",
+   184.9,
+   569.1
+  ],
+  [
+   "ALZHEIMERS",
+   69.7,
+   569.6
+  ],
+  [
+   "H53121",
+   397.5,
+   578.0
+  ],
+  [
+   "FO150",
+   185.2,
+   578.3
+  ],
+  [
+   "F0280",
+   184.9,
+   588.0
+  ],
+  [
+   "H53122",
+   397.5,
+   588.0
+  ],
+  [
+   "DISEASES",
+   111.5,
+   589.2
+  ],
+  [
+   "H53123",
+   397.8,
+   598.1
+  ],
+  [
+   "RETROGRADE",
+   68.9,
+   600.4
+  ],
+  [
+   "AMNESIA",
+   93.6,
+   600.4
+  ],
+  [
+   "R412",
+   184.5,
+   599.4
+  ],
+  [
+   "G3184",
+   185.3,
+   608.5
+  ],
+  [
+   "PROVIDER",
+   511.2,
+   608.7
+  ],
+  [
+   "MILD",
+   61.5,
+   610.1
+  ],
+  [
+   "IMPAIRMENT",
+   105.2,
+   610.1
+  ],
+  [
+   "H532",
+   396.0,
+   618.9
+  ],
+  [
+   "DIPLOPIA",
+   259.6,
+   620.0
+  ],
+  [
+   "R413",
+   184.4,
+   619.0
+  ],
+  [
+   "MEMORY",
+   65.4,
+   620.2
+  ],
+  [
+   "DIFFICULTIES",
+   88.9,
+   620.4
+  ],
+  [
+   "PATEL",
+   517.2,
+   629.1
+  ],
+  [
+   "H547",
+   396.4,
+   628.6
+  ],
+  [
+   "ALTERED",
+   64.8,
+   629.7
+  ],
+  [
+   "MENTAL",
+   83.0,
+   629.7
+  ],
+  [
+   "STATUS",
+   100.1,
+   629.7
+  ],
+  [
+   "R4182",
+   185.1,
+   628.7
+  ],
+  [
+   "YARI",
+   514.8,
+   639.8
+  ],
+  [
+   "H539",
+   396.0,
+   640.1
+  ],
+  [
+   "ANXIETY",
+   65.5,
+   642.1
+  ],
+  [
+   "GENERAL",
+   85.7,
+   642.2
+  ],
+  [
+   "F329",
+   184.7,
+   650.0
+  ],
+  [
+   "JAKE",
+   493.3,
+   650.0
+  ],
+  [
+   "PERKINS",
+   511.8,
+   650.1
+  ],
+  [
+   "DEPRESSIVE",
+   68.3,
+   651.5
+  ],
+  [
+   "CARTER",
+   490.8,
+   659.5
+  ],
+  [
+   "COPELAND",
+   515.3,
+   659.6
+  ],
+  [
+   "M2660",
+   396.7,
+   659.3
+  ],
+  [
+   "R4586",
+   185.0,
+   659.9
+  ],
+  [
+   "EMOTIONAL",
+   68.3,
+   661.6
+  ],
+  [
+   "LABILITY",
+   91.0,
+   661.9
+  ],
+  [
+   "EVAN",
+   490.1,
+   670.5
+  ],
+  [
+   "CAMARILLO",
+   512.6,
+   670.5
+  ],
+  [
+   "G479",
+   395.9,
+   670.3
+  ],
+  [
+   "G911",
+   185.0,
+   670.6
+  ],
+  [
+   "G4701",
+   396.6,
+   679.4
+  ],
+  [
+   "INSOMNIA",
+   260.4,
+   681.0
+  ],
+  [
+   "MEDICAL",
+   299.9,
+   680.6
+  ],
+  [
+   "CONDITION",
+   322.1,
+   680.4
+  ],
+  [
+   "G912",
+   185.1,
+   681.0
+  ],
+  [
+   "IDIOPATHIC",
+   67.9,
+   682.7
+  ],
+  [
+   "NORMAL",
+   90.3,
+   682.7
+  ],
+  [
+   "G47419",
+   398.2,
+   689.2
+  ],
+  [
+   "MEDICARE",
+   489.3,
+   689.8
+  ],
+  [
+   "INCIDENTTO",
+   518.6,
+   689.9
+  ],
+  [
+   "NARCOLEPSY",
+   262.3,
+   691.3
+  ],
+  [
+   "CATAPLEXY",
+   299.4,
+   691.4
+  ],
+  [
+   "DISORDERS",
+   126.6,
+   691.1
+  ],
+  [
+   "TRICARE",
+   486.1,
+   699.8
+  ],
+  [
+   "COLLABORATIVE",
+   516.0,
+   699.8
+  ],
+  [
+   "VISIT",
+   541.5,
+   699.7
+  ],
+  [
+   "G4761",
+   396.9,
+   699.5
+  ],
+  [
+   "H8123",
+   185.2,
+   700.3
+  ],
+  [
+   "PERIODIC",
+   258.0,
+   699.8
+  ],
+  [
+   "LIMB",
+   273.4,
+   699.6
+  ],
+  [
+   "MOVEMENT",
+   290.4,
+   700.0
+  ],
+  [
+   "G4733",
+   396.8,
+   709.8
+  ],
+  [
+   "APNEA",
+   299.7,
+   711.5
+  ],
+  [
+   "ADULT",
+   315.8,
+   711.5
+  ],
+  [
+   "H81311",
+   34.2,
+   711.5
+  ],
+  [
+   "G2581",
+   396.5,
+   719.1
+  ],
+  [
+   "H8309",
+   185.3,
+   720.5
+  ],
+  [
+   "LABYRINTHITIS",
+   71.0,
+   722.8
+  ],
+  [
+   "H8102",
+   185.5,
+   730.5
+  ],
+  [
+   "H8101",
+   34.1,
+   732.3
+  ],
+  [
+   "H8103",
+   185.5,
+   740.7
+  ],
+  [
+   "6440550",
+   299.6,
+   91.1
+  ],
+  [
+   "SUPRAORBITAL",
+   353.6,
+   101.8
+  ],
+  [
+   "6440050",
+   299.7,
+   101.0
+  ],
+  [
+   "INJECTION",
+   382.3,
+   121.7
+  ],
+  [
+   "ENGNCY",
+   210.1,
+   164.4
+  ],
+  [
+   "VOMITING",
+   145.4,
+   357.4
+  ],
+  [
+   "M545",
+   395.3,
+   386.3
+  ],
+  [
+   "PERONEAL",
+   259.5,
+   408.3
+  ],
+  [
+   "H9209",
+   184.1,
+   417.0
+  ],
+  [
+   "HYPOESTHESIA",
+   264.4,
+   428.1
+  ],
+  [
+   "R202",
+   395.5,
+   436.8
+  ],
+  [
+   "MULTIPLE",
+   468.5,
+   498.8
+  ],
+  [
+   "PARKINSONS",
+   511.2,
+   517.8
+  ],
+  [
+   "G20C",
+   579.9,
+   548.0
+  ],
+  [
+   "F411",
+   184.5,
+   640.4
+  ],
+  [
+   "H81312",
+   186.8,
+   710.3
+  ],
+  [
+   "RESTLESS",
+   258.4,
+   721.0
+  ],
+  [
+   "H8109",
+   185.8,
+   750.6
+  ],
+  [
+   "95886",
+   266.4,
+   174.8
+  ],
+  [
+   "G20AI",
+   432.8,
+   527.9
+  ],
+  [
+   "M542",
+   579.8,
+   121.5
+  ],
+  [
+   "H53129",
+   397.7,
+   607.9
+  ]
+ ],
+ "providers": {
+  "PURCELL": [
+   618.4,
+   478.0,
+   543.0
+  ],
+  "PATEL": [
+   629.1,
+   478.0,
+   543.0
+  ],
+  "YARI": [
+   639.8,
+   478.0,
+   543.0
+  ],
+  "PERKINS": [
+   650.0,
+   478.0,
+   543.0
+  ],
+  "COPELAND": [
+   659.6,
+   478.0,
+   543.0
+  ],
+  "CAMARILLO": [
+   670.5,
+   478.0,
+   543.0
+  ]
+ },
+ "columns": {
+  "left": 436.4,
+  "right": 583.4
+ },
+ "yes_no": {
+  "incident_to": 689.8,
+  "tricare": 699.8
+ }
+}

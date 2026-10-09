@@ -1,0 +1,95 @@
+/* SnapShot: the patient dashboard, and the body map it is built around. Colours come from dermatomes.json as --c. */
+.snap { padding: 16px 20px 32px; display: grid; gap: 12px; align-content: start; container-type: inline-size; }
+.snap .card { grid-column: auto; }
+.snap .linkish { border: 0; background: none; color: var(--accent); font-weight: 650; padding: 0; cursor: pointer; white-space: nowrap; }
+.snap .linkish:hover { text-decoration: underline; }
+.snap-hint { font-size: 12px; margin-left: auto; }
+
+/* who it is */
+.snap-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.snap-name { font-size: 22px; font-weight: 750; letter-spacing: -.02em; line-height: 1.15; }
+.snap-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 4px; color: var(--ink2); font-size: 13.5px; }
+.snap-flags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.snap-flags:empty { display: none; }
+.snap-source { text-align: right; font-size: 12.5px; color: var(--muted); max-width: 340px; line-height: 1.4; }
+.snap-source b { display: block; color: var(--ink2); font-weight: 650; }
+
+/* the three columns: complaints, map, where it lands; then meds, findings, plan */
+.snap-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: 12px; align-items: start; }
+.snap-grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+@container (max-width: 1040px) { .snap-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .snap-side { grid-column: 1 / -1; } }
+@container (max-width: 720px) { .snap-grid, .snap-grid3 { grid-template-columns: minmax(0, 1fr); } .snap-source { text-align: left; } }
+
+/* complaints and impressions */
+.snap-rows { display: grid; gap: 2px; }
+.snap-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 10px; width: 100%; align-items: start; text-align: left; padding: 8px 8px; border: 1px solid transparent; border-radius: 8px; background: none; }
+.snap-row + .snap-row { border-top-color: var(--hair); border-radius: 0 0 8px 8px; }
+.snap-row:hover { background: var(--field); }
+.snap-row.on { background: var(--accent-soft); border-color: var(--accent-line); }
+.snap-kind { font-size: 10.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.snap-row-main { min-width: 0; }
+.snap-row-label { display: block; font-weight: 600; }
+.snap-row-detail { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); font-size: 12.5px; margin-top: 1px; line-height: 1.4; }
+.snap-row-where { display: flex; align-items: center; gap: 4px; white-space: nowrap; padding-top: 3px; }
+.snap-row-where small { color: var(--muted); font-size: 11.5px; margin-left: 4px; }
+.snap-denied { margin-top: 10px; font-size: 12.5px; padding: 0 8px; }
+.snap-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c); display: inline-block; flex: none; }
+
+/* the map */
+.snap-map { position: relative; }
+.snap-views button { min-height: 26px; font-size: 12px; padding: 2px 10px; }
+.snap-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.snap-key { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--hair2); background: var(--card); border-radius: 999px; padding: 3px 10px 3px 8px; font-size: 12px; color: var(--ink2); }
+.snap-key:hover { background: var(--field); }
+.snap-key.none { opacity: .55; }
+.snap-key.on { border-color: var(--ink); background: var(--field); color: var(--ink); font-weight: 600; }
+.snap-key b { font-size: 11px; background: var(--field); border-radius: 999px; padding: 0 6px; }
+.snap-key.on b { background: var(--card); }
+.snap-figures { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.snap-other { font-size: 12px; margin-top: 8px; line-height: 1.4; }
+.bodymap { display: block; width: 100%; height: auto; max-height: 560px; }
+.bodymap .inert { fill: #eceef2; stroke: #fff; stroke-width: .8; }
+.bodymap .region { fill: #e2e4e9; stroke: #fff; stroke-width: .8; cursor: pointer; outline: none; transition: fill .12s, fill-opacity .12s, opacity .12s; }
+.bodymap .region:hover, .bodymap .region.hover, .bodymap .region:focus-visible { fill: #cdd1d9; stroke: var(--ink2); stroke-width: 1; }
+.bodymap .region.on { fill: var(--c); fill-opacity: .6; stroke: var(--c); stroke-width: .9; }
+.bodymap .region.on:hover, .bodymap .region.on.hover, .bodymap .region.on:focus-visible { fill-opacity: .85; stroke: var(--ink2); }
+.bodymap .region.on.multi { stroke: var(--c2); stroke-width: 1.8; stroke-dasharray: 3 1.5; }
+.bodymap .region.on.unsided { fill-opacity: .32; stroke-dasharray: 2 1.5; }
+.bodymap .region.dim { opacity: .22; }
+.bodymap .region.hit { stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: none; }
+.bodymap .region.picked { stroke: var(--accent); stroke-width: 2; stroke-dasharray: none; }
+.bodymap .anatomy-outline { fill: none; stroke: color-mix(in srgb, var(--ink) 72%, transparent); stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.bodymap .anatomy-landmark { fill: none; stroke: color-mix(in srgb, var(--ink) 38%, transparent); stroke-width: .75; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.bodymap .side-mark { font: 700 11px var(--font); fill: var(--muted); }
+.bodymap .figure-caption { font: 600 9.5px var(--font); fill: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.snap-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--ink); color: #fff; border-radius: 8px; padding: 8px 10px; font-size: 12.5px; line-height: 1.4; max-width: 280px; box-shadow: var(--shadow-pop); }
+.snap-tip .muted { color: #c7c7cc; }
+.snap-tip-title { font-weight: 700; margin-bottom: 3px; }
+.snap-tip-line { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.snap-tip-line b { font-weight: 600; }
+.snap-pop { position: absolute; z-index: 6; width: 320px; max-width: calc(100% - 16px); background: var(--card); border: 1px solid var(--hair2); border-radius: 12px; box-shadow: var(--shadow-pop); padding: 10px 12px 12px; }
+.snap-pop-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.snap-pop-head b { font-size: 14px; }
+.snap-pop .chip.on { background: var(--c); border-color: var(--c); color: #fff; }
+.snap-pop .chip small { font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; opacity: .75; margin-left: 2px; }
+.snap-pop-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; font-size: 12px; }
+
+/* where it lands */
+.snap-region { display: grid; gap: 2px; padding: 7px 8px; border-top: 1px solid var(--hair); border-radius: 6px; }
+.snap-region:first-child, .subhead + .snap-region { border-top: 0; }
+.snap-region:hover { background: var(--field); }
+.snap-region-label { font-weight: 600; }
+.snap-region-cats { display: flex; flex-wrap: wrap; gap: 3px 10px; font-size: 12.5px; }
+.snap-cat { display: inline-flex; align-items: center; gap: 5px; }
+.snap-region-src { font-size: 12px; }
+.snap-region.removed { color: var(--muted); }
+.snap-region.removed .linkish { justify-self: start; font-size: 12px; }
+.snap-unsided { font-size: 10.5px; color: var(--orange); background: var(--orange-soft); border-radius: 999px; padding: 0 6px; margin-left: 4px; vertical-align: 1px; font-weight: 600; }
+
+/* medications, findings, plan */
+.snap-list { display: grid; gap: 1px; }
+.snap-med { padding: 3px 0; font-size: 13px; }
+.snap-med.stopped { color: var(--muted); text-decoration: line-through; }
+.snap-line { padding: 5px 0; border-top: 1px solid var(--hair); font-size: 13px; line-height: 1.45; }
+.snap-line:first-child, .subhead + .snap-line { border-top: 0; }
+.snap-line b { font-weight: 650; }

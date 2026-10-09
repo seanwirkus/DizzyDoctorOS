@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "chart-demo",
+      "runtimeExecutable": "/Users/sean/Library/Caches/DizzyDoctorOS-build/venv/bin/python",
+      "runtimeArgs": [
+        "-m",
+        "recordfinder.charting.devserver"
+      ],
+      "env": {
+        "DDOS_DEV_PORT": "8766"
+      },
+      "port": 8766
+    },
+    {
+      "name": "chart-demo-2",
+      "runtimeExecutable": "/Users/sean/Library/Caches/DizzyDoctorOS-build/venv/bin/python",
+      "runtimeArgs": [
+        "-m",
+        "recordfinder.charting.devserver"
+      ],
+      "env": {
+        "DDOS_DEV_PORT": "8767"
+      },
+      "port": 8767
+    }
+  ]
+}

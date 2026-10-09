@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conflict Queue — CranialVIII</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">VIII</div>
+        <div>
+          <div class="brand-title">CranialVIII</div>
+          <div class="brand-subtitle">PaperEpley Core</div>
+        </div>
+      </div>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="/"><span>📊</span> Dashboard</a></li>
+        <li class="nav-item"><a href="/worklist"><span>📋</span> Clinical Worklist</a></li>
+        <li class="nav-item">
+          <a href="/conflicts" class="active">
+            <span>⚖️</span> Conflict Review
+            {% if conflicts|length > 0 %}
+            <span class="nav-badge">{{ conflicts|length }}</span>
+            {% endif %}
+          </a>
+        </li>
+        <li class="nav-item"><a href="/assistant"><span>🧠</span> Clinical AI Assistant</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <h1 class="page-title">Discrepancy & Human Review Queue</h1>
+          <p class="page-desc">Rapid resolution for the 2.3% of clinical documents where filename and form surname diverge.</p>
+        </div>
+      </header>
+
+      {% if conflicts|length == 0 %}
+      <div style="background: var(--bg-card); padding: 3rem; text-align: center; border-radius: 12px; border: 1px solid var(--border-color);">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎉</div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Review Queue Completely Clear</h3>
+        <p style="color: var(--text-muted);">All faxes and documents are reconciled into standard clinical taxonomy.</p>
+      </div>
+      {% else %}
+      <div class="card-section">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Doc ID</th>
+                <th>Original Filename</th>
+                <th>Filename Surname</th>
+                <th>Extracted Form Surname</th>
+                <th>Levenshtein Dist</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in conflicts %}
+              <tr id="row-{{ c.conflict_id }}">
+                <td style="font-family: var(--font-mono); color: var(--accent-cyan);">#{{ c.doc_id }}</td>
+                <td style="max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ c.filename }}">
+                  {{ c.filename }}
+                </td>
+                <td><strong style="color: var(--accent-amber);">{{ c.filename_extracted_name }}</strong></td>
+                <td><strong style="color: var(--accent-green);">{{ c.form_extracted_name }}</strong></td>
+                <td>
+                  {% if c.levenshtein_dist <= 2 %}
+                  <span class="tag tag-dist-1">{{ c.levenshtein_dist }} (Near-miss)</span>
+                  {% elif c.levenshtein_dist <= 4 %}
+                  <span class="tag tag-dist-2">{{ c.levenshtein_dist }} (Moderate)</span>
+                  {% else %}
+                  <span class="tag tag-dist-high">{{ c.levenshtein_dist }} (Diff Person)</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-primary btn-sm" onclick="resolve({{ c.conflict_id }}, 'use_form')">
+                      Accept Form
+                    </button>
+                    <button class="btn btn-outline btn-sm" onclick="resolve({{ c.conflict_id }}, 'use_filename')">
+                      Accept Filename
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </main>
+  </div>
+
+  <script>
+    async function resolve(conflictId, resolution) {
+      const res = await fetch('/api/conflicts/resolve', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          conflict_id: conflictId,
+          resolution: resolution,
+          reviewed_by: 'staff_auditor'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        const row = document.getElementById(`row-${conflictId}`);
+        if (row) {
+          row.style.opacity = '0.3';
+          row.style.pointerEvents = 'none';
+          setTimeout(() => row.remove(), 400);
+        }
+      } else {
+        alert('Resolution failed. Check server logs.');
+      }
+    }
+  </script>
+</body>
+</html>

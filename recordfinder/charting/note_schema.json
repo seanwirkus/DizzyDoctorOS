@@ -1,0 +1,9338 @@
+{
+ "template": "progress-note-2025.pdf",
+ "pages": 4,
+ "page_size": [
+  612,
+  792
+ ],
+ "sections": [
+  {
+   "id": "header",
+   "title": "Patient",
+   "page": 1,
+   "fields": [
+    "Name",
+    "Date",
+    "DOB"
+   ]
+  },
+  {
+   "id": "visit",
+   "title": "Visit",
+   "page": 1,
+   "fields": [
+    "neuro-consult",
+    "neuro-eval",
+    "neuro-progress",
+    "neuro-urgent",
+    "NeuroConsultReqBy",
+    "NeuroConsultCC-1",
+    "NeuroConsultCC-2",
+    "NeuroConsultCC-3",
+    "directory",
+    "NeuroConsultPMD"
+   ]
+  },
+  {
+   "id": "hpi",
+   "title": "History of present illness",
+   "page": 1,
+   "fields": [
+    "HPI-age",
+    "hpi-male",
+    "hpi-female",
+    "nkda",
+    "ChiefComplaint",
+    "OnsetDate",
+    "Allergies",
+    "ChiefComplaint-descr",
+    "meds-descr"
+   ]
+  },
+  {
+   "id": "dizziness",
+   "title": "Dizziness and lack of coordination",
+   "page": 1,
+   "fields": [
+    "dizziness",
+    "dizziness-denies",
+    "DizzyDesc",
+    "DizzOnsetDate",
+    "DizzFreq",
+    "worse-standing",
+    "assoc-vertigo",
+    "assoc-cbd",
+    "worse-walking",
+    "assoc-diseq",
+    "assoc-headache",
+    "worse-walking-in-dark",
+    "assoc-attacks",
+    "assoc-tinnitus",
+    "worse-transitioning",
+    "assoc-hearingloss",
+    "worse-pitching",
+    "assoc-auralfullness",
+    "assoc-as",
+    "assoc-ad",
+    "assoc-au",
+    "worse-yaw",
+    "worse-supine",
+    "course-parox",
+    "course-chronic",
+    "worse-stress",
+    "course-stable",
+    "course-worsening",
+    "course-improving",
+    "worse-opto",
+    "worse-highgain",
+    "occur-sitting",
+    "occur-supine",
+    "occur-standing",
+    "occur-walking",
+    "better-sit",
+    "duration-seconds",
+    "duration-minutes",
+    "duration-hours",
+    "duration-days",
+    "better-supine",
+    "better-headstill",
+    "better-resolves",
+    "better-meds",
+    "better-thesemeds",
+    "better-other",
+    "better-none",
+    "better-factors",
+    "k-relief",
+    "k-exac",
+    "adl-mild",
+    "adl-mod",
+    "adl-severe"
+   ]
+  },
+  {
+   "id": "hearing",
+   "title": "Hearing loss",
+   "page": 1,
+   "fields": [
+    "hearingloss",
+    "hearingloss-denies",
+    "HLOnsetDate",
+    "HLdesc",
+    "hl-right",
+    "hl-left",
+    "hl-bilat",
+    "hlcourse-parox",
+    "hlcourse-chronic",
+    "hlbetter-hearingaids",
+    "hlworse-loudbg",
+    "hlcourse-stable",
+    "hlcourse-improving",
+    "hlcourse-attacks",
+    "hlcourse-worsening",
+    "hlbetter-other",
+    "hlbetter-none",
+    "hl-betterif-other-descr",
+    "hlworse-other",
+    "hl-worseif-other-descr",
+    "b-relief",
+    "b-exac",
+    "hlassoc-vertigo",
+    "hlassoc-diseq",
+    "hlassoc-headache",
+    "hlassoc-tinnitus",
+    "hlassoc-hearingfluc",
+    "hlassoc-aural",
+    "hldur-seconds",
+    "hldur-minutes",
+    "hldur-hours",
+    "hldur-days",
+    "hlassoc-notab"
+   ]
+  },
+  {
+   "id": "tinnitus",
+   "title": "Tinnitus",
+   "page": 2,
+   "fields": [
+    "tinnitus",
+    "tinnitus-denies",
+    "tinnitus-descr",
+    "TinnitusOnsetDate",
+    "t-pulsatile",
+    "t-nonpulsatile",
+    "t-better-hearingaids",
+    "t-worse-loudbg",
+    "t-right",
+    "t-left",
+    "t-bilat",
+    "t-better-other",
+    "t-symptomsbetterif-other-descr",
+    "t-worse-other",
+    "t-symptomsworseif-other-descr",
+    "t-better-none",
+    "t-worse-none",
+    "t-adl-mild",
+    "t-adl-mod",
+    "t-adl-severe",
+    "t-dur-hours",
+    "t-dur-days",
+    "t-course-parox",
+    "t-course-chronic",
+    "t-other-descr",
+    "t-dur-seconds",
+    "t-dur-minutes",
+    "t-course-stable",
+    "t-course-worsening",
+    "t-course-improving",
+    "t-course-attacks",
+    "t-course-freq-hi",
+    "t-course-freq-med",
+    "t-course-freq-low",
+    "t-assoc-vertigo",
+    "t-assoc-diseq",
+    "t-assoc-headache",
+    "t-assoc-hearingloss",
+    "t-assoc-fluc",
+    "t-assoc-aural",
+    "t-assoc-notab"
+   ]
+  },
+  {
+   "id": "gait",
+   "title": "Gait ataxia",
+   "page": 2,
+   "fields": [
+    "gaitataxia",
+    "gaitataxia-denies",
+    "gaitataxia-descr",
+    "GAOnsetDate",
+    "ga-better-cane",
+    "ga-usecanedur-descr",
+    "ga-worse-walk",
+    "ga-course-parox",
+    "ga-course-chronic",
+    "ga-better-walker",
+    "ga-usewalkerdur-descr",
+    "ga-worse-corners",
+    "ga-course-stable",
+    "ga-course-worsening",
+    "ga-course-improving",
+    "ga-course-attacks",
+    "ga-better-chair",
+    "ga-worseother-descr",
+    "ga-better-sitrest",
+    "ga-usewheelchairdur-descr",
+    "ga-worse-other",
+    "ga-worse-none",
+    "ga-assoc-orthostasis",
+    "ga-assoc-veerleft",
+    "ga-assoc-veerright",
+    "ga-assoc-bradykinesia",
+    "ga-better-none",
+    "ga-assoc-headache",
+    "ga-assoc-mental",
+    "ga-assoc-weakness",
+    "ga-assoc-weakness-denies",
+    "ga-assoc-sensory",
+    "ga-assoc-sensory-denies",
+    "ga-weak-descr",
+    "ga-sens-descr",
+    "ga-other-descr",
+    "ga-falls-yes",
+    "ga-falls-no",
+    "ga-assoc-bowel",
+    "ga-assoc-bladder",
+    "ga-assoc-bowel-denies",
+    "ga-assoc-bladder-denies",
+    "ga-bowel-descr",
+    "ga-blad-descr"
+   ]
+  },
+  {
+   "id": "headache",
+   "title": "Headache",
+   "page": 2,
+   "fields": [
+    "headache",
+    "headache-denies",
+    "headache-descr",
+    "HOnsetDate",
+    "h-symptomsworseif-descr",
+    "h-right",
+    "h-left",
+    "h-global",
+    "h-frontal",
+    "h-occipital",
+    "h-worse-diet",
+    "h-worse-noise",
+    "h-worse-lights",
+    "h-worse-stress",
+    "h-adl-mild",
+    "h-adl-mod",
+    "h-adl-sev",
+    "h-scale",
+    "h-worse-norelief",
+    "h-worse-noexac",
+    "h-course-parox",
+    "h-course-chronic",
+    "h-freq-month",
+    "h-freq-wk",
+    "h-course-stable",
+    "h-course-sharp",
+    "h-course-worse",
+    "h-course-dull",
+    "h-course-throb",
+    "h-course-improve",
+    "h-course-const",
+    "h-course-attacks",
+    "h-course-pressure",
+    "h-dur-seconds",
+    "h-dur-minutes",
+    "h-dur-hours",
+    "h-dur-days",
+    "h-assoc-vertigo",
+    "h-assoc-diseq",
+    "h-assoc-scotomas",
+    "h-assoc-aura",
+    "h-assoc-hearing",
+    "h-assoc-fluc",
+    "h-assoc-aural",
+    "h-assoc-tinnitus",
+    "h-better-meds",
+    "h-better-water",
+    "h-better-thesemeds",
+    "h-assoc-nausea",
+    "h-assoc-emesis",
+    "h-assoc-photo",
+    "h-assoc-phono",
+    "h-better-other",
+    "h-better-other-descr",
+    "h-assoc-none"
+   ]
+  },
+  {
+   "id": "pmh",
+   "title": "Past medical / surgical history",
+   "page": 2,
+   "fields": [
+    "hist-pq",
+    "hist-hypt",
+    "hist-migraine",
+    "hist-nochange",
+    "hist-trauma",
+    "hist-trauma-denies",
+    "hist-dyslip",
+    "hist-cad",
+    "hist-ear",
+    "hist-ear-denies",
+    "hist-diab",
+    "hist-arrh",
+    "hist-ototox",
+    "hist-ototox-denies",
+    "hist-stroke",
+    "hist-cervical",
+    "hist-lastmens",
+    "hist-other",
+    "hist-lastmens-date"
+   ]
+  },
+  {
+   "id": "family",
+   "title": "Family history",
+   "page": 2,
+   "fields": [
+    "family-pq",
+    "family-other-descr",
+    "family-nochange",
+    "family-mother-alive",
+    "family-mother-dec",
+    "family-mother-age",
+    "family-mother-hist",
+    "family-father-alive",
+    "family-father-dec",
+    "family-father-age",
+    "family-father-hist"
+   ]
+  },
+  {
+   "id": "social",
+   "title": "Social history",
+   "page": 2,
+   "fields": [
+    "social-pq",
+    "social-nochange",
+    "social-denies",
+    "d-tobacco",
+    "d-etoh",
+    "social-tobacco",
+    "d-drugs",
+    "social-tobacco-freq",
+    "social-tobacco-remote",
+    "social-etoh",
+    "social-etoh-history",
+    "social-etoh-remote",
+    "social-drugs",
+    "social-drugs-remote"
+   ]
+  },
+  {
+   "id": "ros",
+   "title": "Review of systems",
+   "page": 2,
+   "fields": [
+    "review-pq-today",
+    "review-full10"
+   ]
+  },
+  {
+   "id": "labs",
+   "title": "Labs",
+   "page": 2,
+   "fields": [
+    "labs"
+   ]
+  },
+  {
+   "id": "vitals",
+   "title": "Constitutional",
+   "page": 3,
+   "fields": [
+    "const-bp",
+    "const-hr",
+    "const-rr",
+    "WEIGHT",
+    "HEIGHT-ft",
+    "HEIGHT-in",
+    "BMI",
+    "TEMP",
+    "const-pain"
+   ]
+  },
+  {
+   "id": "exam",
+   "title": "Otoneurologic exam",
+   "page": 3,
+   "fields": [
+    "normal1",
+    "abnormal1",
+    "findings1",
+    "normal2",
+    "abnormal2",
+    "findings2",
+    "normal3",
+    "abnormal3",
+    "findings3",
+    "normal4",
+    "abnormal4",
+    "findings4",
+    "normal5",
+    "abnormal5",
+    "findings5",
+    "normal6",
+    "abnormal6",
+    "findings6",
+    "normal7",
+    "abnormal7",
+    "findings7",
+    "normal8",
+    "abnormal8",
+    "findings8",
+    "normal9",
+    "abnormal9",
+    "findings9",
+    "normal10",
+    "abnormal10",
+    "findings10",
+    "normal11",
+    "abnormal11",
+    "findings11",
+    "normal12",
+    "abnormal12",
+    "findings12",
+    "normal13",
+    "abnormal13",
+    "findings13",
+    "normal14",
+    "abnormal14",
+    "findings14",
+    "normal15",
+    "abnormal15",
+    "findings15",
+    "abnormal17-20",
+    "findings17-20",
+    "normal21",
+    "abnormal21",
+    "findings21",
+    "normal22",
+    "abnormal22",
+    "findings22",
+    "normal23",
+    "abnormal23",
+    "findings23",
+    "normal24",
+    "abnormal24",
+    "findings24",
+    "normal25",
+    "abnormal25",
+    "findings25",
+    "normal26",
+    "abnormal26",
+    "findings26",
+    "normal27",
+    "abnormal27",
+    "findings27",
+    "debris-kerat",
+    "debris-cerumen",
+    "weber",
+    "rinne-ab",
+    "rinne-ba",
+    "normal28",
+    "abnormal28",
+    "findings28",
+    "normal29",
+    "abnormal29",
+    "findings29",
+    "normal30",
+    "abnormal30",
+    "findings30",
+    "normal31",
+    "abnormal31",
+    "findings31",
+    "normal32",
+    "abnormal32",
+    "findings32",
+    "normal33",
+    "abnormal33",
+    "findings33",
+    "normal34",
+    "abnormal34",
+    "findings34",
+    "normal36",
+    "abnormal36",
+    "dtr-r-bi",
+    "dtr-r-tri",
+    "dtr-r-br",
+    "dtr-r-pat",
+    "dtr-r-ach",
+    "dtr-l-bi",
+    "dtr-l-tri",
+    "dtr-l-br",
+    "dtr-l-pat",
+    "dtr-l-ach",
+    "normal37",
+    "abnormal37",
+    "findings36",
+    "normal38",
+    "abnormal38",
+    "findings37",
+    "normal39",
+    "abnormal39",
+    "findings38",
+    "normal40",
+    "abnormal40",
+    "findings39"
+   ]
+  },
+  {
+   "id": "goggles",
+   "title": "IR oculography / positional testing",
+   "page": 3,
+   "fields": [
+    "goggle-dr",
+    "goggle-date",
+    "see-epley",
+    "dixhall-right-normal",
+    "dixhall-left-normal",
+    "dixhall-right-torsion",
+    "dixhall-left-torsion",
+    "dixhall-right-fatigue",
+    "dixhall-left-fatigue",
+    "dixhall-right-latency",
+    "dixhall-left-latency",
+    "dixhall-right-atyp",
+    "dixhall-left-atyp",
+    "imp-normal",
+    "imp-rightpost",
+    "imp-leftpost",
+    "supine-center-normal",
+    "supine-right-normal",
+    "supine-right-geo",
+    "supine-center-leftbeat",
+    "supine-center-rightbeat",
+    "supine-right-ageo",
+    "supine-right-down",
+    "supine-center-downbeat",
+    "supine-center-upbeat",
+    "supine-right-up",
+    "supine-right-atypical",
+    "supine-center-atypical",
+    "imp-atyp",
+    "supine-left-normal",
+    "supine-left-geo",
+    "supine-left-ageo",
+    "supine-left-down",
+    "supine-left-up",
+    "supine-left-atypical",
+    "imp-rightcupu",
+    "imp-leftcupu",
+    "gaze-right-normal",
+    "imp-rightnyst",
+    "gaze-left-normal",
+    "gaze-right-leftevoked",
+    "gaze-left-leftevoked",
+    "gaze-right-rightevoked",
+    "gaze-left-rightevoked",
+    "imp-leftnyst",
+    "imp-leftlateral",
+    "goggle-treatment-x",
+    "imp-rightlateral",
+    "imp-leftanterior",
+    "imp-rightanterior"
+   ]
+  },
+  {
+   "id": "studies",
+   "title": "Imaging / studies",
+   "page": 4,
+   "fields": [
+    "x-study1",
+    "x-study1-date",
+    "x-study1-result",
+    "x-study2",
+    "x-study2-date",
+    "x-study2-result",
+    "x-study3",
+    "x-study3-date",
+    "x-study3-result",
+    "x-study4",
+    "x-study4-date",
+    "x-study4-result",
+    "x-study5",
+    "x-study5-date",
+    "x-study5-result"
+   ]
+  },
+  {
+   "id": "impression",
+   "title": "Impression / plan",
+   "page": 4,
+   "fields": [
+    "impression-plan-descr"
+   ]
+  },
+  {
+   "id": "time",
+   "title": "Encounter time",
+   "page": 4,
+   "fields": [
+    "appt-time",
+    "time-proc1",
+    "addnl-time",
+    "time-proc2",
+    "addnl-time-2"
+   ]
+  },
+  {
+   "id": "plan",
+   "title": "Plan",
+   "page": 4,
+   "fields": [
+    "plan-balancelog",
+    "plan-halog",
+    "plan-fall",
+    "plan-continue",
+    "plan-descr",
+    "plan-meds",
+    "plan-prophy",
+    "plan-adverse",
+    "plan-adverse-descr",
+    "plan-horizontal",
+    "plan-sleep",
+    "plan-return",
+    "plan-driving",
+    "v-vertigo",
+    "v-worse"
+   ]
+  },
+  {
+   "id": "followup",
+   "title": "Next appointment",
+   "page": 4,
+   "fields": [
+    "next-appt",
+    "next-appt-days",
+    "next-appt-weeks",
+    "next-appt-months",
+    "nextappt-descr"
+   ]
+  },
+  {
+   "id": "referrals",
+   "title": "Referrals",
+   "page": 4,
+   "fields": [
+    "referral1-doc",
+    "referral2-doc",
+    "referral1-spec",
+    "referral2-spec",
+    "referral1-diag",
+    "referral2-diag"
+   ]
+  },
+  {
+   "id": "orders",
+   "title": "Imaging / orders",
+   "page": 4,
+   "fields": [
+    "Imaging",
+    "Imaging-2",
+    "PTcheck",
+    "referral-for"
+   ]
+  },
+  {
+   "id": "attestation",
+   "title": "Attestation",
+   "page": 4,
+   "fields": [
+    "imp-mp",
+    "Imp/MP"
+   ]
+  }
+ ],
+ "exam_rows": [
+  {
+   "normal": "normal1",
+   "abnormal": "abnormal1",
+   "findings": "findings1",
+   "group": "Constitutional",
+   "label": "Appearance is WD / WN / NAD"
+  },
+  {
+   "normal": "normal2",
+   "abnormal": "abnormal2",
+   "findings": "findings2",
+   "group": "Head",
+   "label": "Normocephalic / atraumatic"
+  },
+  {
+   "normal": "normal3",
+   "abnormal": "abnormal3",
+   "findings": "findings3",
+   "group": "Eyes",
+   "label": "Fundi visualized, no papilledema or hemorrhage"
+  },
+  {
+   "normal": "normal4",
+   "abnormal": "abnormal4",
+   "findings": "findings4",
+   "group": "Eyes",
+   "label": "Visual fields intact"
+  },
+  {
+   "normal": "normal5",
+   "abnormal": "abnormal5",
+   "findings": "findings5",
+   "group": "Eyes",
+   "label": "PERRLA"
+  },
+  {
+   "normal": "normal6",
+   "abnormal": "abnormal6",
+   "findings": "findings6",
+   "group": "ENT",
+   "label": "Oropharynx"
+  },
+  {
+   "normal": "normal7",
+   "abnormal": "abnormal7",
+   "findings": "findings7",
+   "group": "ENT",
+   "label": "Tympanic membranes & ear canals w/ microscopy"
+  },
+  {
+   "normal": "normal8",
+   "abnormal": "abnormal8",
+   "findings": "findings8",
+   "group": "Cardiovascular",
+   "label": "Regular rate & rhythm"
+  },
+  {
+   "normal": "normal9",
+   "abnormal": "abnormal9",
+   "findings": "findings9",
+   "group": "Cardiovascular",
+   "label": "No murmurs or carotid bruits"
+  },
+  {
+   "normal": "normal10",
+   "abnormal": "abnormal10",
+   "findings": "findings10",
+   "group": "Lungs",
+   "label": "Clear to auscultation bilaterally"
+  },
+  {
+   "normal": "normal11",
+   "abnormal": "abnormal11",
+   "findings": "findings11",
+   "group": "Extremities",
+   "label": "No clubbing / cyanosis / edema"
+  },
+  {
+   "normal": "normal12",
+   "abnormal": "abnormal12",
+   "findings": "findings12",
+   "group": "Neurologic",
+   "label": "Oriented to person / place / time"
+  },
+  {
+   "normal": "normal13",
+   "abnormal": "abnormal13",
+   "findings": "findings13",
+   "group": "Neurologic",
+   "label": "Intact recent & remote memory"
+  },
+  {
+   "normal": "normal14",
+   "abnormal": "abnormal14",
+   "findings": "findings14",
+   "group": "Neurologic",
+   "label": "Appropriate mood & affect"
+  },
+  {
+   "normal": "normal15",
+   "abnormal": "abnormal15",
+   "findings": "findings15",
+   "group": "Neurologic",
+   "label": "Normal attention span / concentration"
+  },
+  {
+   "normal": null,
+   "abnormal": "abnormal17-20",
+   "findings": "findings17-20",
+   "group": "Neurologic",
+   "label": "Normal language functions"
+  },
+  {
+   "normal": "normal21",
+   "abnormal": "abnormal21",
+   "findings": "findings21",
+   "group": "Neurologic",
+   "label": "Normal fund of knowledge"
+  },
+  {
+   "normal": "normal22",
+   "abnormal": "abnormal22",
+   "findings": "findings22",
+   "group": "Neurologic",
+   "label": "No neglect or inattention"
+  },
+  {
+   "normal": "normal23",
+   "abnormal": "abnormal23",
+   "findings": "findings23",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve II"
+  },
+  {
+   "normal": "normal24",
+   "abnormal": "abnormal24",
+   "findings": "findings24",
+   "group": "Cranial nerves",
+   "label": "Cranial nerves III, IV & VI"
+  },
+  {
+   "normal": "normal25",
+   "abnormal": "abnormal25",
+   "findings": "findings25",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve V"
+  },
+  {
+   "normal": "normal26",
+   "abnormal": "abnormal26",
+   "findings": "findings26",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve VII"
+  },
+  {
+   "normal": "normal27",
+   "abnormal": "abnormal27",
+   "findings": "findings27",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve VIII (Weber / Rinne)"
+  },
+  {
+   "normal": "normal28",
+   "abnormal": "abnormal28",
+   "findings": "findings28",
+   "group": "Cranial nerves",
+   "label": "Cranial nerves IX & X"
+  },
+  {
+   "normal": "normal29",
+   "abnormal": "abnormal29",
+   "findings": "findings29",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve XI"
+  },
+  {
+   "normal": "normal30",
+   "abnormal": "abnormal30",
+   "findings": "findings30",
+   "group": "Cranial nerves",
+   "label": "Cranial nerve XII"
+  },
+  {
+   "normal": "normal31",
+   "abnormal": "abnormal31",
+   "findings": "findings31",
+   "group": "Motor",
+   "label": "5/5 strength x 4 extremities"
+  },
+  {
+   "normal": "normal32",
+   "abnormal": "abnormal32",
+   "findings": "findings32",
+   "group": "Motor",
+   "label": "Normal tone throughout"
+  },
+  {
+   "normal": "normal33",
+   "abnormal": "abnormal33",
+   "findings": "findings33",
+   "group": "Sensory",
+   "label": "Intact touch / position / vibration"
+  },
+  {
+   "normal": "normal34",
+   "abnormal": "abnormal34",
+   "findings": "findings34",
+   "group": "Sensory",
+   "label": "Intact pin / 10 g monofilament / temperature"
+  },
+  {
+   "normal": "normal36",
+   "abnormal": "abnormal36",
+   "findings": null,
+   "group": "Reflexes",
+   "label": "DTRs symmetric in all 4 extremities"
+  },
+  {
+   "normal": "normal37",
+   "abnormal": "abnormal37",
+   "findings": "findings36",
+   "group": "Reflexes",
+   "label": "Toes downgoing bilaterally"
+  },
+  {
+   "normal": "normal38",
+   "abnormal": "abnormal38",
+   "findings": "findings37",
+   "group": "Coordination",
+   "label": "No ataxia on FTN and HTS"
+  },
+  {
+   "normal": "normal39",
+   "abnormal": "abnormal39",
+   "findings": "findings38",
+   "group": "Coordination",
+   "label": "Normal rapid finger movements"
+  },
+  {
+   "normal": "normal40",
+   "abnormal": "abnormal40",
+   "findings": "findings39",
+   "group": "Gait",
+   "label": "Normal based gait"
+  }
+ ],
+ "fields": {
+  "Name": {
+   "type": "textarea",
+   "pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "rect": [
+    164,
+    71,
+    480,
+    89
+   ],
+   "section": "header",
+   "label": "Patient name",
+   "default": ""
+  },
+  "Date": {
+   "type": "text",
+   "pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "rect": [
+    506,
+    77,
+    580,
+    87
+   ],
+   "section": "header",
+   "label": "Date of service",
+   "default": ""
+  },
+  "DOB": {
+   "type": "text",
+   "pages": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "rect": [
+    164,
+    94,
+    239,
+    105
+   ],
+   "section": "header",
+   "label": "Date of birth",
+   "default": ""
+  },
+  "neuro-consult": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    123,
+    149,
+    134
+   ],
+   "section": "visit",
+   "label": "Consult",
+   "default": true,
+   "group": "Visit type",
+   "exclusive": 0
+  },
+  "neuro-eval": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    252,
+    123,
+    265,
+    134
+   ],
+   "section": "visit",
+   "label": "Evaluation",
+   "default": false,
+   "group": "Visit type",
+   "exclusive": 0
+  },
+  "neuro-progress": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    366,
+    123,
+    379,
+    134
+   ],
+   "section": "visit",
+   "label": "Progress note",
+   "default": false,
+   "group": "Visit type",
+   "exclusive": 0
+  },
+  "neuro-urgent": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    482,
+    123,
+    495,
+    134
+   ],
+   "section": "visit",
+   "label": "Urgent add-on",
+   "default": false,
+   "group": "Visit type",
+   "exclusive": 0
+  },
+  "NeuroConsultReqBy": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    146,
+    244,
+    168
+   ],
+   "section": "visit",
+   "label": "Consult requested by",
+   "default": ""
+  },
+  "NeuroConsultCC-1": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    251,
+    146,
+    360,
+    199
+   ],
+   "section": "visit",
+   "label": "CC",
+   "default": ""
+  },
+  "NeuroConsultCC-2": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    365,
+    146,
+    477,
+    199
+   ],
+   "section": "visit",
+   "label": "CC",
+   "default": ""
+  },
+  "NeuroConsultCC-3": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    482,
+    146,
+    588,
+    199
+   ],
+   "section": "visit",
+   "label": "CC",
+   "default": ""
+  },
+  "directory": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    18,
+    174,
+    125,
+    514
+   ],
+   "section": "visit",
+   "label": "Practice directory",
+   "default": "Neurology/OtoNeurology\rIan M. Purcell, M.D., Ph.D. \rMonali Patel, M.D.\rTouraj Yari, MSPA, PA-C\rJake R. Perkins, MPAP, PA-C\rCarter Copeland, MPAS, PA-C \r \rNeurosurgery\rSanjay Ghosh, M.D.\rScott P. Leary, M.D.\r \rNeurotology/Skull Base Surgery \rMichael J. O\u2019Leary, M.D.\r \rNeuro-Ophthalmology\rKimberly Cockerham, M.D.\r \rOtolaryngology/ \rHead and Neck Surgery\rPerry T. Mansfield, M.D.\rBrian H. Weeks, M.D.\r "
+  },
+  "NeuroConsultPMD": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    177,
+    244,
+    200
+   ],
+   "section": "visit",
+   "label": "PMD",
+   "default": ""
+  },
+  "HPI-age": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    227,
+    198,
+    252,
+    212
+   ],
+   "section": "hpi",
+   "label": "Age",
+   "default": ""
+  },
+  "hpi-male": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    291,
+    202,
+    304,
+    213
+   ],
+   "section": "hpi",
+   "label": "Male",
+   "default": false,
+   "group": "Sex",
+   "exclusive": 1
+  },
+  "hpi-female": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    331,
+    202,
+    344,
+    213
+   ],
+   "section": "hpi",
+   "label": "Female",
+   "default": false,
+   "group": "Sex",
+   "exclusive": 1
+  },
+  "nkda": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    521,
+    201,
+    534,
+    212
+   ],
+   "section": "hpi",
+   "label": "NKDA",
+   "default": false,
+   "group": ""
+  },
+  "ChiefComplaint": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    204,
+    212,
+    331,
+    224
+   ],
+   "section": "hpi",
+   "label": "Chief complaint",
+   "default": ""
+  },
+  "OnsetDate": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    389,
+    212,
+    478,
+    224
+   ],
+   "section": "hpi",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "Allergies": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    482,
+    209,
+    588,
+    236
+   ],
+   "section": "hpi",
+   "label": "Allergies",
+   "default": ""
+  },
+  "ChiefComplaint-descr": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    135,
+    224,
+    478,
+    486
+   ],
+   "section": "hpi",
+   "label": "HPI",
+   "default": "Mr./Ms. **** is a *** y/o ***HD fe***male presenting to the clinic today for a consultation on ***** . PMHx significant for ****\r\rNo other focal motor, sensory, or CN deficits reported at this time. "
+  },
+  "meds-descr": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    482,
+    241,
+    588,
+    487
+   ],
+   "section": "hpi",
+   "label": "Medications",
+   "default": ""
+  },
+  "dizziness": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    489,
+    149,
+    500
+   ],
+   "section": "dizziness",
+   "label": "Dizziness and lack of coordination",
+   "default": false,
+   "group": "",
+   "exclusive": 27
+  },
+  "dizziness-denies": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    334,
+    489,
+    347,
+    500
+   ],
+   "section": "dizziness",
+   "label": "Patient denies",
+   "default": false,
+   "group": "",
+   "exclusive": 27
+  },
+  "DizzyDesc": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    422,
+    488,
+    588,
+    531
+   ],
+   "section": "dizziness",
+   "label": "Description",
+   "default": ""
+  },
+  "DizzOnsetDate": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    196,
+    499,
+    268,
+    509
+   ],
+   "section": "dizziness",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "DizzFreq": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    182,
+    508,
+    360,
+    518
+   ],
+   "section": "dizziness",
+   "label": "Frequency",
+   "default": ""
+  },
+  "worse-standing": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    511,
+    380,
+    521
+   ],
+   "section": "dizziness",
+   "label": "Standing",
+   "default": false,
+   "group": "Worse with"
+  },
+  "assoc-vertigo": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    528,
+    149,
+    538
+   ],
+   "section": "dizziness",
+   "label": "Vertigo",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-cbd": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    214,
+    528,
+    227,
+    538
+   ],
+   "section": "dizziness",
+   "label": "Chronic baseline disequilibrium",
+   "default": false,
+   "group": "Associated with"
+  },
+  "worse-walking": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    520,
+    380,
+    531
+   ],
+   "section": "dizziness",
+   "label": "Walking",
+   "default": false,
+   "group": "Worse with"
+  },
+  "assoc-diseq": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    538,
+    149,
+    549
+   ],
+   "section": "dizziness",
+   "label": "Disequilibrium",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-headache": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    214,
+    538,
+    227,
+    549
+   ],
+   "section": "dizziness",
+   "label": "Headache",
+   "default": false,
+   "group": "Associated with"
+  },
+  "worse-walking-in-dark": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    530,
+    380,
+    540
+   ],
+   "section": "dizziness",
+   "label": "Walking in dark",
+   "default": false,
+   "group": "Worse with"
+  },
+  "assoc-attacks": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    547,
+    149,
+    558
+   ],
+   "section": "dizziness",
+   "label": "Attacks",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-tinnitus": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    214,
+    547,
+    227,
+    558
+   ],
+   "section": "dizziness",
+   "label": "Tinnitus",
+   "default": false,
+   "group": "Associated with"
+  },
+  "worse-transitioning": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    539,
+    380,
+    550
+   ],
+   "section": "dizziness",
+   "label": "Transitioning to standing from sitting or supine",
+   "default": false,
+   "group": "Worse with"
+  },
+  "assoc-hearingloss": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    557,
+    149,
+    567
+   ],
+   "section": "dizziness",
+   "label": "Hearing loss",
+   "default": false,
+   "group": "Associated with"
+  },
+  "worse-pitching": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    549,
+    380,
+    560
+   ],
+   "section": "dizziness",
+   "label": "Pitching head up / down",
+   "default": false,
+   "group": "Worse with"
+  },
+  "assoc-auralfullness": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    566,
+    149,
+    577
+   ],
+   "section": "dizziness",
+   "label": "Aural fullness",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-as": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    208,
+    566,
+    221,
+    577
+   ],
+   "section": "dizziness",
+   "label": "AS",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-ad": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    235,
+    566,
+    249,
+    577
+   ],
+   "section": "dizziness",
+   "label": "AD",
+   "default": false,
+   "group": "Associated with"
+  },
+  "assoc-au": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    265,
+    566,
+    278,
+    577
+   ],
+   "section": "dizziness",
+   "label": "AU",
+   "default": false,
+   "group": "Associated with"
+  },
+  "worse-yaw": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    558,
+    380,
+    569
+   ],
+   "section": "dizziness",
+   "label": "Yaw to left or right",
+   "default": false,
+   "group": "Worse with"
+  },
+  "worse-supine": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    568,
+    380,
+    579
+   ],
+   "section": "dizziness",
+   "label": "Lying supine in bed",
+   "default": false,
+   "group": "Worse with"
+  },
+  "course-parox": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    137,
+    585,
+    150,
+    596
+   ],
+   "section": "dizziness",
+   "label": "Paroxysmal",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 4
+  },
+  "course-chronic": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    199,
+    585,
+    212,
+    596
+   ],
+   "section": "dizziness",
+   "label": "Chronic",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 4
+  },
+  "worse-stress": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    578,
+    380,
+    589
+   ],
+   "section": "dizziness",
+   "label": "Stress / fatigue",
+   "default": false,
+   "group": "Worse with"
+  },
+  "course-stable": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    137,
+    595,
+    150,
+    605
+   ],
+   "section": "dizziness",
+   "label": "Stable",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 5
+  },
+  "course-worsening": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    178,
+    594,
+    192,
+    605
+   ],
+   "section": "dizziness",
+   "label": "Worsening",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 5
+  },
+  "course-improving": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    238,
+    595,
+    251,
+    605
+   ],
+   "section": "dizziness",
+   "label": "Improving",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 5
+  },
+  "worse-opto": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    588,
+    380,
+    599
+   ],
+   "section": "dizziness",
+   "label": "Optokinetic hypersensitivity",
+   "default": false,
+   "group": "Worse with"
+  },
+  "worse-highgain": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    597,
+    380,
+    608
+   ],
+   "section": "dizziness",
+   "label": "Any high-gain head acceleration in nonspecific directions",
+   "default": false,
+   "group": "Worse with"
+  },
+  "occur-sitting": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    137,
+    614,
+    150,
+    625
+   ],
+   "section": "dizziness",
+   "label": "Sitting",
+   "default": false,
+   "group": "Occurs when"
+  },
+  "occur-supine": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    178,
+    614,
+    192,
+    625
+   ],
+   "section": "dizziness",
+   "label": "Lying supine in bed",
+   "default": false,
+   "group": "Occurs when"
+  },
+  "occur-standing": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    222,
+    614,
+    235,
+    625
+   ],
+   "section": "dizziness",
+   "label": "Standing",
+   "default": false,
+   "group": "Occurs when"
+  },
+  "occur-walking": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    274,
+    614,
+    287,
+    625
+   ],
+   "section": "dizziness",
+   "label": "Walking",
+   "default": false,
+   "group": "Occurs when"
+  },
+  "better-sit": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    616,
+    380,
+    627
+   ],
+   "section": "dizziness",
+   "label": "Sit",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "duration-seconds": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    137,
+    632,
+    150,
+    643
+   ],
+   "section": "dizziness",
+   "label": "Seconds",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 2
+  },
+  "duration-minutes": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    205,
+    632,
+    218,
+    643
+   ],
+   "section": "dizziness",
+   "label": "Minutes",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 2
+  },
+  "duration-hours": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    253,
+    632,
+    266,
+    643
+   ],
+   "section": "dizziness",
+   "label": "Hours",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 2
+  },
+  "duration-days": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    293,
+    632,
+    306,
+    643
+   ],
+   "section": "dizziness",
+   "label": "Days",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 2
+  },
+  "better-supine": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    626,
+    380,
+    637
+   ],
+   "section": "dizziness",
+   "label": "Lying supine in bed",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "better-headstill": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    635,
+    380,
+    646
+   ],
+   "section": "dizziness",
+   "label": "Hold head still in a neutral position",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "hearingloss": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    652,
+    150,
+    663
+   ],
+   "section": "hearing",
+   "label": "Hearing loss",
+   "default": false,
+   "group": "",
+   "exclusive": 28
+  },
+  "hearingloss-denies": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    221,
+    652,
+    235,
+    663
+   ],
+   "section": "hearing",
+   "label": "Patient denies",
+   "default": false,
+   "group": "",
+   "exclusive": 28
+  },
+  "better-resolves": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    645,
+    380,
+    656
+   ],
+   "section": "dizziness",
+   "label": "Resolves on own",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "HLOnsetDate": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    193,
+    661,
+    259,
+    671
+   ],
+   "section": "hearing",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "HLdesc": {
+   "type": "textarea",
+   "pages": [
+    1
+   ],
+   "rect": [
+    269,
+    663,
+    359,
+    706
+   ],
+   "section": "hearing",
+   "label": "Description",
+   "default": ""
+  },
+  "better-meds": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    654,
+    380,
+    665
+   ],
+   "section": "dizziness",
+   "label": "Take medications",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "better-thesemeds": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    453,
+    655,
+    590,
+    664
+   ],
+   "section": "dizziness",
+   "label": "Medications",
+   "default": ""
+  },
+  "hl-right": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    670,
+    150,
+    681
+   ],
+   "section": "hearing",
+   "label": "Right",
+   "default": false,
+   "group": "Side",
+   "exclusive": 6
+  },
+  "hl-left": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    175,
+    670,
+    188,
+    681
+   ],
+   "section": "hearing",
+   "label": "Left",
+   "default": false,
+   "group": "Side",
+   "exclusive": 6
+  },
+  "hl-bilat": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    207,
+    670,
+    220,
+    681
+   ],
+   "section": "hearing",
+   "label": "Bilateral",
+   "default": false,
+   "group": "Side",
+   "exclusive": 6
+  },
+  "better-other": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    664,
+    380,
+    675
+   ],
+   "section": "dizziness",
+   "label": "Other",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "better-none": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    674,
+    380,
+    685
+   ],
+   "section": "dizziness",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "better-factors": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    473,
+    666,
+    590,
+    674
+   ],
+   "section": "dizziness",
+   "label": "Other relieving factors",
+   "default": ""
+  },
+  "k-relief": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    418,
+    675,
+    450,
+    685
+   ],
+   "section": "dizziness",
+   "label": "",
+   "default": ""
+  },
+  "k-exac": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    464,
+    675,
+    514,
+    685
+   ],
+   "section": "dizziness",
+   "label": "",
+   "default": ""
+  },
+  "adl-mild": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    690,
+    150,
+    701
+   ],
+   "section": "dizziness",
+   "label": "Mild",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 3
+  },
+  "adl-mod": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    169,
+    690,
+    182,
+    701
+   ],
+   "section": "dizziness",
+   "label": "Moderate",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 3
+  },
+  "adl-severe": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    223,
+    690,
+    237,
+    701
+   ],
+   "section": "dizziness",
+   "label": "Severe",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 3
+  },
+  "hlcourse-parox": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    708,
+    150,
+    719
+   ],
+   "section": "hearing",
+   "label": "Paroxysmal",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 7
+  },
+  "hlcourse-chronic": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    198,
+    708,
+    212,
+    719
+   ],
+   "section": "hearing",
+   "label": "Chronic",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 7
+  },
+  "hlbetter-hearingaids": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    700,
+    380,
+    711
+   ],
+   "section": "hearing",
+   "label": "Wear hearing aids",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "hlworse-loudbg": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    475,
+    700,
+    488,
+    711
+   ],
+   "section": "hearing",
+   "label": "Loud background noise",
+   "default": false,
+   "group": "Worse if"
+  },
+  "hlcourse-stable": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    718,
+    150,
+    728
+   ],
+   "section": "hearing",
+   "label": "Stable",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 8
+  },
+  "hlcourse-improving": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    249,
+    709,
+    262,
+    719
+   ],
+   "section": "hearing",
+   "label": "Improving",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 8
+  },
+  "hlcourse-attacks": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    290,
+    710,
+    304,
+    720
+   ],
+   "section": "hearing",
+   "label": "Attacks",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 8
+  },
+  "hlcourse-worsening": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    194,
+    719,
+    208,
+    729
+   ],
+   "section": "hearing",
+   "label": "Worsening",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 8
+  },
+  "hlbetter-other": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    710,
+    380,
+    721
+   ],
+   "section": "hearing",
+   "label": "Other",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "hlbetter-none": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    367,
+    720,
+    380,
+    730
+   ],
+   "section": "hearing",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "hl-betterif-other-descr": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    406,
+    711,
+    473,
+    720
+   ],
+   "section": "hearing",
+   "label": "Better if (other)",
+   "default": ""
+  },
+  "hlworse-other": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    475,
+    710,
+    488,
+    721
+   ],
+   "section": "hearing",
+   "label": "Other",
+   "default": false,
+   "group": "Worse if"
+  },
+  "hl-worseif-other-descr": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    514,
+    711,
+    590,
+    720
+   ],
+   "section": "hearing",
+   "label": "Worse if (other)",
+   "default": ""
+  },
+  "b-relief": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    418,
+    721,
+    450,
+    731
+   ],
+   "section": "hearing",
+   "label": "",
+   "default": ""
+  },
+  "b-exac": {
+   "type": "text",
+   "pages": [
+    1
+   ],
+   "rect": [
+    465,
+    721,
+    515,
+    731
+   ],
+   "section": "hearing",
+   "label": "",
+   "default": ""
+  },
+  "hlassoc-vertigo": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    737,
+    150,
+    748
+   ],
+   "section": "hearing",
+   "label": "Vertigo",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hlassoc-diseq": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    182,
+    737,
+    196,
+    748
+   ],
+   "section": "hearing",
+   "label": "Disequilibrium",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hlassoc-headache": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    255,
+    737,
+    269,
+    748
+   ],
+   "section": "hearing",
+   "label": "Headache",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hlassoc-tinnitus": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    312,
+    737,
+    325,
+    748
+   ],
+   "section": "hearing",
+   "label": "Tinnitus",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hlassoc-hearingfluc": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    747,
+    150,
+    758
+   ],
+   "section": "hearing",
+   "label": "Fluctuation",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hlassoc-aural": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    231,
+    747,
+    244,
+    758
+   ],
+   "section": "hearing",
+   "label": "Aural fullness",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "hldur-seconds": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    368,
+    739,
+    381,
+    749
+   ],
+   "section": "hearing",
+   "label": "Seconds",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 9
+  },
+  "hldur-minutes": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    435,
+    739,
+    449,
+    749
+   ],
+   "section": "hearing",
+   "label": "Minutes",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 9
+  },
+  "hldur-hours": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    482,
+    739,
+    496,
+    749
+   ],
+   "section": "hearing",
+   "label": "Hours",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 9
+  },
+  "hldur-days": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    522,
+    739,
+    535,
+    749
+   ],
+   "section": "hearing",
+   "label": "Days",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 9
+  },
+  "hlassoc-notab": {
+   "type": "checkbox",
+   "pages": [
+    1
+   ],
+   "rect": [
+    136,
+    757,
+    150,
+    768
+   ],
+   "section": "hearing",
+   "label": "None of the above",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "tinnitus": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    75,
+    34,
+    85
+   ],
+   "section": "tinnitus",
+   "label": "Tinnitus",
+   "default": false,
+   "group": "",
+   "exclusive": 29
+  },
+  "tinnitus-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    79,
+    75,
+    92,
+    85
+   ],
+   "section": "tinnitus",
+   "label": "Patient denies",
+   "default": false,
+   "group": "",
+   "exclusive": 29
+  },
+  "tinnitus-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    154,
+    70,
+    282,
+    150
+   ],
+   "section": "tinnitus",
+   "label": "Description",
+   "default": ""
+  },
+  "TinnitusOnsetDate": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    78,
+    84,
+    151,
+    94
+   ],
+   "section": "tinnitus",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "t-pulsatile": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    94,
+    34,
+    105
+   ],
+   "section": "tinnitus",
+   "label": "Pulsatile",
+   "default": false,
+   "group": "",
+   "exclusive": 10
+  },
+  "t-nonpulsatile": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    69,
+    94,
+    83,
+    105
+   ],
+   "section": "tinnitus",
+   "label": "Non-pulsatile",
+   "default": false,
+   "group": "",
+   "exclusive": 10
+  },
+  "t-better-hearingaids": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    93,
+    300,
+    104
+   ],
+   "section": "tinnitus",
+   "label": "Wear hearing aids",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "t-worse-loudbg": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    93,
+    425,
+    104
+   ],
+   "section": "tinnitus",
+   "label": "Loud background noise",
+   "default": false,
+   "group": "Worse if"
+  },
+  "t-right": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    104,
+    34,
+    115
+   ],
+   "section": "tinnitus",
+   "label": "Right",
+   "default": false,
+   "group": "",
+   "exclusive": 11
+  },
+  "t-left": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    58,
+    104,
+    71,
+    115
+   ],
+   "section": "tinnitus",
+   "label": "Left",
+   "default": false,
+   "group": "",
+   "exclusive": 11
+  },
+  "t-bilat": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    91,
+    104,
+    104,
+    115
+   ],
+   "section": "tinnitus",
+   "label": "Bilateral",
+   "default": false,
+   "group": "",
+   "exclusive": 11
+  },
+  "t-better-other": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    103,
+    300,
+    114
+   ],
+   "section": "tinnitus",
+   "label": "Other",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "t-symptomsbetterif-other-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    327,
+    103,
+    410,
+    113
+   ],
+   "section": "tinnitus",
+   "label": "Better if (other)",
+   "default": ""
+  },
+  "t-worse-other": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    103,
+    425,
+    114
+   ],
+   "section": "tinnitus",
+   "label": "Other",
+   "default": false,
+   "group": "Worse if"
+  },
+  "t-symptomsworseif-other-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    452,
+    103,
+    593,
+    113
+   ],
+   "section": "tinnitus",
+   "label": "Worse if (other)",
+   "default": ""
+  },
+  "t-better-none": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    113,
+    300,
+    124
+   ],
+   "section": "tinnitus",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "t-worse-none": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    113,
+    425,
+    124
+   ],
+   "section": "tinnitus",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Worse if"
+  },
+  "t-adl-mild": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    123,
+    34,
+    134
+   ],
+   "section": "tinnitus",
+   "label": "Mild",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 12
+  },
+  "t-adl-mod": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    53,
+    123,
+    66,
+    134
+   ],
+   "section": "tinnitus",
+   "label": "Moderate",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 12
+  },
+  "t-adl-severe": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    107,
+    123,
+    120,
+    134
+   ],
+   "section": "tinnitus",
+   "label": "Severe",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 12
+  },
+  "t-dur-hours": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    401,
+    132,
+    414,
+    142
+   ],
+   "section": "tinnitus",
+   "label": "Hours",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 13
+  },
+  "t-dur-days": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    441,
+    132,
+    454,
+    142
+   ],
+   "section": "tinnitus",
+   "label": "Days",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 13
+  },
+  "t-course-parox": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    142,
+    34,
+    153
+   ],
+   "section": "tinnitus",
+   "label": "Paroxysmal",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 14
+  },
+  "t-course-chronic": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    82,
+    142,
+    95,
+    153
+   ],
+   "section": "tinnitus",
+   "label": "Chronic",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 14
+  },
+  "t-other-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    141,
+    591,
+    219
+   ],
+   "section": "tinnitus",
+   "label": "Notes",
+   "default": ""
+  },
+  "t-dur-seconds": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    132,
+    300,
+    142
+   ],
+   "section": "tinnitus",
+   "label": "Seconds",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 13
+  },
+  "t-dur-minutes": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    354,
+    132,
+    367,
+    142
+   ],
+   "section": "tinnitus",
+   "label": "Minutes",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 13
+  },
+  "t-course-stable": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    152,
+    34,
+    163
+   ],
+   "section": "tinnitus",
+   "label": "Stable",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 15
+  },
+  "t-course-worsening": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    62,
+    152,
+    75,
+    163
+   ],
+   "section": "tinnitus",
+   "label": "Worsening",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 15
+  },
+  "t-course-improving": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    121,
+    152,
+    134,
+    163
+   ],
+   "section": "tinnitus",
+   "label": "Improving",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 15
+  },
+  "t-course-attacks": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    179,
+    152,
+    192,
+    163
+   ],
+   "section": "tinnitus",
+   "label": "Attacks",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 15
+  },
+  "t-course-freq-hi": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    65,
+    162,
+    78,
+    173
+   ],
+   "section": "tinnitus",
+   "label": "Frequency high",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 16
+  },
+  "t-course-freq-med": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    100,
+    162,
+    113,
+    173
+   ],
+   "section": "tinnitus",
+   "label": "Frequency medium",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 16
+  },
+  "t-course-freq-low": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    135,
+    162,
+    148,
+    173
+   ],
+   "section": "tinnitus",
+   "label": "Frequency low",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 16
+  },
+  "t-assoc-vertigo": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    179,
+    34,
+    190
+   ],
+   "section": "tinnitus",
+   "label": "Vertigo",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-diseq": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    66,
+    179,
+    79,
+    190
+   ],
+   "section": "tinnitus",
+   "label": "Disequilibrium",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-headache": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    190,
+    34,
+    200
+   ],
+   "section": "tinnitus",
+   "label": "Headache",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-hearingloss": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    76,
+    190,
+    90,
+    200
+   ],
+   "section": "tinnitus",
+   "label": "Hearing loss",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-fluc": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    143,
+    190,
+    156,
+    200
+   ],
+   "section": "tinnitus",
+   "label": "Fluctuation",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-aural": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    204,
+    190,
+    218,
+    200
+   ],
+   "section": "tinnitus",
+   "label": "Aural fullness",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "t-assoc-notab": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    199,
+    34,
+    210
+   ],
+   "section": "tinnitus",
+   "label": "None of the above",
+   "default": false,
+   "group": "Attacks associated with"
+  },
+  "gaitataxia": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    218,
+    34,
+    229
+   ],
+   "section": "gait",
+   "label": "Gait ataxia",
+   "default": false,
+   "group": "",
+   "exclusive": 30
+  },
+  "gaitataxia-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    97,
+    218,
+    111,
+    229
+   ],
+   "section": "gait",
+   "label": "Patient denies",
+   "default": false,
+   "group": "",
+   "exclusive": 30
+  },
+  "gaitataxia-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    175,
+    214,
+    282,
+    254
+   ],
+   "section": "gait",
+   "label": "Description",
+   "default": ""
+  },
+  "GAOnsetDate": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    82,
+    228,
+    154,
+    238
+   ],
+   "section": "gait",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "ga-better-cane": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    237,
+    299,
+    248
+   ],
+   "section": "gait",
+   "label": "Use cane",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "ga-usecanedur-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    386,
+    237,
+    410,
+    246
+   ],
+   "section": "gait",
+   "label": "Cane duration",
+   "default": ""
+  },
+  "ga-worse-walk": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    237,
+    425,
+    248
+   ],
+   "section": "gait",
+   "label": "Walk",
+   "default": false,
+   "group": "Worse if"
+  },
+  "ga-course-parox": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    247,
+    34,
+    258
+   ],
+   "section": "gait",
+   "label": "Paroxysmal",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 17
+  },
+  "ga-course-chronic": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    82,
+    247,
+    95,
+    258
+   ],
+   "section": "gait",
+   "label": "Chronic",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 17
+  },
+  "ga-better-walker": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    247,
+    299,
+    258
+   ],
+   "section": "gait",
+   "label": "Use walker",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "ga-usewalkerdur-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    386,
+    247,
+    410,
+    257
+   ],
+   "section": "gait",
+   "label": "Walker duration",
+   "default": ""
+  },
+  "ga-worse-corners": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    247,
+    425,
+    258
+   ],
+   "section": "gait",
+   "label": "Turn corners quickly",
+   "default": false,
+   "group": "Worse if"
+  },
+  "ga-course-stable": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    257,
+    34,
+    267
+   ],
+   "section": "gait",
+   "label": "Stable",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 18
+  },
+  "ga-course-worsening": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    62,
+    257,
+    75,
+    267
+   ],
+   "section": "gait",
+   "label": "Worsening",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 18
+  },
+  "ga-course-improving": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    121,
+    257,
+    134,
+    267
+   ],
+   "section": "gait",
+   "label": "Improving",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 18
+  },
+  "ga-course-attacks": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    177,
+    257,
+    190,
+    267
+   ],
+   "section": "gait",
+   "label": "Attacks",
+   "default": false,
+   "group": "Symptom course",
+   "exclusive": 18
+  },
+  "ga-better-chair": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    257,
+    299,
+    267
+   ],
+   "section": "gait",
+   "label": "Wheelchair",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "ga-worseother-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    453,
+    257,
+    551,
+    267
+   ],
+   "section": "gait",
+   "label": "Worse if (other)",
+   "default": ""
+  },
+  "ga-better-sitrest": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    266,
+    299,
+    277
+   ],
+   "section": "gait",
+   "label": "Sit or rest",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "ga-usewheelchairdur-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    386,
+    258,
+    410,
+    267
+   ],
+   "section": "gait",
+   "label": "Wheelchair duration",
+   "default": ""
+  },
+  "ga-worse-other": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    257,
+    425,
+    268
+   ],
+   "section": "gait",
+   "label": "Other",
+   "default": false,
+   "group": "Worse if"
+  },
+  "ga-worse-none": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    266,
+    425,
+    277
+   ],
+   "section": "gait",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Worse if"
+  },
+  "ga-assoc-orthostasis": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    276,
+    34,
+    287
+   ],
+   "section": "gait",
+   "label": "Orthostasis",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-assoc-veerleft": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    82,
+    276,
+    95,
+    287
+   ],
+   "section": "gait",
+   "label": "Veer to left",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-assoc-veerright": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    144,
+    276,
+    157,
+    287
+   ],
+   "section": "gait",
+   "label": "Veer to right",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-assoc-bradykinesia": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    210,
+    276,
+    223,
+    287
+   ],
+   "section": "gait",
+   "label": "Bradykinesia",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-better-none": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    276,
+    299,
+    287
+   ],
+   "section": "gait",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "ga-assoc-headache": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    285,
+    34,
+    296
+   ],
+   "section": "gait",
+   "label": "Headache",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-assoc-mental": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    76,
+    285,
+    89,
+    296
+   ],
+   "section": "gait",
+   "label": "Mental status decline",
+   "default": false,
+   "group": "Associated with"
+  },
+  "ga-assoc-weakness": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    296,
+    34,
+    306
+   ],
+   "section": "gait",
+   "label": "Weakness of legs",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 35
+  },
+  "ga-assoc-weakness-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    296,
+    142,
+    306
+   ],
+   "section": "gait",
+   "label": "Denies leg weakness",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 35
+  },
+  "ga-assoc-sensory": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    305,
+    34,
+    316
+   ],
+   "section": "gait",
+   "label": "Sensory loss in legs",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 36
+  },
+  "ga-assoc-sensory-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    305,
+    142,
+    316
+   ],
+   "section": "gait",
+   "label": "Denies leg sensory loss",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 36
+  },
+  "ga-weak-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    172,
+    296,
+    283,
+    306
+   ],
+   "section": "gait",
+   "label": "Weakness",
+   "default": ""
+  },
+  "ga-sens-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    172,
+    306,
+    283,
+    315
+   ],
+   "section": "gait",
+   "label": "Sensory loss",
+   "default": ""
+  },
+  "ga-other-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    303,
+    592,
+    341
+   ],
+   "section": "gait",
+   "label": "Notes",
+   "default": ""
+  },
+  "ga-falls-yes": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    311,
+    296,
+    324,
+    307
+   ],
+   "section": "gait",
+   "label": "Yes",
+   "default": false,
+   "group": "Falls",
+   "exclusive": 19
+  },
+  "ga-falls-no": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    344,
+    296,
+    357,
+    307
+   ],
+   "section": "gait",
+   "label": "No",
+   "default": false,
+   "group": "Falls",
+   "exclusive": 19
+  },
+  "ga-assoc-bowel": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    315,
+    34,
+    325
+   ],
+   "section": "gait",
+   "label": "Bowel incontinence",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 37
+  },
+  "ga-assoc-bladder": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    323,
+    34,
+    334
+   ],
+   "section": "gait",
+   "label": "Bladder incontinence",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 38
+  },
+  "ga-assoc-bowel-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    315,
+    142,
+    325
+   ],
+   "section": "gait",
+   "label": "Denies bowel incontinence",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 37
+  },
+  "ga-assoc-bladder-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    323,
+    142,
+    334
+   ],
+   "section": "gait",
+   "label": "Denies bladder incontinence",
+   "default": false,
+   "group": "Associated with",
+   "exclusive": 38
+  },
+  "ga-bowel-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    172,
+    315,
+    283,
+    325
+   ],
+   "section": "gait",
+   "label": "Bowel",
+   "default": ""
+  },
+  "ga-blad-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    172,
+    325,
+    283,
+    335
+   ],
+   "section": "gait",
+   "label": "Bladder",
+   "default": ""
+  },
+  "headache": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    343,
+    34,
+    354
+   ],
+   "section": "headache",
+   "label": "Headache",
+   "default": false,
+   "group": "",
+   "exclusive": 31
+  },
+  "headache-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    87,
+    343,
+    101,
+    354
+   ],
+   "section": "headache",
+   "label": "Patient denies",
+   "default": false,
+   "group": "",
+   "exclusive": 31
+  },
+  "headache-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    163,
+    343,
+    282,
+    353
+   ],
+   "section": "headache",
+   "label": "Description",
+   "default": ""
+  },
+  "HOnsetDate": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    80,
+    353,
+    152,
+    362
+   ],
+   "section": "headache",
+   "label": "Date of onset",
+   "default": ""
+  },
+  "h-symptomsworseif-descr": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    367,
+    353,
+    592,
+    362
+   ],
+   "section": "headache",
+   "label": "Worse if",
+   "default": ""
+  },
+  "h-right": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    363,
+    34,
+    374
+   ],
+   "section": "headache",
+   "label": "Right",
+   "default": false,
+   "group": ""
+  },
+  "h-left": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    58,
+    363,
+    71,
+    374
+   ],
+   "section": "headache",
+   "label": "Left",
+   "default": false,
+   "group": ""
+  },
+  "h-global": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    115,
+    363,
+    128,
+    374
+   ],
+   "section": "headache",
+   "label": "Global",
+   "default": false,
+   "group": ""
+  },
+  "h-frontal": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    161,
+    363,
+    174,
+    374
+   ],
+   "section": "headache",
+   "label": "Frontal",
+   "default": false,
+   "group": ""
+  },
+  "h-occipital": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    208,
+    363,
+    221,
+    374
+   ],
+   "section": "headache",
+   "label": "Occipital",
+   "default": false,
+   "group": ""
+  },
+  "h-worse-diet": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    362,
+    299,
+    373
+   ],
+   "section": "headache",
+   "label": "Dietary",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-worse-noise": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    362,
+    425,
+    373
+   ],
+   "section": "headache",
+   "label": "Loud background noise",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-worse-lights": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    372,
+    299,
+    383
+   ],
+   "section": "headache",
+   "label": "Lights",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-worse-stress": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    372,
+    425,
+    383
+   ],
+   "section": "headache",
+   "label": "Stress / fatigue",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-adl-mild": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    382,
+    34,
+    393
+   ],
+   "section": "headache",
+   "label": "Mild",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 20
+  },
+  "h-adl-mod": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    53,
+    382,
+    66,
+    393
+   ],
+   "section": "headache",
+   "label": "Moderate",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 20
+  },
+  "h-adl-sev": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    107,
+    382,
+    120,
+    393
+   ],
+   "section": "headache",
+   "label": "Severe",
+   "default": false,
+   "group": "Affects ADLs",
+   "exclusive": 20
+  },
+  "h-scale": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    184,
+    382,
+    208,
+    392
+   ],
+   "section": "headache",
+   "label": "Pain scale /10",
+   "default": ""
+  },
+  "h-worse-norelief": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    383,
+    299,
+    394
+   ],
+   "section": "headache",
+   "label": "No clear relieving factors",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-worse-noexac": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    412,
+    383,
+    425,
+    394
+   ],
+   "section": "headache",
+   "label": "No clear exacerbating factors",
+   "default": false,
+   "group": "Symptoms worse if"
+  },
+  "h-course-parox": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    401,
+    34,
+    412
+   ],
+   "section": "headache",
+   "label": "Paroxysmal",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 21
+  },
+  "h-course-chronic": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    81,
+    401,
+    95,
+    412
+   ],
+   "section": "headache",
+   "label": "Chronic",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 21
+  },
+  "h-freq-month": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    177,
+    401,
+    202,
+    411
+   ],
+   "section": "headache",
+   "label": "Per month",
+   "default": ""
+  },
+  "h-freq-wk": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    230,
+    401,
+    255,
+    411
+   ],
+   "section": "headache",
+   "label": "Per week",
+   "default": ""
+  },
+  "h-course-stable": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    411,
+    34,
+    422
+   ],
+   "section": "headache",
+   "label": "Stable",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 22
+  },
+  "h-course-sharp": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    420,
+    34,
+    431
+   ],
+   "section": "headache",
+   "label": "Sharp",
+   "default": false,
+   "group": "Symptom course / character"
+  },
+  "h-course-worse": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    61,
+    411,
+    75,
+    422
+   ],
+   "section": "headache",
+   "label": "Worsening",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 22
+  },
+  "h-course-dull": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    62,
+    420,
+    75,
+    431
+   ],
+   "section": "headache",
+   "label": "Dull",
+   "default": false,
+   "group": "Symptom course / character"
+  },
+  "h-course-throb": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    94,
+    420,
+    107,
+    431
+   ],
+   "section": "headache",
+   "label": "Throbbing",
+   "default": false,
+   "group": "Symptom course / character"
+  },
+  "h-course-improve": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    120,
+    411,
+    134,
+    422
+   ],
+   "section": "headache",
+   "label": "Improving",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 22
+  },
+  "h-course-const": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    151,
+    420,
+    164,
+    431
+   ],
+   "section": "headache",
+   "label": "Constant",
+   "default": false,
+   "group": "Symptom course / character"
+  },
+  "h-course-attacks": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    177,
+    411,
+    190,
+    422
+   ],
+   "section": "headache",
+   "label": "Attacks",
+   "default": false,
+   "group": "Symptom course / character",
+   "exclusive": 22
+  },
+  "h-course-pressure": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    204,
+    420,
+    217,
+    431
+   ],
+   "section": "headache",
+   "label": "Pressure",
+   "default": false,
+   "group": "Symptom course / character"
+  },
+  "h-dur-seconds": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    411,
+    300,
+    422
+   ],
+   "section": "headache",
+   "label": "Seconds",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 23
+  },
+  "h-dur-minutes": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    355,
+    411,
+    368,
+    422
+   ],
+   "section": "headache",
+   "label": "Minutes",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 23
+  },
+  "h-dur-hours": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    402,
+    411,
+    415,
+    422
+   ],
+   "section": "headache",
+   "label": "Hours",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 23
+  },
+  "h-dur-days": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    441,
+    411,
+    455,
+    422
+   ],
+   "section": "headache",
+   "label": "Days",
+   "default": false,
+   "group": "Duration",
+   "exclusive": 23
+  },
+  "labs": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    484,
+    423,
+    589,
+    769
+   ],
+   "section": "labs",
+   "label": "Labs",
+   "default": ""
+  },
+  "h-assoc-vertigo": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    440,
+    34,
+    451
+   ],
+   "section": "headache",
+   "label": "Vertigo",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-diseq": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    67,
+    440,
+    81,
+    451
+   ],
+   "section": "headache",
+   "label": "Disequilibrium",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-scotomas": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    140,
+    440,
+    153,
+    451
+   ],
+   "section": "headache",
+   "label": "Visual scotomas",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-aura": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    222,
+    440,
+    235,
+    451
+   ],
+   "section": "headache",
+   "label": "Aura",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-hearing": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    450,
+    34,
+    460
+   ],
+   "section": "headache",
+   "label": "Hearing loss",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-fluc": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    89,
+    450,
+    102,
+    460
+   ],
+   "section": "headache",
+   "label": "Fluctuation",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-aural": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    150,
+    450,
+    163,
+    460
+   ],
+   "section": "headache",
+   "label": "Aural fullness",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-tinnitus": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    219,
+    450,
+    233,
+    460
+   ],
+   "section": "headache",
+   "label": "Tinnitus",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-better-meds": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    441,
+    299,
+    449
+   ],
+   "section": "headache",
+   "label": "Take medications",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "h-better-water": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    449,
+    299,
+    460
+   ],
+   "section": "headache",
+   "label": "Hydration therapy",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "h-better-thesemeds": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    352,
+    441,
+    478,
+    450
+   ],
+   "section": "headache",
+   "label": "Medications",
+   "default": ""
+  },
+  "h-assoc-nausea": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    459,
+    34,
+    470
+   ],
+   "section": "headache",
+   "label": "Nausea",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-emesis": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    68,
+    459,
+    81,
+    470
+   ],
+   "section": "headache",
+   "label": "Vomiting",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-photo": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    124,
+    459,
+    137,
+    470
+   ],
+   "section": "headache",
+   "label": "Photophobia",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-assoc-phono": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    192,
+    459,
+    205,
+    470
+   ],
+   "section": "headache",
+   "label": "Phonophobia",
+   "default": false,
+   "group": "Associated with"
+  },
+  "h-better-other": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    286,
+    458,
+    299,
+    469
+   ],
+   "section": "headache",
+   "label": "Other",
+   "default": false,
+   "group": "Symptoms better if"
+  },
+  "h-better-other-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    328,
+    455,
+    479,
+    495
+   ],
+   "section": "headache",
+   "label": "Better if (other)",
+   "default": ""
+  },
+  "h-assoc-none": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    468,
+    34,
+    479
+   ],
+   "section": "headache",
+   "label": "No clear relieving or exacerbating factors",
+   "default": false,
+   "group": "Associated with"
+  },
+  "hist-pq": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    497,
+    34,
+    507
+   ],
+   "section": "pmh",
+   "label": "Also see patient questionnaire",
+   "default": true,
+   "group": ""
+  },
+  "hist-hypt": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    506,
+    34,
+    517
+   ],
+   "section": "pmh",
+   "label": "Hypertension",
+   "default": false,
+   "group": ""
+  },
+  "hist-migraine": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    506,
+    142,
+    517
+   ],
+   "section": "pmh",
+   "label": "Migraine headaches",
+   "default": false,
+   "group": ""
+  },
+  "hist-nochange": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    497,
+    300,
+    508
+   ],
+   "section": "pmh",
+   "label": "No changes in follow-up",
+   "default": false,
+   "group": ""
+  },
+  "hist-trauma": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    507,
+    300,
+    518
+   ],
+   "section": "pmh",
+   "label": "Hx of head trauma w/ LOC",
+   "default": false,
+   "group": "",
+   "exclusive": 32
+  },
+  "hist-trauma-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    426,
+    507,
+    439,
+    518
+   ],
+   "section": "pmh",
+   "label": "Denies head trauma w/ LOC",
+   "default": true,
+   "group": "",
+   "exclusive": 32
+  },
+  "hist-dyslip": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    516,
+    34,
+    527
+   ],
+   "section": "pmh",
+   "label": "Dyslipidemia",
+   "default": false,
+   "group": ""
+  },
+  "hist-cad": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    516,
+    142,
+    527
+   ],
+   "section": "pmh",
+   "label": "Coronary artery disease",
+   "default": false,
+   "group": ""
+  },
+  "hist-ear": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    516,
+    300,
+    527
+   ],
+   "section": "pmh",
+   "label": "History of severe ear infections",
+   "default": false,
+   "group": "",
+   "exclusive": 33
+  },
+  "hist-ear-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    426,
+    516,
+    439,
+    527
+   ],
+   "section": "pmh",
+   "label": "Denies severe ear infections",
+   "default": true,
+   "group": "",
+   "exclusive": 33
+  },
+  "hist-diab": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    526,
+    34,
+    537
+   ],
+   "section": "pmh",
+   "label": "Diabetes",
+   "default": false,
+   "group": ""
+  },
+  "hist-arrh": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    526,
+    142,
+    537
+   ],
+   "section": "pmh",
+   "label": "Cardiac arrhythmias",
+   "default": false,
+   "group": ""
+  },
+  "hist-ototox": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    526,
+    300,
+    537
+   ],
+   "section": "pmh",
+   "label": "Hx of ototoxic drug exposure",
+   "default": false,
+   "group": "",
+   "exclusive": 34
+  },
+  "hist-ototox-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    426,
+    526,
+    439,
+    537
+   ],
+   "section": "pmh",
+   "label": "Denies ototoxic drug exposure",
+   "default": true,
+   "group": "",
+   "exclusive": 34
+  },
+  "hist-stroke": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    535,
+    34,
+    546
+   ],
+   "section": "pmh",
+   "label": "Stroke",
+   "default": false,
+   "group": ""
+  },
+  "hist-cervical": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    535,
+    142,
+    546
+   ],
+   "section": "pmh",
+   "label": "Cervical disease",
+   "default": false,
+   "group": ""
+  },
+  "hist-lastmens": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    287,
+    535,
+    300,
+    546
+   ],
+   "section": "pmh",
+   "label": "Last menstrual period",
+   "default": false,
+   "group": ""
+  },
+  "hist-other": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    545,
+    34,
+    556
+   ],
+   "section": "pmh",
+   "label": "Other",
+   "default": false,
+   "group": ""
+  },
+  "hist-lastmens-date": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    392,
+    537,
+    479,
+    545
+   ],
+   "section": "pmh",
+   "label": "LMP date",
+   "default": ""
+  },
+  "family-pq": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    574,
+    34,
+    584
+   ],
+   "section": "family",
+   "label": "Also see patient questionnaire",
+   "default": true,
+   "group": ""
+  },
+  "family-other-descr": {
+   "type": "textarea",
+   "pages": [
+    2
+   ],
+   "rect": [
+    285,
+    570,
+    473,
+    770
+   ],
+   "section": "family",
+   "label": "History / imaging continued",
+   "default": ""
+  },
+  "family-nochange": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    583,
+    34,
+    594
+   ],
+   "section": "family",
+   "label": "No changes in follow-up",
+   "default": false,
+   "group": ""
+  },
+  "family-mother-alive": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    56,
+    593,
+    70,
+    603
+   ],
+   "section": "family",
+   "label": "Alive",
+   "default": false,
+   "group": "Mother",
+   "exclusive": 24
+  },
+  "family-mother-dec": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    97,
+    593,
+    110,
+    603
+   ],
+   "section": "family",
+   "label": "Dec",
+   "default": false,
+   "group": "Mother",
+   "exclusive": 24
+  },
+  "family-mother-age": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    169,
+    593,
+    193,
+    602
+   ],
+   "section": "family",
+   "label": "Mother age",
+   "default": ""
+  },
+  "family-mother-hist": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    228,
+    592,
+    282,
+    603
+   ],
+   "section": "family",
+   "label": "Mother history",
+   "default": ""
+  },
+  "family-father-alive": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    56,
+    602,
+    70,
+    613
+   ],
+   "section": "family",
+   "label": "Alive",
+   "default": false,
+   "group": "Father",
+   "exclusive": 25
+  },
+  "family-father-dec": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    97,
+    602,
+    110,
+    613
+   ],
+   "section": "family",
+   "label": "Dec",
+   "default": false,
+   "group": "Father",
+   "exclusive": 25
+  },
+  "family-father-age": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    169,
+    602,
+    193,
+    612
+   ],
+   "section": "family",
+   "label": "Father age",
+   "default": ""
+  },
+  "family-father-hist": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    228,
+    603,
+    282,
+    613
+   ],
+   "section": "family",
+   "label": "Father history",
+   "default": ""
+  },
+  "social-pq": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    631,
+    34,
+    642
+   ],
+   "section": "social",
+   "label": "Also see patient questionnaire",
+   "default": true,
+   "group": ""
+  },
+  "social-nochange": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    159,
+    631,
+    173,
+    642
+   ],
+   "section": "social",
+   "label": "No changes in follow-up",
+   "default": false,
+   "group": ""
+  },
+  "social-denies": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    640,
+    34,
+    651
+   ],
+   "section": "social",
+   "label": "Denies tobacco / ETOH / drugs",
+   "default": false,
+   "group": ""
+  },
+  "d-tobacco": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    65,
+    641,
+    99,
+    651
+   ],
+   "section": "social",
+   "label": "Tobacco",
+   "default": ""
+  },
+  "d-etoh": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    102,
+    641,
+    125,
+    651
+   ],
+   "section": "social",
+   "label": "ETOH",
+   "default": ""
+  },
+  "social-tobacco": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    650,
+    34,
+    661
+   ],
+   "section": "social",
+   "label": "Tobacco",
+   "default": false,
+   "group": ""
+  },
+  "d-drugs": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    129,
+    641,
+    152,
+    651
+   ],
+   "section": "social",
+   "label": "Drugs",
+   "default": ""
+  },
+  "social-tobacco-freq": {
+   "type": "text",
+   "pages": [
+    2
+   ],
+   "rect": [
+    72,
+    650,
+    116,
+    660
+   ],
+   "section": "social",
+   "label": "Packs / day",
+   "default": ""
+  },
+  "social-tobacco-remote": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    161,
+    650,
+    174,
+    661
+   ],
+   "section": "social",
+   "label": "Tobacco, remote",
+   "default": false,
+   "group": ""
+  },
+  "social-etoh": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    660,
+    34,
+    671
+   ],
+   "section": "social",
+   "label": "ETOH",
+   "default": false,
+   "group": ""
+  },
+  "social-etoh-history": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    56,
+    660,
+    69,
+    671
+   ],
+   "section": "social",
+   "label": "Alcohol abuse history",
+   "default": false,
+   "group": ""
+  },
+  "social-etoh-remote": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    160,
+    660,
+    173,
+    671
+   ],
+   "section": "social",
+   "label": "ETOH, remote",
+   "default": false,
+   "group": ""
+  },
+  "social-drugs": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    670,
+    34,
+    681
+   ],
+   "section": "social",
+   "label": "Drugs",
+   "default": false,
+   "group": ""
+  },
+  "social-drugs-remote": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    61,
+    670,
+    74,
+    681
+   ],
+   "section": "social",
+   "label": "Drugs, remote",
+   "default": false,
+   "group": ""
+  },
+  "review-pq-today": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    698,
+    34,
+    709
+   ],
+   "section": "ros",
+   "label": "See patient questionnaire dated today",
+   "default": true,
+   "group": ""
+  },
+  "review-full10": {
+   "type": "checkbox",
+   "pages": [
+    2
+   ],
+   "rect": [
+    21,
+    708,
+    34,
+    718
+   ],
+   "section": "ros",
+   "label": "Full 10-system ROS performed and negative except as mentioned",
+   "default": true,
+   "group": ""
+  },
+  "const-bp": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    93,
+    79,
+    153,
+    89
+   ],
+   "section": "vitals",
+   "label": "BP",
+   "default": ""
+  },
+  "const-hr": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    167,
+    79,
+    214,
+    89
+   ],
+   "section": "vitals",
+   "label": "HR",
+   "default": ""
+  },
+  "const-rr": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    230,
+    79,
+    260,
+    89
+   ],
+   "section": "vitals",
+   "label": "RR",
+   "default": ""
+  },
+  "WEIGHT": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    287,
+    79,
+    327,
+    89
+   ],
+   "section": "vitals",
+   "label": "Weight",
+   "default": ""
+  },
+  "HEIGHT-ft": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    353,
+    79,
+    370,
+    89
+   ],
+   "section": "vitals",
+   "label": "Height ft",
+   "default": ""
+  },
+  "HEIGHT-in": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    370,
+    79,
+    392,
+    89
+   ],
+   "section": "vitals",
+   "label": "Height in",
+   "default": ""
+  },
+  "BMI": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    411,
+    79,
+    435,
+    89
+   ],
+   "section": "vitals",
+   "label": "BMI",
+   "default": ""
+  },
+  "TEMP": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    483,
+    79,
+    517,
+    89
+   ],
+   "section": "vitals",
+   "label": "Temperature",
+   "default": ""
+  },
+  "const-pain": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    550,
+    79,
+    574,
+    88
+   ],
+   "section": "vitals",
+   "label": "Pain /10",
+   "default": ""
+  },
+  "normal1": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    110,
+    260,
+    120
+   ],
+   "section": "exam",
+   "label": "Normal1",
+   "default": true,
+   "group": ""
+  },
+  "abnormal1": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    110,
+    280,
+    120
+   ],
+   "section": "exam",
+   "label": "abnormal1",
+   "default": ""
+  },
+  "findings1": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    110,
+    590,
+    120
+   ],
+   "section": "exam",
+   "label": "findings1",
+   "default": ""
+  },
+  "normal2": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    123,
+    260,
+    133
+   ],
+   "section": "exam",
+   "label": "Normal2",
+   "default": true,
+   "group": ""
+  },
+  "abnormal2": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    124,
+    280,
+    133
+   ],
+   "section": "exam",
+   "label": "abnormal2",
+   "default": ""
+  },
+  "findings2": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    123,
+    590,
+    133
+   ],
+   "section": "exam",
+   "label": "findings2",
+   "default": ""
+  },
+  "normal3": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    136,
+    260,
+    145
+   ],
+   "section": "exam",
+   "label": "Normal3",
+   "default": true,
+   "group": ""
+  },
+  "abnormal3": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    136,
+    280,
+    146
+   ],
+   "section": "exam",
+   "label": "abnormal3",
+   "default": ""
+  },
+  "findings3": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    136,
+    590,
+    146
+   ],
+   "section": "exam",
+   "label": "findings3",
+   "default": ""
+  },
+  "normal4": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    149,
+    260,
+    159
+   ],
+   "section": "exam",
+   "label": "Normal4",
+   "default": true,
+   "group": ""
+  },
+  "abnormal4": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    149,
+    280,
+    159
+   ],
+   "section": "exam",
+   "label": "abnormal4",
+   "default": ""
+  },
+  "findings4": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    149,
+    590,
+    159
+   ],
+   "section": "exam",
+   "label": "findings4",
+   "default": ""
+  },
+  "normal5": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    162,
+    260,
+    171
+   ],
+   "section": "exam",
+   "label": "Normal5",
+   "default": true,
+   "group": ""
+  },
+  "abnormal5": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    162,
+    280,
+    171
+   ],
+   "section": "exam",
+   "label": "abnormal5",
+   "default": ""
+  },
+  "findings5": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    162,
+    590,
+    171
+   ],
+   "section": "exam",
+   "label": "findings5",
+   "default": ""
+  },
+  "normal6": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    175,
+    260,
+    185
+   ],
+   "section": "exam",
+   "label": "Normal6",
+   "default": true,
+   "group": ""
+  },
+  "abnormal6": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    175,
+    280,
+    185
+   ],
+   "section": "exam",
+   "label": "abnormal6",
+   "default": ""
+  },
+  "findings6": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    175,
+    590,
+    185
+   ],
+   "section": "exam",
+   "label": "findings6",
+   "default": ""
+  },
+  "normal7": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    188,
+    260,
+    198
+   ],
+   "section": "exam",
+   "label": "Normal7",
+   "default": true,
+   "group": ""
+  },
+  "abnormal7": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    188,
+    280,
+    198
+   ],
+   "section": "exam",
+   "label": "abnormal7",
+   "default": ""
+  },
+  "findings7": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    188,
+    591,
+    198
+   ],
+   "section": "exam",
+   "label": "findings7",
+   "default": ""
+  },
+  "normal8": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    202,
+    260,
+    212
+   ],
+   "section": "exam",
+   "label": "Normal8",
+   "default": true,
+   "group": ""
+  },
+  "abnormal8": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    202,
+    280,
+    212
+   ],
+   "section": "exam",
+   "label": "abnormal8",
+   "default": ""
+  },
+  "findings8": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    202,
+    590,
+    212
+   ],
+   "section": "exam",
+   "label": "findings8",
+   "default": ""
+  },
+  "normal9": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    215,
+    260,
+    225
+   ],
+   "section": "exam",
+   "label": "Normal9",
+   "default": true,
+   "group": ""
+  },
+  "abnormal9": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    215,
+    280,
+    225
+   ],
+   "section": "exam",
+   "label": "abnormal9",
+   "default": ""
+  },
+  "findings9": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    215,
+    590,
+    225
+   ],
+   "section": "exam",
+   "label": "findings9",
+   "default": ""
+  },
+  "normal10": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    229,
+    260,
+    238
+   ],
+   "section": "exam",
+   "label": "Normal10",
+   "default": true,
+   "group": ""
+  },
+  "abnormal10": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    229,
+    280,
+    238
+   ],
+   "section": "exam",
+   "label": "abnormal10",
+   "default": ""
+  },
+  "findings10": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    229,
+    590,
+    238
+   ],
+   "section": "exam",
+   "label": "findings10",
+   "default": ""
+  },
+  "normal11": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    241,
+    260,
+    251
+   ],
+   "section": "exam",
+   "label": "Normal11",
+   "default": true,
+   "group": ""
+  },
+  "abnormal11": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    241,
+    280,
+    251
+   ],
+   "section": "exam",
+   "label": "abnormal11",
+   "default": ""
+  },
+  "findings11": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    241,
+    590,
+    251
+   ],
+   "section": "exam",
+   "label": "findings11",
+   "default": ""
+  },
+  "normal12": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    255,
+    260,
+    264
+   ],
+   "section": "exam",
+   "label": "Normal12",
+   "default": true,
+   "group": ""
+  },
+  "abnormal12": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    255,
+    280,
+    265
+   ],
+   "section": "exam",
+   "label": "abnormal12",
+   "default": ""
+  },
+  "findings12": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    255,
+    590,
+    265
+   ],
+   "section": "exam",
+   "label": "findings12",
+   "default": ""
+  },
+  "normal13": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    267,
+    260,
+    277
+   ],
+   "section": "exam",
+   "label": "Normal13",
+   "default": true,
+   "group": ""
+  },
+  "abnormal13": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    267,
+    280,
+    277
+   ],
+   "section": "exam",
+   "label": "abnormal13",
+   "default": ""
+  },
+  "findings13": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    267,
+    590,
+    277
+   ],
+   "section": "exam",
+   "label": "findings13",
+   "default": ""
+  },
+  "normal14": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    282,
+    260,
+    291
+   ],
+   "section": "exam",
+   "label": "Normal14",
+   "default": true,
+   "group": ""
+  },
+  "abnormal14": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    281,
+    280,
+    291
+   ],
+   "section": "exam",
+   "label": "abnormal14",
+   "default": ""
+  },
+  "findings14": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    281,
+    590,
+    291
+   ],
+   "section": "exam",
+   "label": "findings14",
+   "default": ""
+  },
+  "normal15": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    295,
+    260,
+    304
+   ],
+   "section": "exam",
+   "label": "Normal15",
+   "default": true,
+   "group": ""
+  },
+  "abnormal15": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    295,
+    280,
+    305
+   ],
+   "section": "exam",
+   "label": "abnormal15",
+   "default": ""
+  },
+  "findings15": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    295,
+    590,
+    305
+   ],
+   "section": "exam",
+   "label": "findings15",
+   "default": ""
+  },
+  "abnormal17-20": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    308,
+    279,
+    318
+   ],
+   "section": "exam",
+   "label": "abnormal17-20",
+   "default": ""
+  },
+  "findings17-20": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    308,
+    590,
+    318
+   ],
+   "section": "exam",
+   "label": "findings17-20",
+   "default": ""
+  },
+  "normal21": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    321,
+    260,
+    331
+   ],
+   "section": "exam",
+   "label": "Normal21",
+   "default": true,
+   "group": ""
+  },
+  "abnormal21": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    321,
+    280,
+    331
+   ],
+   "section": "exam",
+   "label": "abnormal21",
+   "default": ""
+  },
+  "findings21": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    321,
+    590,
+    331
+   ],
+   "section": "exam",
+   "label": "findings21",
+   "default": ""
+  },
+  "normal22": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    334,
+    260,
+    344
+   ],
+   "section": "exam",
+   "label": "Normal22",
+   "default": true,
+   "group": ""
+  },
+  "abnormal22": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    334,
+    280,
+    344
+   ],
+   "section": "exam",
+   "label": "abnormal22",
+   "default": ""
+  },
+  "findings22": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    334,
+    590,
+    344
+   ],
+   "section": "exam",
+   "label": "findings22",
+   "default": ""
+  },
+  "normal23": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    347,
+    260,
+    357
+   ],
+   "section": "exam",
+   "label": "Normal23",
+   "default": true,
+   "group": ""
+  },
+  "abnormal23": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    347,
+    280,
+    357
+   ],
+   "section": "exam",
+   "label": "abnormal23",
+   "default": ""
+  },
+  "findings23": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    347,
+    590,
+    357
+   ],
+   "section": "exam",
+   "label": "findings23",
+   "default": ""
+  },
+  "normal24": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    360,
+    260,
+    370
+   ],
+   "section": "exam",
+   "label": "Normal24",
+   "default": true,
+   "group": ""
+  },
+  "abnormal24": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    360,
+    280,
+    370
+   ],
+   "section": "exam",
+   "label": "abnormal24",
+   "default": ""
+  },
+  "findings24": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    360,
+    590,
+    370
+   ],
+   "section": "exam",
+   "label": "findings24",
+   "default": ""
+  },
+  "normal25": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    374,
+    260,
+    383
+   ],
+   "section": "exam",
+   "label": "Normal25",
+   "default": true,
+   "group": ""
+  },
+  "abnormal25": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    374,
+    280,
+    383
+   ],
+   "section": "exam",
+   "label": "abnormal25",
+   "default": ""
+  },
+  "findings25": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    374,
+    590,
+    383
+   ],
+   "section": "exam",
+   "label": "findings25",
+   "default": ""
+  },
+  "normal26": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    387,
+    260,
+    396
+   ],
+   "section": "exam",
+   "label": "Normal26",
+   "default": true,
+   "group": ""
+  },
+  "abnormal26": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    387,
+    280,
+    397
+   ],
+   "section": "exam",
+   "label": "abnormal26",
+   "default": ""
+  },
+  "findings26": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    387,
+    590,
+    397
+   ],
+   "section": "exam",
+   "label": "findings26",
+   "default": ""
+  },
+  "normal27": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    400,
+    260,
+    410
+   ],
+   "section": "exam",
+   "label": "Normal27",
+   "default": true,
+   "group": ""
+  },
+  "abnormal27": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    400,
+    280,
+    410
+   ],
+   "section": "exam",
+   "label": "abnormal27",
+   "default": ""
+  },
+  "findings27": {
+   "type": "textarea",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    400,
+    447,
+    434
+   ],
+   "section": "exam",
+   "label": "findings27",
+   "default": ""
+  },
+  "debris-kerat": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    81,
+    416,
+    95,
+    426
+   ],
+   "section": "exam",
+   "label": "Keratinous debris",
+   "default": false,
+   "group": ""
+  },
+  "debris-cerumen": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    150,
+    416,
+    163,
+    426
+   ],
+   "section": "exam",
+   "label": "Cerumen occluding tympanic membrane",
+   "default": false,
+   "group": ""
+  },
+  "weber": {
+   "type": "choice",
+   "pages": [
+    3
+   ],
+   "rect": [
+    452,
+    416,
+    489,
+    430
+   ],
+   "section": "exam",
+   "label": "Weber",
+   "default": "Midline",
+   "options": [
+    "Midline",
+    "AS",
+    "AD"
+   ]
+  },
+  "rinne-ab": {
+   "type": "choice",
+   "pages": [
+    3
+   ],
+   "rect": [
+    497,
+    416,
+    533,
+    430
+   ],
+   "section": "exam",
+   "label": "Rinne A>B",
+   "default": "AU",
+   "options": [
+    "AU",
+    "AS",
+    "AD"
+   ]
+  },
+  "rinne-ba": {
+   "type": "choice",
+   "pages": [
+    3
+   ],
+   "rect": [
+    542,
+    416,
+    578,
+    429
+   ],
+   "section": "exam",
+   "label": "Rinne B>A",
+   "default": "",
+   "options": [
+    "AU",
+    "AS",
+    "AD"
+   ]
+  },
+  "normal28": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    436,
+    260,
+    446
+   ],
+   "section": "exam",
+   "label": "Normal28",
+   "default": true,
+   "group": ""
+  },
+  "abnormal28": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    436,
+    280,
+    446
+   ],
+   "section": "exam",
+   "label": "abnormal28",
+   "default": ""
+  },
+  "findings28": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    436,
+    590,
+    446
+   ],
+   "section": "exam",
+   "label": "findings28",
+   "default": ""
+  },
+  "normal29": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    449,
+    260,
+    459
+   ],
+   "section": "exam",
+   "label": "Normal29",
+   "default": true,
+   "group": ""
+  },
+  "abnormal29": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    449,
+    280,
+    459
+   ],
+   "section": "exam",
+   "label": "abnormal29",
+   "default": ""
+  },
+  "findings29": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    449,
+    590,
+    459
+   ],
+   "section": "exam",
+   "label": "findings29",
+   "default": ""
+  },
+  "normal30": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    463,
+    260,
+    473
+   ],
+   "section": "exam",
+   "label": "Normal30",
+   "default": true,
+   "group": ""
+  },
+  "abnormal30": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    463,
+    280,
+    473
+   ],
+   "section": "exam",
+   "label": "abnormal30",
+   "default": ""
+  },
+  "findings30": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    463,
+    590,
+    473
+   ],
+   "section": "exam",
+   "label": "findings30",
+   "default": ""
+  },
+  "normal31": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    476,
+    260,
+    486
+   ],
+   "section": "exam",
+   "label": "Normal31",
+   "default": true,
+   "group": ""
+  },
+  "abnormal31": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    476,
+    280,
+    486
+   ],
+   "section": "exam",
+   "label": "abnormal31",
+   "default": ""
+  },
+  "findings31": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    476,
+    590,
+    486
+   ],
+   "section": "exam",
+   "label": "findings31",
+   "default": ""
+  },
+  "normal32": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    490,
+    260,
+    499
+   ],
+   "section": "exam",
+   "label": "Normal32",
+   "default": true,
+   "group": ""
+  },
+  "abnormal32": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    490,
+    280,
+    499
+   ],
+   "section": "exam",
+   "label": "abnormal32",
+   "default": ""
+  },
+  "findings32": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    490,
+    590,
+    499
+   ],
+   "section": "exam",
+   "label": "findings32",
+   "default": ""
+  },
+  "normal33": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    502,
+    260,
+    512
+   ],
+   "section": "exam",
+   "label": "Normal33",
+   "default": true,
+   "group": ""
+  },
+  "abnormal33": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    502,
+    280,
+    512
+   ],
+   "section": "exam",
+   "label": "abnormal33",
+   "default": ""
+  },
+  "findings33": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    502,
+    590,
+    512
+   ],
+   "section": "exam",
+   "label": "findings33",
+   "default": ""
+  },
+  "normal34": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    516,
+    260,
+    525
+   ],
+   "section": "exam",
+   "label": "Normal34",
+   "default": true,
+   "group": ""
+  },
+  "abnormal34": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    516,
+    280,
+    525
+   ],
+   "section": "exam",
+   "label": "abnormal34",
+   "default": ""
+  },
+  "findings34": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    516,
+    590,
+    525
+   ],
+   "section": "exam",
+   "label": "findings34",
+   "default": ""
+  },
+  "normal36": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    529,
+    260,
+    538
+   ],
+   "section": "exam",
+   "label": "Normal36",
+   "default": true,
+   "group": ""
+  },
+  "abnormal36": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    529,
+    280,
+    538
+   ],
+   "section": "exam",
+   "label": "abnormal36",
+   "default": ""
+  },
+  "dtr-r-bi": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    321,
+    528,
+    333,
+    538
+   ],
+   "section": "exam",
+   "label": "Right Biceps",
+   "default": ""
+  },
+  "dtr-r-tri": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    367,
+    528,
+    379,
+    538
+   ],
+   "section": "exam",
+   "label": "Right Triceps",
+   "default": ""
+  },
+  "dtr-r-br": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    412,
+    528,
+    424,
+    538
+   ],
+   "section": "exam",
+   "label": "Right Brachioradialis",
+   "default": ""
+  },
+  "dtr-r-pat": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    457,
+    528,
+    469,
+    538
+   ],
+   "section": "exam",
+   "label": "Right Patellar",
+   "default": ""
+  },
+  "dtr-r-ach": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    501,
+    528,
+    513,
+    538
+   ],
+   "section": "exam",
+   "label": "Right Achilles",
+   "default": ""
+  },
+  "dtr-l-bi": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    321,
+    539,
+    333,
+    549
+   ],
+   "section": "exam",
+   "label": "Left Biceps",
+   "default": ""
+  },
+  "dtr-l-tri": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    367,
+    539,
+    379,
+    549
+   ],
+   "section": "exam",
+   "label": "Left Triceps",
+   "default": ""
+  },
+  "dtr-l-br": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    412,
+    539,
+    424,
+    549
+   ],
+   "section": "exam",
+   "label": "Left Brachioradialis",
+   "default": ""
+  },
+  "dtr-l-pat": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    457,
+    539,
+    469,
+    549
+   ],
+   "section": "exam",
+   "label": "Left Patellar",
+   "default": ""
+  },
+  "dtr-l-ach": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    501,
+    539,
+    513,
+    549
+   ],
+   "section": "exam",
+   "label": "Left Achilles",
+   "default": ""
+  },
+  "normal37": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    553,
+    260,
+    562
+   ],
+   "section": "exam",
+   "label": "Normal37",
+   "default": true,
+   "group": ""
+  },
+  "abnormal37": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    553,
+    280,
+    563
+   ],
+   "section": "exam",
+   "label": "abnormal37",
+   "default": ""
+  },
+  "findings36": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    553,
+    590,
+    562
+   ],
+   "section": "exam",
+   "label": "findings36",
+   "default": ""
+  },
+  "normal38": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    567,
+    260,
+    576
+   ],
+   "section": "exam",
+   "label": "Normal38",
+   "default": true,
+   "group": ""
+  },
+  "abnormal38": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    567,
+    280,
+    576
+   ],
+   "section": "exam",
+   "label": "abnormal38",
+   "default": ""
+  },
+  "findings37": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    565,
+    590,
+    575
+   ],
+   "section": "exam",
+   "label": "findings37",
+   "default": ""
+  },
+  "normal39": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    250,
+    580,
+    260,
+    589
+   ],
+   "section": "exam",
+   "label": "Normal39",
+   "default": true,
+   "group": ""
+  },
+  "abnormal39": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    261,
+    580,
+    280,
+    590
+   ],
+   "section": "exam",
+   "label": "abnormal39",
+   "default": ""
+  },
+  "findings38": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    579,
+    590,
+    588
+   ],
+   "section": "exam",
+   "label": "findings38",
+   "default": ""
+  },
+  "normal40": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    251,
+    592,
+    260,
+    602
+   ],
+   "section": "exam",
+   "label": "Normal40",
+   "default": true,
+   "group": ""
+  },
+  "abnormal40": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    262,
+    592,
+    281,
+    602
+   ],
+   "section": "exam",
+   "label": "abnormal40",
+   "default": ""
+  },
+  "findings39": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    283,
+    592,
+    590,
+    602
+   ],
+   "section": "exam",
+   "label": "findings39",
+   "default": ""
+  },
+  "goggle-dr": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    152,
+    616,
+    285,
+    626
+   ],
+   "section": "goggles",
+   "label": "Oculography performed by",
+   "default": ""
+  },
+  "goggle-date": {
+   "type": "text",
+   "pages": [
+    3
+   ],
+   "rect": [
+    312,
+    616,
+    407,
+    626
+   ],
+   "section": "goggles",
+   "label": "Date",
+   "default": ""
+  },
+  "see-epley": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    616,
+    429,
+    627
+   ],
+   "section": "goggles",
+   "label": "See Epley Chair / CRM Chair report",
+   "default": false,
+   "group": ""
+  },
+  "dixhall-right-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    652,
+    87,
+    662
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Dix-Hallpike right"
+  },
+  "dixhall-left-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    658,
+    87,
+    669
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Dix-Hallpike left"
+  },
+  "dixhall-right-torsion": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    652,
+    131,
+    662
+   ],
+   "section": "goggles",
+   "label": "Torsional",
+   "default": false,
+   "group": "Dix-Hallpike right"
+  },
+  "dixhall-left-torsion": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    658,
+    131,
+    669
+   ],
+   "section": "goggles",
+   "label": "Torsional",
+   "default": false,
+   "group": "Dix-Hallpike left"
+  },
+  "dixhall-right-fatigue": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    245,
+    652,
+    258,
+    662
+   ],
+   "section": "goggles",
+   "label": "Fatigable",
+   "default": false,
+   "group": "Dix-Hallpike right"
+  },
+  "dixhall-left-fatigue": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    245,
+    658,
+    258,
+    669
+   ],
+   "section": "goggles",
+   "label": "Fatigable",
+   "default": false,
+   "group": "Dix-Hallpike left"
+  },
+  "dixhall-right-latency": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    296,
+    652,
+    309,
+    662
+   ],
+   "section": "goggles",
+   "label": "Latency",
+   "default": false,
+   "group": "Dix-Hallpike right"
+  },
+  "dixhall-left-latency": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    296,
+    658,
+    309,
+    669
+   ],
+   "section": "goggles",
+   "label": "Latency",
+   "default": false,
+   "group": "Dix-Hallpike left"
+  },
+  "dixhall-right-atyp": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    343,
+    652,
+    357,
+    662
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Dix-Hallpike right"
+  },
+  "dixhall-left-atyp": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    343,
+    658,
+    357,
+    669
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Dix-Hallpike left"
+  },
+  "imp-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    651,
+    429,
+    662
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-rightpost": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    659,
+    429,
+    670
+   ],
+   "section": "goggles",
+   "label": "Right posterior canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-leftpost": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    667,
+    429,
+    678
+   ],
+   "section": "goggles",
+   "label": "Left posterior canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "supine-center-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    676,
+    87,
+    687
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "supine-right-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    685,
+    87,
+    695
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-right-geo": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    685,
+    131,
+    695
+   ],
+   "section": "goggles",
+   "label": "Geotropic",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-center-leftbeat": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    119,
+    676,
+    132,
+    687
+   ],
+   "section": "goggles",
+   "label": "Left beat",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "supine-center-rightbeat": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    170,
+    676,
+    184,
+    687
+   ],
+   "section": "goggles",
+   "label": "Right beat",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "supine-right-ageo": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    171,
+    685,
+    185,
+    695
+   ],
+   "section": "goggles",
+   "label": "Ageotropic",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-right-down": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    228,
+    685,
+    241,
+    695
+   ],
+   "section": "goggles",
+   "label": "Down beat",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-center-downbeat": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    228,
+    676,
+    241,
+    687
+   ],
+   "section": "goggles",
+   "label": "Down beat",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "supine-center-upbeat": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    287,
+    676,
+    300,
+    687
+   ],
+   "section": "goggles",
+   "label": "Upbeat",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "supine-right-up": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    287,
+    685,
+    300,
+    695
+   ],
+   "section": "goggles",
+   "label": "Upbeat",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-right-atypical": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    334,
+    684,
+    348,
+    695
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Supine, head right"
+  },
+  "supine-center-atypical": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    335,
+    676,
+    348,
+    686
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Supine, head center"
+  },
+  "imp-atyp": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    675,
+    429,
+    686
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Study impression"
+  },
+  "supine-left-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    693,
+    87,
+    704
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "supine-left-geo": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    693,
+    131,
+    704
+   ],
+   "section": "goggles",
+   "label": "Geotropic",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "supine-left-ageo": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    171,
+    693,
+    185,
+    704
+   ],
+   "section": "goggles",
+   "label": "Ageotropic",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "supine-left-down": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    228,
+    693,
+    241,
+    704
+   ],
+   "section": "goggles",
+   "label": "Down beat",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "supine-left-up": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    287,
+    693,
+    300,
+    704
+   ],
+   "section": "goggles",
+   "label": "Upbeat",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "supine-left-atypical": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    335,
+    692,
+    348,
+    703
+   ],
+   "section": "goggles",
+   "label": "Atypical",
+   "default": false,
+   "group": "Supine, head left"
+  },
+  "imp-rightcupu": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    684,
+    429,
+    695
+   ],
+   "section": "goggles",
+   "label": "Right cupulolithiasis",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-leftcupu": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    693,
+    429,
+    703
+   ],
+   "section": "goggles",
+   "label": "Left cupulolithiasis",
+   "default": false,
+   "group": "Study impression"
+  },
+  "gaze-right-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    710,
+    87,
+    721
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Gaze right"
+  },
+  "imp-rightnyst": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    701,
+    429,
+    712
+   ],
+   "section": "goggles",
+   "label": "Right sustained nystagmus",
+   "default": false,
+   "group": "Study impression"
+  },
+  "gaze-left-normal": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    74,
+    718,
+    87,
+    729
+   ],
+   "section": "goggles",
+   "label": "Normal",
+   "default": false,
+   "group": "Gaze left"
+  },
+  "gaze-right-leftevoked": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    710,
+    131,
+    721
+   ],
+   "section": "goggles",
+   "label": "Left evoked",
+   "default": false,
+   "group": "Gaze right"
+  },
+  "gaze-left-leftevoked": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    118,
+    718,
+    131,
+    729
+   ],
+   "section": "goggles",
+   "label": "Left evoked",
+   "default": false,
+   "group": "Gaze left"
+  },
+  "gaze-right-rightevoked": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    178,
+    710,
+    192,
+    721
+   ],
+   "section": "goggles",
+   "label": "Right evoked",
+   "default": false,
+   "group": "Gaze right"
+  },
+  "gaze-left-rightevoked": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    178,
+    718,
+    192,
+    729
+   ],
+   "section": "goggles",
+   "label": "Right evoked",
+   "default": false,
+   "group": "Gaze left"
+  },
+  "imp-leftnyst": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    710,
+    429,
+    720
+   ],
+   "section": "goggles",
+   "label": "Left sustained nystagmus",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-leftlateral": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    718,
+    429,
+    728
+   ],
+   "section": "goggles",
+   "label": "Left lateral canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "goggle-treatment-x": {
+   "type": "textarea",
+   "pages": [
+    3
+   ],
+   "rect": [
+    65,
+    730,
+    411,
+    764
+   ],
+   "section": "goggles",
+   "label": "Treatment",
+   "default": ""
+  },
+  "imp-rightlateral": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    726,
+    429,
+    737
+   ],
+   "section": "goggles",
+   "label": "Right lateral canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-leftanterior": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    734,
+    429,
+    745
+   ],
+   "section": "goggles",
+   "label": "Left anterior canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "imp-rightanterior": {
+   "type": "checkbox",
+   "pages": [
+    3
+   ],
+   "rect": [
+    416,
+    743,
+    429,
+    753
+   ],
+   "section": "goggles",
+   "label": "Right anterior canal BPPV",
+   "default": false,
+   "group": "Study impression"
+  },
+  "x-study1": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    24,
+    82,
+    131,
+    94
+   ],
+   "section": "studies",
+   "label": "Study 1",
+   "default": ""
+  },
+  "x-study1-date": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    135,
+    82,
+    171,
+    94
+   ],
+   "section": "studies",
+   "label": "Date",
+   "default": ""
+  },
+  "x-study1-result": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    175,
+    82,
+    588,
+    94
+   ],
+   "section": "studies",
+   "label": "Result",
+   "default": ""
+  },
+  "x-study2": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    24,
+    96,
+    131,
+    108
+   ],
+   "section": "studies",
+   "label": "Study 2",
+   "default": ""
+  },
+  "x-study2-date": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    135,
+    96,
+    171,
+    108
+   ],
+   "section": "studies",
+   "label": "Date",
+   "default": ""
+  },
+  "x-study2-result": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    175,
+    96,
+    588,
+    108
+   ],
+   "section": "studies",
+   "label": "Result",
+   "default": ""
+  },
+  "x-study3": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    24,
+    111,
+    131,
+    123
+   ],
+   "section": "studies",
+   "label": "Study 3",
+   "default": ""
+  },
+  "x-study3-date": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    135,
+    111,
+    171,
+    123
+   ],
+   "section": "studies",
+   "label": "Date",
+   "default": ""
+  },
+  "x-study3-result": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    175,
+    111,
+    588,
+    123
+   ],
+   "section": "studies",
+   "label": "Result",
+   "default": ""
+  },
+  "x-study4": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    24,
+    125,
+    131,
+    137
+   ],
+   "section": "studies",
+   "label": "Study 4",
+   "default": ""
+  },
+  "x-study4-date": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    135,
+    125,
+    171,
+    137
+   ],
+   "section": "studies",
+   "label": "Date",
+   "default": ""
+  },
+  "x-study4-result": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    175,
+    125,
+    588,
+    137
+   ],
+   "section": "studies",
+   "label": "Result",
+   "default": ""
+  },
+  "x-study5": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    24,
+    139,
+    131,
+    151
+   ],
+   "section": "studies",
+   "label": "Study 5",
+   "default": ""
+  },
+  "x-study5-date": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    135,
+    139,
+    171,
+    151
+   ],
+   "section": "studies",
+   "label": "Date",
+   "default": ""
+  },
+  "x-study5-result": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    175,
+    139,
+    588,
+    151
+   ],
+   "section": "studies",
+   "label": "Result",
+   "default": ""
+  },
+  "impression-plan-descr": {
+   "type": "textarea",
+   "pages": [
+    4
+   ],
+   "rect": [
+    20,
+    162,
+    591,
+    446
+   ],
+   "section": "impression",
+   "label": "Impression / plan",
+   "default": ""
+  },
+  "appt-time": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    116,
+    447,
+    136,
+    457
+   ],
+   "section": "time",
+   "label": "Total encounter time (minutes)",
+   "default": ""
+  },
+  "time-proc1": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    20,
+    480,
+    33,
+    490
+   ],
+   "section": "time",
+   "label": "Additionally, I spent up to",
+   "default": false,
+   "group": ""
+  },
+  "addnl-time": {
+   "type": "choice",
+   "pages": [
+    4
+   ],
+   "rect": [
+    34,
+    480,
+    551,
+    490
+   ],
+   "section": "time",
+   "label": "Separate time 1",
+   "default": "",
+   "options": [
+    "15 minutes of separate time IR/oculography and/or Epley Chair testing",
+    "15 minutes of separate time for Injection Procedures",
+    "8 minutes of separate time on removal of keratinous debris/cerumen from the external auditory canals",
+    "31 minutes of separate time spent interrogating, programming, and educating patient regarding the Inspire device",
+    "31 minutes of separate time spent interrogating, monitoring, and educating patient regarding the Inspire device",
+    "31 minutes of separate time spent administering, evaluating, and discussing results of MoCA testing."
+   ]
+  },
+  "time-proc2": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    489,
+    33,
+    500
+   ],
+   "section": "time",
+   "label": "Additionally, I spent up to",
+   "default": false,
+   "group": ""
+  },
+  "addnl-time-2": {
+   "type": "choice",
+   "pages": [
+    4
+   ],
+   "rect": [
+    33,
+    490,
+    551,
+    500
+   ],
+   "section": "time",
+   "label": "Separate time 2",
+   "default": "",
+   "options": [
+    "15 minutes of separate time IR/oculography and/or Epley Chair testing",
+    "15 minutes of separate time for Injection Procedures",
+    "8 minutes of separate time on removal of keratinous debris/cerumen from the external auditory canals",
+    "31 minutes of separate time spent interrogating, programming, and educating patient regarding the Inspire device",
+    "31 minutes of separate time spent interrogating, monitoring, and educating patient regarding the Inspire device",
+    "31 minutes of separate time spent administering, evaluating, and discussing results of MoCA testing."
+   ]
+  },
+  "plan-balancelog": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    47,
+    504,
+    60,
+    515
+   ],
+   "section": "plan",
+   "label": "Balance log",
+   "default": false,
+   "group": ""
+  },
+  "plan-halog": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    115,
+    504,
+    128,
+    515
+   ],
+   "section": "plan",
+   "label": "HA log",
+   "default": false,
+   "group": ""
+  },
+  "plan-fall": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    160,
+    504,
+    173,
+    515
+   ],
+   "section": "plan",
+   "label": "Fall precautions",
+   "default": false,
+   "group": ""
+  },
+  "plan-continue": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    243,
+    504,
+    256,
+    515
+   ],
+   "section": "plan",
+   "label": "Continue home vis/vest exercises",
+   "default": false,
+   "group": ""
+  },
+  "plan-descr": {
+   "type": "textarea",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    513,
+    593,
+    538
+   ],
+   "section": "plan",
+   "label": "Plan notes",
+   "default": ""
+  },
+  "plan-meds": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    539,
+    32,
+    550
+   ],
+   "section": "plan",
+   "label": "Take medications",
+   "default": false,
+   "group": ""
+  },
+  "plan-prophy": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    91,
+    539,
+    104,
+    550
+   ],
+   "section": "plan",
+   "label": "Advised two forms of birth control on these medications",
+   "default": false,
+   "group": ""
+  },
+  "plan-adverse": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    548,
+    32,
+    559
+   ],
+   "section": "plan",
+   "label": "Discussed indications / contraindications / adverse effects of",
+   "default": false,
+   "group": ""
+  },
+  "plan-adverse-descr": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    311,
+    548,
+    564,
+    557
+   ],
+   "section": "plan",
+   "label": "Medications discussed",
+   "default": ""
+  },
+  "plan-horizontal": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    557,
+    32,
+    568
+   ],
+   "section": "plan",
+   "label": "Keep head greater than earth horizontal",
+   "default": false,
+   "group": ""
+  },
+  "plan-sleep": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    198,
+    558,
+    211,
+    568
+   ],
+   "section": "plan",
+   "label": "Sleep head 45 degrees",
+   "default": false,
+   "group": ""
+  },
+  "plan-return": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    308,
+    557,
+    322,
+    568
+   ],
+   "section": "plan",
+   "label": "Return to clinic ASAP with vertigo / worsening symptoms",
+   "default": true,
+   "group": ""
+  },
+  "plan-driving": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    19,
+    567,
+    32,
+    578
+   ],
+   "section": "plan",
+   "label": "Instructed not to drive when experiencing episodes of vertigo or disequilibrium",
+   "default": false,
+   "group": ""
+  },
+  "v-vertigo": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    412,
+    559,
+    440,
+    569
+   ],
+   "section": "plan",
+   "label": "",
+   "default": ""
+  },
+  "v-worse": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    449,
+    559,
+    490,
+    569
+   ],
+   "section": "plan",
+   "label": "",
+   "default": ""
+  },
+  "next-appt": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    102,
+    580,
+    145,
+    590
+   ],
+   "section": "followup",
+   "label": "Next appointment in",
+   "default": ""
+  },
+  "next-appt-days": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    147,
+    579,
+    160,
+    590
+   ],
+   "section": "followup",
+   "label": "Days",
+   "default": false,
+   "group": "Unit",
+   "exclusive": 26
+  },
+  "next-appt-weeks": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    195,
+    579,
+    208,
+    590
+   ],
+   "section": "followup",
+   "label": "Weeks",
+   "default": false,
+   "group": "Unit",
+   "exclusive": 26
+  },
+  "next-appt-months": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    247,
+    579,
+    260,
+    590
+   ],
+   "section": "followup",
+   "label": "Months",
+   "default": false,
+   "group": "Unit",
+   "exclusive": 26
+  },
+  "nextappt-descr": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    295,
+    579,
+    593,
+    593
+   ],
+   "section": "followup",
+   "label": "Note",
+   "default": ""
+  },
+  "referral1-doc": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    63,
+    603,
+    291,
+    613
+   ],
+   "section": "referrals",
+   "label": "Physician",
+   "default": ""
+  },
+  "referral2-doc": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    337,
+    603,
+    591,
+    613
+   ],
+   "section": "referrals",
+   "label": "Physician",
+   "default": ""
+  },
+  "referral1-spec": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    63,
+    613,
+    291,
+    623
+   ],
+   "section": "referrals",
+   "label": "Specialty",
+   "default": ""
+  },
+  "referral2-spec": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    337,
+    613,
+    591,
+    623
+   ],
+   "section": "referrals",
+   "label": "Specialty",
+   "default": ""
+  },
+  "referral1-diag": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    63,
+    622,
+    291,
+    632
+   ],
+   "section": "referrals",
+   "label": "Diagnosis",
+   "default": ""
+  },
+  "referral2-diag": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    338,
+    622,
+    591,
+    632
+   ],
+   "section": "referrals",
+   "label": "Diagnosis",
+   "default": ""
+  },
+  "Imaging": {
+   "type": "choice",
+   "pages": [
+    4
+   ],
+   "rect": [
+    22,
+    646,
+    591,
+    657
+   ],
+   "section": "orders",
+   "label": "Imaging / order 1",
+   "default": "",
+   "options": [
+    "CT Brain with and without contrast 70470",
+    "CT Brain without contrast 70450",
+    "CT Petrous Bone 3-D reconstruction 70480",
+    "MRA Brain Circle of Willis w/o contrast 70544",
+    "MRA Neck with contrast 70544",
+    "MRI Brain FULL with IAC and Contrast",
+    "MRI Brain IAC \u2013Screening Protocol 70551",
+    "MRI Brain with and w/o contrast 70553",
+    "MRI Brain without contrast 70551",
+    "MRI C Spine without contrast 72141",
+    "MRI L Spine without contrast 72148",
+    "MRI T Spine without contrast 72146",
+    "No Imaging Required."
+   ]
+  },
+  "Imaging-2": {
+   "type": "choice",
+   "pages": [
+    4
+   ],
+   "rect": [
+    22,
+    658,
+    591,
+    669
+   ],
+   "section": "orders",
+   "label": "Imaging / order 2",
+   "default": "",
+   "options": [
+    "CT Brain with and without contrast 70470",
+    "CT Brain without contrast 70450",
+    "CT Petrous Bone 3-D reconstruction 70480",
+    "MRA Brain Circle of Willis w/o contrast 70544",
+    "MRA Neck with contrast 70544",
+    "MRI Brain FULL with IAC and Contrast",
+    "MRI Brain IAC \u2013Screening Protocol 70551",
+    "MRI Brain with and w/o contrast 70553",
+    "MRI Brain without contrast 70551",
+    "MRI C Spine without contrast 72141",
+    "MRI L Spine without contrast 72148",
+    "MRI T Spine without contrast 72146",
+    "No Imaging Required."
+   ]
+  },
+  "PTcheck": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    20,
+    670,
+    34,
+    681
+   ],
+   "section": "orders",
+   "label": "PT",
+   "default": false,
+   "group": ""
+  },
+  "referral-for": {
+   "type": "text",
+   "pages": [
+    4
+   ],
+   "rect": [
+    49,
+    670,
+    590,
+    681
+   ],
+   "section": "orders",
+   "label": "PT referral for",
+   "default": ""
+  },
+  "imp-mp": {
+   "type": "checkbox",
+   "pages": [
+    4
+   ],
+   "rect": [
+    18,
+    771,
+    31,
+    781
+   ],
+   "section": "attestation",
+   "label": "Attestation",
+   "default": false,
+   "group": "Study impression"
+  },
+  "Imp/MP": {
+   "type": "choice",
+   "pages": [
+    4
+   ],
+   "rect": [
+    32,
+    771,
+    574,
+    782
+   ],
+   "section": "attestation",
+   "label": "Attending statement",
+   "default": "I, Ian Purcell, M.D., Ph.D, was present and established the care plan for this patient at this encounter",
+   "options": [
+    " I, Ian Purcell, M.D., Ph.D, was present and established the care plan for this patient at this encounter",
+    " I, Monali Patel, M.D., was present and established the care plan for this patient at this encounter"
+   ]
+  }
+ }
+}

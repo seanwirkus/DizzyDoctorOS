@@ -1,0 +1,89 @@
+/* Notes screen. Every rule is scoped under .notes / .notes-* so nothing leaks into other activities. */
+.notes { display: flex; flex-direction: column; gap: 20px; max-width: 1280px; margin-inline: 0; min-width: 0; }
+.notes > * { flex-shrink: 0; }
+.notes .btn { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.notes-tool { display: inline-flex; align-items: center; gap: 6px; }
+.notes-icon { display: inline-flex; width: 15px; height: 15px; flex: none; }
+.notes-icon svg { width: 100%; height: 100%; }
+.notes-head-icon { width: 18px; height: 18px; color: var(--accent); }
+
+/* start a new note */
+.notes-start .card-head { flex-wrap: wrap; row-gap: 2px; }
+.notes-head-hint { font-size: 12.5px; }
+.notes-search { position: relative; display: flex; align-items: center; }
+.notes-search-icon { position: absolute; left: 13px; width: 17px; height: 17px; color: var(--muted); pointer-events: none; }
+.notes-search-input { width: 100%; height: 42px; border: 1px solid var(--hair2); border-radius: 11px; padding: 0 14px 0 38px; background: var(--field); outline: none; font-size: 15px; -webkit-appearance: none; appearance: none; }
+.notes-search-input::placeholder { color: var(--muted); }
+.notes-search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); background: var(--card); }
+.notes-results { position: absolute; top: 46px; left: 0; right: 0; background: var(--card); border: 1px solid var(--hair); border-radius: 12px; box-shadow: 0 12px 40px -12px rgba(0,0,0,.35); overflow: hidden auto; max-height: 320px; z-index: 6; padding: 4px; }
+.notes-results button { display: flex; width: 100%; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 10px; border: 0; background: none; text-align: left; border-radius: 8px; color: var(--ink); }
+.notes-results button:hover, .notes-results button.sel { background: var(--accent-soft); }
+.notes-results small, .notes-results-empty { color: var(--muted); white-space: nowrap; }
+.notes-results-empty { padding: 10px 12px; white-space: normal; }
+.notes-r-name { font-weight: 600; }
+.notes-start-foot { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; font-size: 12.5px; min-height: 24px; }
+.notes-foot-label { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+
+/* sections */
+.notes-section { min-width: 0; }
+.notes-section-head { display: flex; align-items: baseline; gap: 8px; margin: 0 2px 10px; }
+.notes-section-head h2 { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.notes-count { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.notes-empty .empty { padding: 6px 0 4px; }
+.notes-empty-action { margin-top: 14px; }
+.notes-loading { display: flex; align-items: center; gap: 10px; padding: 14px 0 6px; font-size: 12.5px; }
+.notes-loading .spinner { width: 14px; height: 14px; }
+
+/* people */
+.notes-who { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.notes-who .spacer { flex: 1; }
+.notes-who-text { min-width: 0; }
+.notes-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--navy, #0b2a3a)); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 12px; letter-spacing: .01em; flex: none; }
+.notes-name, .notes-plink { font-weight: 600; font-size: 14px; letter-spacing: -0.01em; line-height: 1.2; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notes-plink { display: block; max-width: 100%; border: 0; background: none; padding: 0; text-align: left; border-radius: 4px; }
+.notes-plink:hover { color: var(--accent); }
+.notes-plink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.notes-sub { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notes-file { font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.notes-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* in progress: draft cards */
+.notes-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); }
+.notes-draft { display: flex; flex-direction: column; gap: 10px; }
+.notes-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; padding: 10px 12px; background: var(--field); border-radius: var(--r2); }
+.notes-kv { display: flex; flex-direction: column; gap: 1px; min-width: 0; font-size: 12.5px; }
+.notes-kv span { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.notes-kv b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notes-draft .notes-actions { margin-top: auto; padding-top: 2px; }
+
+/* Patient accordion: one compact row until the user opens that patient. */
+.notes-patients { display: flex; flex-direction: column; gap: 9px; }
+.notes-patient { padding: 0; overflow: clip; }
+.notes-patient-summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; min-width: 0; padding: 11px 13px; }
+.notes-patient-summary::-webkit-details-marker { display: none; }
+.notes-patient-summary:hover { background: var(--field); }
+.notes-patient-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--r); }
+.notes-patient-summary .spacer { flex: 1; }
+.notes-chevron { display: inline-flex; color: var(--muted); transition: transform .15s; }
+.notes-chevron .notes-icon { width: 17px; height: 17px; }
+.notes-patient[open] .notes-chevron { transform: rotate(90deg); }
+.notes-patient-body { border-top: 1px solid var(--hair); padding: 6px 13px 13px 57px; }
+.notes-patient-tools { display: flex; justify-content: flex-end; margin: 2px 0 4px; }
+.notes-patient-body .subhead { margin-top: 9px; }
+.notes-alert { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 9px; font-size: 12.5px; }
+.notes-draft-chip { background: rgba(255,159,10,.14); border-color: transparent; color: #8a5300; font-weight: 500; white-space: nowrap; }
+@media (prefers-color-scheme: dark) { .notes-draft-chip { color: #ffc46b; } }
+.notes-list { display: flex; flex-direction: column; }
+.notes-row { display: flex; align-items: center; gap: 10px 12px; padding: 9px 0; border-top: 1px solid var(--hair); flex-wrap: wrap; }
+.notes-row:last-child { padding-bottom: 2px; }
+.notes-row-main { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.notes-row-date { display: flex; align-items: center; gap: 8px; font-weight: 600; flex-wrap: wrap; }
+.notes-ago { font-weight: 400; font-size: 12px; }
+.notes-row .notes-actions { flex: none; }
+.notes-empty-inline { padding: 8px 0 2px; font-size: 12.5px; }
+@media (max-width: 680px) {
+  .notes-patient-summary { flex-wrap: wrap; }
+  .notes-patient-summary .notes-who-text { flex: 1 1 180px; }
+  .notes-patient-summary .spacer { display: none; }
+  .notes-patient-body { padding-left: 13px; }
+}

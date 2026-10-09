@@ -1,0 +1,61 @@
+/* Patients (the directory). Everything is scoped under .patients / .patients-* so nothing leaks into other screens. */
+.patients { container-type: inline-size; max-width: 1240px; }
+
+/* ---- the big search ---- */
+.patients-search { position: relative; max-width: 760px; margin: 4px 0 20px; }
+.patients-glass, .patients-spin { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.patients-glass { width: 18px; height: 18px; color: var(--muted); display: inline-flex; }
+.patients-glass svg { width: 18px; height: 18px; }
+.patients-spin { display: none; }
+.patients-search.busy .patients-glass { display: none; }
+.patients-search.busy .patients-spin { display: block; }
+.patients-field { width: 100%; height: 46px; border-radius: 13px; border: 1px solid var(--hair2); background: var(--card); padding: 0 44px 0 42px; font-size: 17px; letter-spacing: -0.01em; outline: none; box-shadow: var(--shadow); -webkit-appearance: none; appearance: none; transition: border-color .12s, box-shadow .12s; }
+.patients-field::placeholder { color: var(--muted); }
+.patients-field::-webkit-search-cancel-button, .patients-field::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.patients-field:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.patients-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; border: 0; background: var(--field); color: var(--muted); display: grid; place-items: center; padding: 0; }
+.patients-clear svg { width: 12px; height: 12px; }
+.patients-clear:hover { color: var(--ink); background: var(--hair2); }
+.patients-kbd { font-size: 12px; white-space: nowrap; }
+
+/* ---- recent strip ---- */
+.patients-label { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 2px; }
+.patients-recent { margin-bottom: 20px; }
+.patients-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+.patients-recent-empty { font-size: 12.5px; padding: 2px 2px; }
+.patients-recent-card { display: flex; align-items: center; gap: 10px; padding: 7px 14px 7px 7px; border-radius: 12px; border: 1px solid var(--hair); background: var(--card); box-shadow: var(--shadow); text-align: left; min-width: 0; max-width: 100%; transition: background .12s, border-color .12s; }
+.patients-recent-card:hover { background: var(--field); border-color: var(--hair2); }
+.patients-recent-card:active { background: var(--accent-soft); border-color: var(--accent); }
+.patients-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--navy)); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 12px; flex: none; }
+.patients-recent-text { display: flex; flex-direction: column; min-width: 0; }
+.patients-recent-name { font-weight: 600; font-size: 13px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.patients-recent-sub { font-size: 11.5px; color: var(--muted); white-space: nowrap; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+/* ---- results card: the table bleeds to the card's edges ---- */
+.patients-results { padding: 12px 0 2px; }
+.patients-results > .card-head { padding: 0 16px; margin-bottom: 6px; }
+.patients-count { font-size: 12.5px; }
+.patients-sort { flex: none; }
+.patients-body { min-height: 72px; }
+.patients-body > .loading { padding: 20px 16px; }
+.patients-empty-text { max-width: 440px; margin: 0 auto; line-height: 1.45; }
+.patients-scroll { overflow-x: auto; }
+.patients-table { min-width: 0; }
+.patients-table th, .patients-table td { white-space: nowrap; }
+.patients-table th:first-child, .patients-table td:first-child { padding-left: 16px; }
+.patients-table th:last-child, .patients-table td:last-child { padding-right: 16px; }
+.patients-table td { padding: 8px 10px; vertical-align: middle; }
+.patients-table tbody tr:last-child td { border-bottom: 0; }
+.patients-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.patients-table th.num { text-align: right; }
+.patients-table .patients-name { font-weight: 600; }
+.patients-dob { font-size: 12.5px; }
+.patients-ago { color: var(--muted); font-size: 12px; margin-left: 8px; }
+.patients-mark { background: rgba(255, 204, 0, .38); color: inherit; border-radius: 3px; padding: 0 1px; margin: 0 -1px; }
+@media (prefers-color-scheme: dark) { .patients-mark { background: rgba(255, 214, 10, .28); } }
+
+/* When a patient is open the storyboard takes a column; drop the least important columns before scrolling. */
+@container (max-width: 780px) {
+  .patients-table .patients-col-first { display: none; }
+  .patients-ago { display: none; }
+}

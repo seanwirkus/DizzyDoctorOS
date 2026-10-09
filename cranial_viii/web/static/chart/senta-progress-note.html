@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senta Clinic — Division of Neurology/Otoneurology Progress Note</title>
+<style>
+/* =====================================================================
+   SENTA CLINIC — 4-Page Clinical Progress Note Replica
+   Exact 1:1 match to Senta Clinic Otoneurology EMR / paper chart
+   ===================================================================== */
+:root {
+  --ink: #111;
+  --muted: #333;
+  --field: #dbe5f7;
+  --field-focus: #c5d6f3;
+  --rule: #222;
+  --table-border: #444;
+  --page-w: 8.5in;
+  --page-h: 11in;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #52565e; font-family: Arial, Helvetica, "Liberation Sans", sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; gap: .6rem; align-items: center; justify-content: center; flex-wrap: wrap;
+  padding: .6rem 1rem; background: rgba(22, 24, 29, 0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid #000; color: #e8eaee; font-size: 13px;
+}
+.toolbar button, .toolbar label.btn {
+  font: 600 12.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color: #fff; background: #2563eb; border: 0; border-radius: 6px; padding: .5rem .85rem;
+  cursor: pointer; transition: background .15s, transform .1s;
+}
+.toolbar button:hover, .toolbar label.btn:hover { background: #1d4ed8; }
+.toolbar button:active { transform: translateY(1px); }
+.toolbar .ghost { background: #374151; }
+.toolbar .ghost:hover { background: #4b5563; }
+.toolbar .success { background: #059669; }
+.toolbar .success:hover { background: #047857; }
+.toolbar input[type=file] { display: none; }
+.toolbar .note { opacity: .8; font-size: 12px; margin-left: .5rem; }
+
+/* ---------- Page Container ---------- */
+.stack { display: flex; flex-direction: column; align-items: center; gap: .35in; padding: .4in 0 1in; }
+.page {
+  position: relative; width: var(--page-w); height: var(--page-h); background: #fff; overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.4); page-break-after: always; break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+/* ---------- Inputs & Checkboxes ---------- */
+.f {
+  font: inherit; color: inherit; background: var(--field); border: 0; outline: 0;
+  padding: 0 .04in; height: 1.3em; vertical-align: baseline; border-radius: 0;
+}
+.f:focus { background: var(--field-focus); }
+.f.u { border-bottom: .6px solid var(--ink); }
+textarea.f {
+  display: block; resize: none; overflow: hidden; height: auto; line-height: 1.25;
+  padding: .02in .04in; white-space: pre-wrap;
+}
+
+.cb { display: inline-flex; align-items: baseline; gap: .25em; cursor: pointer; white-space: nowrap; user-select: none; }
+.cb input { position: absolute; opacity: 0; width: 0; height: 0; }
+.cb .bx { display: inline-block; min-width: 1.45em; letter-spacing: -.02em; font-family: monospace, sans-serif; font-size: 0.95em; }
+.cb .bx::before { content: "[\2009\2009\2009]"; }
+.cb input:checked + .bx::before { content: "[\2713]"; font-weight: bold; }
+.cb input:focus-visible + .bx { outline: 1px dotted #2563eb; }
+
+/* ---------- Typography & Utility ---------- */
+.b { font-weight: 700; }
+.row { display: flex; align-items: baseline; }
+.lbl { font-size: 6.8pt; margin-right: .08in; }
+.pageno { position: absolute; right: .25in; bottom: .15in; font-size: 7pt; }
+
+/* ---------- Page 2, 3, 4 Top Header Bar ---------- */
+.page-hdr-bar {
+  position: absolute; top: .28in; left: .4in; right: .4in; height: .32in;
+  border: 1px solid var(--ink); display: flex; align-items: center; padding: 0 .15in;
+  font-size: 8pt; font-weight: 700; gap: .4in;
+}
+.page-hdr-bar .field { display: flex; align-items: baseline; gap: .08in; }
+.page-hdr-bar .f { font-size: 8.5pt; font-weight: 700; }
+
+/* =====================================================================
+   PAGE 1 STYLES
+   ===================================================================== */
+#page-1 .rail { position: absolute; left: .27in; top: .27in; width: 1.42in; bottom: .25in; }
+#page-1 .logo { display: block; width: 1.18in; height: 2.08in; object-fit: cover; object-position: 52% 50%; }
+#page-1 .roster { margin-top: .07in; font-size: 4.6pt; line-height: 1.24; color: var(--muted); }
+#page-1 .roster p + p { margin-top: .07in; }
+#page-1 .conditions { position: absolute; top: 6.98in; left: 0; list-style: none; font-size: 5.4pt; line-height: 1.5; color: var(--muted); }
+#page-1 .rail-foot { position: absolute; top: 9.18in; left: 0; font-style: normal; font-size: 5.5pt; line-height: 1.5; font-weight: 700; }
+#page-1 .rail-foot .n { font-weight: 400; }
+#page-1 .vrule { position: absolute; left: 1.74in; top: 6.62in; bottom: .18in; border-left: .6px solid var(--rule); }
+
+#page-1 .body { position: absolute; left: 1.86in; top: .27in; width: 6.12in; bottom: .25in; font-size: 7.3pt; line-height: 1.42; }
+#page-1 .masthead { display: flex; justify-content: space-between; align-items: flex-start; }
+#page-1 .masthead h1 { font-size: 14.5pt; font-weight: 900; letter-spacing: .015em; line-height: 1.05; }
+#page-1 .masthead .div { font-size: 9.6pt; letter-spacing: .01em; line-height: 1.2; }
+#page-1 .masthead .drs { text-align: right; font-size: 10.3pt; line-height: 1.2; }
+
+#page-1 .idrow { margin-top: .1in; }
+#page-1 .idrow + .idrow { margin-top: .06in; }
+#page-1 .visit { margin-top: .11in; }
+#page-1 .grid4 { display: grid; grid-template-columns: 1.66in 1.6in 1.6in 1.26in; }
+#page-1 .cc { margin-top: .17in; font-size: 6.4pt; line-height: 1.25; }
+#page-1 .cc textarea.f { width: 96%; height: .62in; font-size: 6.4pt; }
+#page-1 .cc .pmd textarea.f { height: .32in; }
+#page-1 .cc .col1 .f { width: 96%; }
+
+#page-1 .hpi-line { margin-top: .12in; }
+#page-1 .hpi-line .f.age { width: .32in; text-align: center; }
+#page-1 .hpi-line .hx { flex: 1; width: auto; }
+#page-1 .allergy-val { font-size: 10.5pt; width: 100%; height: 1.3em; margin-top: .01in; }
+#page-1 .two { display: grid; grid-template-columns: 4.38in 1.74in; margin-top: .02in; }
+#page-1 textarea.f.hpi-box { width: 4.3in; height: 2.66in; font-size: 7.1pt; }
+#page-1 .meds-lbl { margin-top: .12in; }
+#page-1 textarea.f.meds { width: 1.72in; height: 3.05in; font-size: 6.9pt; line-height: 1.25; }
+
+#page-1 .sec { position: absolute; left: 0; right: 0; font-size: 7.2pt; line-height: 1.17; }
+#page-1 .sec .f { height: 1.15em; }
+#page-1 .sec-dizzy { top: 6.55in; }
+#page-1 .sec-hear { top: 8.8in; }
+#page-1 .cols { display: grid; grid-template-columns: 3.26in 2.86in; }
+#page-1 .sec-dizzy .cols > div:first-child { line-height: 1.4; }
+#page-1 .sec .ln { font-weight: 700; }
+#page-1 .sec .ln .f { width: 2.1in; font-weight: 400; }
+#page-1 .sec .ind { padding-left: .02in; }
+#page-1 .sp { display: inline-block; width: .12in; }
+#page-1 .contd { position: absolute; left: 4.0in; top: .02in; width: 2.1in; }
+#page-1 .contd .f { display: block; width: 100%; font-size: 9.6pt; height: 1.25em; }
+#page-1 .contd .f + .f { margin-top: .01in; }
+
+/* =====================================================================
+   PAGE 2 STYLES
+   ===================================================================== */
+#page-2 .body { position: absolute; left: .4in; right: .4in; top: .68in; bottom: .25in; font-size: 7.1pt; line-height: 1.25; }
+#page-2 .sec-block { margin-bottom: .08in; }
+#page-2 .sec-title { font-size: 7.5pt; font-weight: 700; margin-bottom: .02in; }
+#page-2 .two-cols { display: grid; grid-template-columns: 4.8in 2.9in; gap: .15in; }
+#page-2 .col-left { display: flex; flex-direction: column; }
+#page-2 .col-right { border-left: 1px solid var(--rule); padding-left: .12in; }
+#page-2 .labs-box { border: 1px solid var(--ink); padding: .06in; margin-top: .05in; height: 3.8in; }
+#page-2 .labs-box textarea.f { width: 100%; height: 3.5in; font-size: 7.0pt; line-height: 1.2; }
+
+/* =====================================================================
+   PAGE 3 STYLES (Exam Grid & Goggle Study)
+   ===================================================================== */
+#page-3 .body { position: absolute; left: .4in; right: .4in; top: .68in; bottom: .25in; font-size: 6.8pt; line-height: 1.2; }
+#page-3 .exam-subhead { font-size: 6.7pt; font-weight: 700; margin-bottom: .04in; }
+#page-3 .vitals-bar {
+  display: flex; border: 1px solid var(--ink); padding: .03in .06in; margin-bottom: .06in;
+  font-size: 7.0pt; font-weight: 700; gap: .1in; align-items: baseline;
+}
+#page-3 .vitals-bar .f { width: .36in; font-weight: 700; text-align: center; }
+
+#page-3 table.exam-tbl { width: 100%; border-collapse: collapse; font-size: 6.6pt; line-height: 1.15; }
+#page-3 table.exam-tbl th, #page-3 table.exam-tbl td { border: .5px solid #555; padding: .01in .04in; vertical-align: middle; }
+#page-3 table.exam-tbl th { background: #f0f0f0; font-weight: 700; text-align: left; }
+#page-3 table.exam-tbl td.chk-cell { width: .32in; text-align: center; padding: 0; }
+#page-3 table.exam-tbl td.chk-cell .cb { justify-content: center; }
+#page-3 table.exam-tbl td.pos-cell .f { width: 100%; height: 1.15em; font-size: 6.6pt; }
+
+#page-3 .goggle-section { margin-top: .06in; border-top: 1px solid var(--ink); padding-top: .04in; }
+#page-3 .goggle-header { font-size: 7.5pt; font-weight: 700; }
+#page-3 .goggle-desc { font-size: 6.3pt; color: var(--muted); margin-bottom: .04in; }
+#page-3 .goggle-grid { display: grid; grid-template-columns: 4.8in 2.9in; gap: .15in; font-size: 6.8pt; line-height: 1.25; }
+
+/* =====================================================================
+   PAGE 4 STYLES (Imaging, Impression/Plan, Referrals, Signatures)
+   ===================================================================== */
+#page-4 .body { position: absolute; left: .4in; right: .4in; top: .68in; bottom: .25in; font-size: 7.2pt; line-height: 1.3; }
+#page-4 table.studies-tbl { width: 100%; border-collapse: collapse; font-size: 7.0pt; margin-bottom: .08in; }
+#page-4 table.studies-tbl th, #page-4 table.studies-tbl td { border: .5px solid #555; padding: .02in .05in; }
+#page-4 table.studies-tbl th { font-weight: 700; text-align: left; }
+#page-4 table.studies-tbl .f { width: 100%; }
+
+#page-4 .imp-section { margin-bottom: .08in; }
+#page-4 textarea.f.imp-box { width: 100%; height: 3.3in; font-size: 7.2pt; line-height: 1.28; }
+
+#page-4 .encounter-statement { font-size: 6.8pt; color: #222; margin: .06in 0; line-height: 1.25; }
+#page-4 .plan-grid { font-size: 7.1pt; line-height: 1.35; margin: .06in 0; }
+#page-4 .appt-row { margin-top: .06in; font-weight: 700; }
+#page-4 .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .2in; margin-top: .04in; }
+
+#page-4 .sig-section { margin-top: .12in; }
+#page-4 .sig-title { font-size: 7.5pt; font-weight: 700; margin-bottom: .04in; }
+#page-4 .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .3in; font-size: 7.0pt; line-height: 1.8; }
+#page-4 .sig-line { border-bottom: .6px solid #444; width: 2.1in; display: inline-block; vertical-align: middle; margin-left: .05in; }
+
+/* ---------- Print Media Override ---------- */
+@page { size: letter; margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  .toolbar { display: none !important; }
+  .stack { display: block; padding: 0; }
+  .page { box-shadow: none; }
+  .f, .f:focus { background: transparent !important; }
+  .f::placeholder { color: transparent; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar" role="toolbar" aria-label="Chart actions">
+  <button id="btn-print" type="button">🖨️ Print / Save as PDF</button>
+  <button id="btn-sample" type="button" class="success">📋 Load Sample Patient (Debora Elias)</button>
+  <button id="btn-export" type="button" class="ghost">Export JSON</button>
+  <label class="btn ghost" for="file-import">Import JSON</label>
+  <input id="file-import" type="file" accept="application/json,.json">
+  <button id="btn-clear" type="button" class="ghost">Clear Chart</button>
+  <span class="note">100% Offline · Letter Size (8.5×11) · No PHI stored on server or browser disk</span>
+</div>
+
+<form id="chart" class="stack" autocomplete="off" spellcheck="true" onsubmit="return false">
+
+<!-- ===================================================================
+     PAGE 1
+     =================================================================== -->
+<section class="page" id="page-1" aria-label="Page 1 of 4">
+  <aside class="rail">
+    <img class="logo" src="data:image/webp;base64,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" alt="Senta Clinic Division of Neurology / Otoneurology">
+
+    <div class="roster">
+      <p><strong>Neurology/Otoneurology</strong><br>
+        Ian M. Purcell, M.D., Ph.D.<br>
+        Monali Patel, M.D.<br>
+        Touraj Yari, MSPA, PA-C<br>
+        Jake R. Perkins, MPAP, PA-C<br>
+        Emily J. Jairam, MHS, PA-C<br>
+        Carter Copeland, MPAS, PA-C<br>
+        Melanie Glover, MPAS, PA-C<br>
+        Haleigh Boe, MSPA, PA-C</p>
+      <p><strong>Neurosurgery</strong><br>
+        Sanjay Ghosh, M.D.<br>
+        Scott F. Leary, M.D.</p>
+      <p><strong>Neurotology/Skull Base Surgery</strong><br>
+        Michael J. O'Leary, M.D.</p>
+      <p><strong>Neuro-Ophthalmology</strong><br>
+        Kimberly Cockerham, M.D.</p>
+      <p><strong>Otolaryngology/<br>Head and Neck Surgery</strong><br>
+        Perry T. Mansfield, M.D.<br>
+        Brian H. Weeks, M.D.</p>
+    </div>
+
+    <ul class="conditions">
+      <li>Ataxia</li><li>Balance Disorders</li><li>Balance Rehabilitation</li><li>Hearing Loss</li>
+      <li>Headache</li><li>Migraine</li><li>Migraine Vertigo</li><li>Otoneurology Presbyastasis</li>
+      <li>Tinnitus</li><li>Trigeminal Neuralgia Vertigo</li><li>Vestibular Rehabilitation</li>
+      <li>Vestibular Testing</li><li>Vestibulopathies</li>
+    </ul>
+
+    <address class="rail-foot">
+      Ian Purcell, M.D., Ph.D.<br>
+      Monali Patel, M.D.<br>
+      <span class="n">Phone: (858) 223 2172<br>
+      Fax: (858) 682 2205</span><br><br>
+      7625 Mesa College<br>
+      Drive, Suite 200A<br>
+      San Diego, CA 92111
+    </address>
+  </aside>
+
+  <div class="vrule" aria-hidden="true"></div>
+
+  <main class="body">
+    <header class="masthead">
+      <div>
+        <h1>SENTA CLINIC</h1>
+        <div class="div">DIVISION OF NEUROLOGY/OTONEUROLOGY</div>
+      </div>
+      <div class="drs">Ian Purcell, M.D., Ph.D.<br>Monali Patel, M.D.</div>
+    </header>
+
+    <div class="row idrow">
+      <span class="lbl">Name</span>
+      <input class="f big" id="pt_name" name="pt_name" style="width:3.1in" placeholder="Last, First" aria-label="Patient Name">
+      <span style="margin-left:auto" class="lbl">Date:</span>
+      <input class="f" id="visit_date" name="visit_date" style="width:1.06in;font-weight:700" placeholder="MM/DD/YYYY" aria-label="Visit Date">
+    </div>
+    <div class="row idrow">
+      <span class="lbl">DOB:</span>
+      <input class="f" id="pt_dob" name="pt_dob" style="width:1.2in;font-weight:700" placeholder="MM/DD/YYYY" aria-label="Date of Birth">
+    </div>
+
+    <div class="visit">
+      <div class="b title">Neurology - Balance Disorders:</div>
+      <div class="grid4">
+        <label class="cb"><input type="checkbox" name="vt_consult"><span class="bx"></span>Consult</label>
+        <label class="cb"><input type="checkbox" name="vt_eval"><span class="bx"></span>Evaluation</label>
+        <label class="cb"><input type="checkbox" name="vt_progress"><span class="bx"></span>Progress Note</label>
+        <label class="cb"><input type="checkbox" name="vt_urgent"><span class="bx"></span>Urgent Add-On</label>
+      </div>
+    </div>
+
+    <div class="cc grid4">
+      <div class="col1">
+        <div>Consult requested by:</div>
+        <input class="f" name="consult_by" aria-label="Consult requested by">
+        <div class="pmd" style="margin-top:.1in">
+          <div>PMD:</div>
+          <textarea class="f fit" name="pmd" rows="2" aria-label="Primary Physician and Phone"></textarea>
+        </div>
+      </div>
+      <div><div>CC:</div><textarea class="f fit" name="cc_1" aria-label="CC Column 1"></textarea></div>
+      <div><div>CC:</div><textarea class="f fit" name="cc_2" aria-label="CC Column 2"></textarea></div>
+      <div><div>CC:</div><textarea class="f fit" name="cc_3" aria-label="CC Column 3"></textarea></div>
+    </div>
+
+    <div class="grid4 hpi-line" style="grid-template-columns:4.86in 1.26in">
+      <div>
+        <div class="row">
+          <span class="b">HPI:</span>&nbsp;Briefly, patient is a&nbsp;
+          <input class="f u age" id="pt_age" name="pt_age" aria-label="Age">&nbsp;year old&nbsp;
+          <label class="cb"><input type="checkbox" name="sex_m" data-group="sex"><span class="bx"></span>Male</label>&nbsp;
+          <label class="cb"><input type="checkbox" name="sex_f" data-group="sex"><span class="bx"></span>Female with a history of:</label>&nbsp;
+          <input class="f hx" name="pmhx_brief" aria-label="Brief history">
+        </div>
+        <div class="row">
+          Chief Complaint:&nbsp;<input class="f" name="chief_complaint" style="width:1.65in" aria-label="Chief complaint">
+          <span style="margin-left:.28in">Date of onset:&nbsp;</span><input class="f" name="onset" style="width:1in" aria-label="Date of onset">
+        </div>
+      </div>
+      <div>
+        <div class="row">Allergies:&nbsp;<label class="cb"><input type="checkbox" name="nkda"><span class="bx"></span>NKDA</label></div>
+        <input class="f allergy-val" name="allergies" aria-label="Allergies">
+      </div>
+    </div>
+
+    <div class="two">
+      <div><textarea class="f fit hpi-box" name="hpi" aria-label="History of present illness"></textarea></div>
+      <div>
+        <div class="meds-lbl">Medications:</div>
+        <textarea class="f fit meds" name="medications" aria-label="Medications"></textarea>
+      </div>
+    </div>
+
+    <!-- DIZZINESS SECTION -->
+    <section class="sec sec-dizzy" aria-label="Dizziness and lack of coordination">
+      <div class="contd">
+        <input class="f" name="dz_note_1" aria-label="Section note line 1">
+        <input class="f" name="dz_note_2" aria-label="Section note line 2">
+      </div>
+      <div class="b">
+        <label class="cb"><input type="checkbox" name="dz_present"><span class="bx"></span>DIZZINESS AND LACK OF COORDINATION</label>&nbsp;
+        <label class="cb" style="font-weight:400"><input type="checkbox" name="dz_denies"><span class="bx"></span>Patient Denies</label>
+      </div>
+      <div class="cols">
+        <div>
+          <div class="ln">Date of Onset: <input class="f" name="dz_onset"></div>
+          <div class="ln">Frequency: <input class="f" name="dz_freq"></div>
+          <div class="b">Associated with:</div>
+          <div class="ind"><label class="cb" style="width:1.18in"><input type="checkbox" name="dz_a_vertigo"><span class="bx"></span>Vertigo</label><label class="cb"><input type="checkbox" name="dz_a_chronic"><span class="bx"></span>Chronic baseline disequilibrium</label></div>
+          <div class="ind"><label class="cb" style="width:1.18in"><input type="checkbox" name="dz_a_diseq"><span class="bx"></span>Disequilibrium</label><label class="cb"><input type="checkbox" name="dz_a_ha"><span class="bx"></span>Headache</label></div>
+          <div class="ind"><label class="cb" style="width:1.18in"><input type="checkbox" name="dz_a_attacks"><span class="bx"></span>Attacks</label><label class="cb"><input type="checkbox" name="dz_a_tinnitus"><span class="bx"></span>Tinnitus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_a_hl"><span class="bx"></span>Hearing loss/fluctuation</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_a_fullness"><span class="bx"></span>Aural fullness</label><span class="sp"></span>
+            <label class="cb"><input type="checkbox" name="dz_af_as"><span class="bx"></span>AS</label>
+            <label class="cb"><input type="checkbox" name="dz_af_ad"><span class="bx"></span>AD</label>
+            <label class="cb"><input type="checkbox" name="dz_af_au"><span class="bx"></span>AU</label></div>
+          <div class="b">Symptom Course:</div>
+          <div class="ind"><label class="cb" style="width:.9in"><input type="checkbox" name="dz_c_parox"><span class="bx"></span>Paroxysmal</label><label class="cb"><input type="checkbox" name="dz_c_chronic"><span class="bx"></span>Chronic</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_c_stable"><span class="bx"></span>Stable</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_c_worse"><span class="bx"></span>Worsening</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_c_improve"><span class="bx"></span>Improving</label></div>
+          <div class="b">Symptoms occur if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_o_sit"><span class="bx"></span>Sitting</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_o_supine"><span class="bx"></span>Supine</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_o_stand"><span class="bx"></span>Standing</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_o_walk"><span class="bx"></span>Walking</label></div>
+          <div class="b">Duration:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_d_sec"><span class="bx"></span>Last seconds</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_d_min"><span class="bx"></span>Minutes</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_d_hr"><span class="bx"></span>Hours</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dz_d_day"><span class="bx"></span>Days</label></div>
+        </div>
+        <div>
+          <div class="b">Worse with:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_stand"><span class="bx"></span>Standing</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_walk"><span class="bx"></span>Walking</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_dark"><span class="bx"></span>Walking in dark</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_trans"><span class="bx"></span>Trans. to standing from sitting or supine positions</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_pitch"><span class="bx"></span>Pitching head up/down</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_yaw"><span class="bx"></span>Yaw to left or right</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_supine"><span class="bx"></span>Lying supine in bed</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_stress"><span class="bx"></span>Stress/fatigue</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_okn"><span class="bx"></span>Optokinetic hypersensitivity</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_w_accel"><span class="bx"></span>Are high gain head accel. in nonspecific directions</label></div>
+          <div class="b">Symptoms better if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_b_sit"><span class="bx"></span>Sit</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_b_supine"><span class="bx"></span>Lie supine</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_b_still"><span class="bx"></span>Hold head still in a neutral position</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_b_resolves"><span class="bx"></span>Resolves on own</label></div>
+          <div class="ind row"><label class="cb"><input type="checkbox" name="dz_b_meds"><span class="bx"></span>Take Medications:</label>&nbsp;<input class="f" name="dz_b_meds_txt" style="flex:1"></div>
+          <div class="ind row"><label class="cb"><input type="checkbox" name="dz_b_other"><span class="bx"></span>Other relieving factors:</label>&nbsp;<input class="f" name="dz_b_other_txt" style="flex:1"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="dz_b_none"><span class="bx"></span>No clear relieving or exacerbating factors</label></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEARING LOSS SECTION -->
+    <section class="sec sec-hear" aria-label="Hearing loss">
+      <div class="b">
+        <label class="cb"><input type="checkbox" name="hl_present"><span class="bx"></span>HEARING LOSS</label>&nbsp;
+        <label class="cb" style="font-weight:400"><input type="checkbox" name="hl_denies"><span class="bx"></span>Patient Denies</label>
+      </div>
+      <div class="cols">
+        <div>
+          <div class="ln">Date of onset: <input class="f" name="hl_onset"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_r" data-group="hlside"><span class="bx"></span>Right</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_l" data-group="hlside"><span class="bx"></span>Left</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_b" data-group="hlside"><span class="bx"></span>Bilateral</label></div>
+          <div class="b">Affects ADL's:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_adl_mild" data-group="hladl"><span class="bx"></span>Mild</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_adl_mod" data-group="hladl"><span class="bx"></span>Moderate</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_adl_sev" data-group="hladl"><span class="bx"></span>Severe</label></div>
+          <div class="b">Symptom Course:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_c_parox"><span class="bx"></span>Paroxysmal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_c_chronic"><span class="bx"></span>Chronic</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_c_stable"><span class="bx"></span>Stable</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_c_worse"><span class="bx"></span>Worsening</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_c_improve"><span class="bx"></span>Improving</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_c_attacks"><span class="bx"></span>Attacks</label></div>
+          <div class="b">Attacks Associated with:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_a_vertigo"><span class="bx"></span>Vertigo</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_a_diseq"><span class="bx"></span>Disequilibrium</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_a_ha"><span class="bx"></span>Headache</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_a_tinnitus"><span class="bx"></span>Tinnitus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_a_fluct"><span class="bx"></span>Hearing Fluctuation</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_a_fullness"><span class="bx"></span>Aural fullness</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_a_none"><span class="bx"></span>None of the above</label></div>
+        </div>
+        <div>
+          <div style="height:3.5em"></div>
+          <div class="grid4" style="grid-template-columns:1.62in 1.2in">
+            <div class="b">Symptoms better with:</div><div class="b">Worse if:</div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="hl_b_aids"><span class="bx"></span>Wear hearing aids</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="hl_w_noise"><span class="bx"></span>Loud background noise</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="hl_b_other"><span class="bx"></span>Other</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="hl_w_other"><span class="bx"></span>Other</label></div>
+          </div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_none"><span class="bx"></span>No clear relieving or exacerbating factors</label></div>
+          <div class="b">Duration:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="hl_d_sec"><span class="bx"></span>Last seconds</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_d_min"><span class="bx"></span>Minutes</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_d_hr"><span class="bx"></span>Hours</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="hl_d_day"><span class="bx"></span>Days</label></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="pageno">1</div>
+</section>
+
+<!-- ===================================================================
+     PAGE 2
+     =================================================================== -->
+<section class="page" id="page-2" aria-label="Page 2 of 4">
+  <div class="page-hdr-bar">
+    <div>Page 2 of 4</div>
+    <div class="field">Patient Name: <input class="f sync-name" name="p2_name" style="width:2.4in"></div>
+    <div class="field">DOB: <input class="f sync-dob" name="p2_dob" style="width:1.1in"></div>
+    <div class="field">Date: <input class="f sync-date" name="p2_date" style="width:1.0in"></div>
+  </div>
+
+  <main class="body">
+    <!-- TINNITUS -->
+    <div class="sec-block">
+      <div class="sec-title">
+        <label class="cb"><input type="checkbox" name="tin_present"><span class="bx"></span>TINNITUS</label>&nbsp;
+        <label class="cb" style="font-weight:400"><input type="checkbox" name="tin_denies"><span class="bx"></span>Patient Denies</label>
+      </div>
+      <div class="two-cols">
+        <div class="col-left">
+          <div class="row"><span class="lbl b">Date of onset:</span><input class="f" name="tin_onset" style="width:1.8in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_pulsatile"><span class="bx"></span>Pulsatile</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_nonpulsatile"><span class="bx"></span>Non-Pulsatile</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_r"><span class="bx"></span>Right</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_l"><span class="bx"></span>Left</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_bilateral"><span class="bx"></span>Bilateral</label></div>
+          <div class="b">Affects ADL's:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_adl_mild"><span class="bx"></span>Mild</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_adl_mod"><span class="bx"></span>Moderate</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_adl_sev"><span class="bx"></span>Severe</label></div>
+          <div class="b">Symptom Course:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_c_parox"><span class="bx"></span>Paroxysmal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_c_chronic"><span class="bx"></span>Chronic</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_c_stable"><span class="bx"></span>Stable</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_c_worse"><span class="bx"></span>Worsening</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_c_improve"><span class="bx"></span>Improving</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_c_attacks"><span class="bx"></span>Attacks</label></div>
+          <div class="ind">Frequency: &nbsp;<label class="cb"><input type="checkbox" name="tin_f_high"><span class="bx"></span>High</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_f_med"><span class="bx"></span>Med</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_f_low"><span class="bx"></span>Low</label></div>
+          <div class="b">Attacks Associated with:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_a_vertigo"><span class="bx"></span>Vertigo</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_a_diseq"><span class="bx"></span>Disequilibrium</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_a_ha"><span class="bx"></span>Headache</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_a_hl"><span class="bx"></span>Hearing loss</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_a_fluct"><span class="bx"></span>Fluctuation</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_a_fullness"><span class="bx"></span>Aural fullness</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_a_none"><span class="bx"></span>None of the above</label></div>
+        </div>
+        <div>
+          <div class="row" style="gap:.4in">
+            <div>
+              <div class="b">Symptoms better if:</div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_b_aids"><span class="bx"></span>Wear hearing aids</label></div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_b_other"><span class="bx"></span>Other</label></div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_b_none"><span class="bx"></span>No clear relieving factors</label></div>
+            </div>
+            <div>
+              <div class="b">Worse if:</div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_w_noise"><span class="bx"></span>Loud background noise</label></div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_w_other"><span class="bx"></span>Other</label></div>
+              <div class="ind"><label class="cb"><input type="checkbox" name="tin_w_none"><span class="bx"></span>No clear exacerbating factors</label></div>
+            </div>
+          </div>
+          <div class="b" style="margin-top:.04in">Duration:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="tin_d_sec"><span class="bx"></span>Last seconds</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_d_min"><span class="bx"></span>Minutes</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_d_hr"><span class="bx"></span>Hours</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="tin_d_day"><span class="bx"></span>Days</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAIT ATAXIA -->
+    <div class="sec-block">
+      <div class="sec-title">
+        <label class="cb"><input type="checkbox" name="gait_present"><span class="bx"></span>GAIT ATAXIA</label>&nbsp;
+        <label class="cb" style="font-weight:400"><input type="checkbox" name="gait_denies"><span class="bx"></span>Patient Denies</label>
+      </div>
+      <div class="two-cols">
+        <div class="col-left">
+          <div class="row"><span class="lbl b">Date of onset:</span><input class="f" name="gait_onset" style="width:1.8in"></div>
+          <div class="b">Symptom Course:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_c_parox"><span class="bx"></span>Paroxysmal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_c_chronic"><span class="bx"></span>Chronic</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_c_stable"><span class="bx"></span>Stable</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_c_worse"><span class="bx"></span>Worsening</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_c_improve"><span class="bx"></span>Improving</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_c_attacks"><span class="bx"></span>Attacks</label></div>
+          <div class="b">Associated with:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_a_ortho"><span class="bx"></span>Orthostasis</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_a_veer_l"><span class="bx"></span>Veer to left</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_a_veer_r"><span class="bx"></span>Veer to right</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_a_brady"><span class="bx"></span>Bradykinesia</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_a_ha"><span class="bx"></span>Headache</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gait_a_mental"><span class="bx"></span>Mental status decline</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_weak_legs"><span class="bx"></span>Weakness of legs</label>&nbsp;&nbsp;&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="gait_weak_denies"><span class="bx"></span>denies</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_sensory_legs"><span class="bx"></span>Sensory loss in legs</label>&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="gait_sensory_denies"><span class="bx"></span>denies</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_bowel"><span class="bx"></span>Bowel incontinence</label>&nbsp;&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="gait_bowel_denies"><span class="bx"></span>denies</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_bladder"><span class="bx"></span>Bladder incontinence</label>&nbsp;<label class="cb"><input type="checkbox" name="gait_bladder_denies"><span class="bx"></span>denies</label></div>
+        </div>
+        <div>
+          <div class="b">Symptoms better if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_b_cane"><span class="bx"></span>Use Cane</label>&nbsp; Duration: <input class="f" name="gait_cane_dur" style="width:.9in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_b_walker"><span class="bx"></span>Use Walker</label>&nbsp; Duration: <input class="f" name="gait_walker_dur" style="width:.9in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_b_wheelchair"><span class="bx"></span>Wheelchair</label>&nbsp; Duration: <input class="f" name="gait_wheel_dur" style="width:.9in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_b_sit"><span class="bx"></span>Sit or Rest</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_b_none"><span class="bx"></span>No clear relieving factors</label></div>
+          <div class="b" style="margin-top:.04in">Worse if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_w_walk"><span class="bx"></span>Walk</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_w_corners"><span class="bx"></span>Turn corners quickly</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_w_other"><span class="bx"></span>Other</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="gait_w_none"><span class="bx"></span>No clear exacerbating factors</label></div>
+          <div class="b" style="margin-top:.04in">Falls: &nbsp;<label class="cb"><input type="checkbox" name="falls_yes"><span class="bx"></span>Yes</label>&nbsp; <label class="cb"><input type="checkbox" name="falls_no"><span class="bx"></span>No</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADACHE -->
+    <div class="sec-block">
+      <div class="sec-title">
+        <label class="cb"><input type="checkbox" name="ha_present"><span class="bx"></span>HEADACHE</label>&nbsp;
+        <label class="cb" style="font-weight:400"><input type="checkbox" name="ha_denies"><span class="bx"></span>Patient Denies</label>
+      </div>
+      <div class="two-cols">
+        <div class="col-left">
+          <div class="row"><span class="lbl b">Date of onset:</span><input class="f" name="ha_onset" style="width:2.2in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_loc_r"><span class="bx"></span>Right</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_loc_l"><span class="bx"></span>Left-sided</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_loc_global"><span class="bx"></span>Global</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_loc_frontal"><span class="bx"></span>Frontal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_loc_occipital"><span class="bx"></span>Occipital</label></div>
+          <div class="row">
+            <span class="b">Affects ADL's</span>&nbsp;&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_adl_mild"><span class="bx"></span>Mild</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_adl_mod"><span class="bx"></span>Moderate</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_adl_sev"><span class="bx"></span>Severe</label>&nbsp;&nbsp;&nbsp;
+            Scale <input class="f" name="ha_scale" style="width:.4in;text-align:center"> /10
+          </div>
+          <div class="b">Symptom Course:</div>
+          <div class="row">
+            <label class="cb"><input type="checkbox" name="ha_c_parox"><span class="bx"></span>Paroxysmal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_c_chronic"><span class="bx"></span>Chronic</label>&nbsp;&nbsp;
+            Frequency: <input class="f" name="ha_freq_mo" style="width:.4in"> /month &nbsp; <input class="f" name="ha_freq_wk" style="width:.4in"> /week
+          </div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_c_stable"><span class="bx"></span>Stable</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_c_worse"><span class="bx"></span>Worsening</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_c_improve"><span class="bx"></span>Improving</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_c_attacks"><span class="bx"></span>Attacks</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_q_sharp"><span class="bx"></span>Sharp</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_q_dull"><span class="bx"></span>Dull</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_q_throb"><span class="bx"></span>Throbbing</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_q_const"><span class="bx"></span>Constant</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_q_press"><span class="bx"></span>Pressure</label></div>
+          <div class="b">Associated with:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_a_vertigo"><span class="bx"></span>Vertigo</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_diseq"><span class="bx"></span>Disequilibrium</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_scot"><span class="bx"></span>Visual Scotomas</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_aura"><span class="bx"></span>Aura</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_a_hl"><span class="bx"></span>Hearing loss</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_fluct"><span class="bx"></span>Fluctuation</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_fullness"><span class="bx"></span>Aural fullness</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_tin"><span class="bx"></span>Tinnitus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_a_nausea"><span class="bx"></span>Nausea</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_vomit"><span class="bx"></span>Vomiting</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_photo"><span class="bx"></span>Photophobia</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_a_phono"><span class="bx"></span>Phonophobia</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_a_none"><span class="bx"></span>None of the above</label></div>
+        </div>
+        <div>
+          <div class="b">Symptoms worse if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_w_diet"><span class="bx"></span>Dietary</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_w_lights"><span class="bx"></span>Lights</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="ha_w_noise"><span class="bx"></span>Loud background noise</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_w_stress"><span class="bx"></span>Stress / fatigue</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_w_none_rel"><span class="bx"></span>No clear relieving factors</label>&nbsp; <label class="cb"><input type="checkbox" name="ha_w_none_ex"><span class="bx"></span>No clear exacerbating factors</label></div>
+          <div class="b" style="margin-top:.04in">Duration:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_d_sec"><span class="bx"></span>Last seconds</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_d_min"><span class="bx"></span>Minutes</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_d_hr"><span class="bx"></span>Hours</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="ha_d_day"><span class="bx"></span>Days</label></div>
+          <div class="b" style="margin-top:.04in">Symptoms Better if:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_b_meds"><span class="bx"></span>Medications:</label> <input class="f" name="ha_b_meds_txt" style="width:1.8in"></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_b_hydration"><span class="bx"></span>Hydration therapy</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="ha_b_other"><span class="bx"></span>Other:</label> <input class="f" name="ha_b_other_txt" style="width:2.0in"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOWER SECTION: PMHx / ROS / SOCIAL & OTHER/LABS SIDEBAR -->
+    <div style="display:grid; grid-template-columns: 5.1in 2.6in; gap: .15in; margin-top:.06in;">
+      <div>
+        <div class="b">PAST MEDICAL HISTORY / PAST SURGICAL HISTORY:</div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="pmh_questionnaire"><span class="bx"></span>Also see patient questionnaire</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="pmh_no_changes"><span class="bx"></span>No changes in follow-up</label></div>
+        <div style="display:grid; grid-template-columns: 2.5in 2.5in;">
+          <div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_htn"><span class="bx"></span>Hypertension</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_dyslip"><span class="bx"></span>Dyslipidemia</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_dm"><span class="bx"></span>Diabetes</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_stroke"><span class="bx"></span>Stroke</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_migraine"><span class="bx"></span>Migraine headaches</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_cad"><span class="bx"></span>Coronary Artery disease</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_arrhyth"><span class="bx"></span>Cardiac Arrhythmias</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_cervical"><span class="bx"></span>Cervical disease</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_other"><span class="bx"></span>Other</label> <input class="f" name="pmh_other_txt" style="width:1.5in"></div>
+          </div>
+          <div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_trauma"><span class="bx"></span>Hx of head trauma w/ LOC</label>&nbsp;<label class="cb"><input type="checkbox" name="pmh_trauma_denies"><span class="bx"></span>denies</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_ear_inf"><span class="bx"></span>History of severe ear infections</label>&nbsp;<label class="cb"><input type="checkbox" name="pmh_ear_denies"><span class="bx"></span>denies</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_ototoxic"><span class="bx"></span>Hx of ototoxic drug exposure</label>&nbsp;<label class="cb"><input type="checkbox" name="pmh_ototoxic_denies"><span class="bx"></span>denies</label></div>
+            <div class="ind"><label class="cb"><input type="checkbox" name="pmh_lmp"><span class="bx"></span>Last menstrual period:</label> <input class="f" name="pmh_lmp_txt" style="width:.9in"></div>
+          </div>
+        </div>
+
+        <div class="b" style="margin-top:.05in">FAMILY HISTORY:</div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="fh_quest"><span class="bx"></span>Also see patient questionnaire</label>&nbsp;&nbsp;&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="fh_no_changes"><span class="bx"></span>No changes in follow-up</label></div>
+        <div class="ind">Mother: <label class="cb"><input type="checkbox" name="fh_m_alive"><span class="bx"></span>Alive</label> <label class="cb"><input type="checkbox" name="fh_m_dec"><span class="bx"></span>Deceased</label> Age <input class="f" name="fh_m_age" style="width:.3in"> History: <input class="f" name="fh_m_hx" style="width:1.8in"></div>
+        <div class="ind">Father: <label class="cb"><input type="checkbox" name="fh_f_alive"><span class="bx"></span>Alive</label> <label class="cb"><input type="checkbox" name="fh_f_dec"><span class="bx"></span>Deceased</label> Age <input class="f" name="fh_f_age" style="width:.3in"> History: <input class="f" name="fh_f_hx" style="width:1.8in"></div>
+
+        <div class="b" style="margin-top:.05in">SOCIAL HISTORY:</div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="sh_quest"><span class="bx"></span>Also see patient questionnaire.</label>&nbsp;&nbsp;<label class="cb"><input type="checkbox" name="sh_no_changes"><span class="bx"></span>No changes in follow-up</label></div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="sh_denies_all"><span class="bx"></span>Denies Tobacco/ETOH/Drugs</label></div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="sh_tobacco"><span class="bx"></span>Tobacco:</label> <input class="f" name="sh_tobacco_txt" style="width:.8in"> pack/day &nbsp; <label class="cb"><input type="checkbox" name="sh_tob_remote"><span class="bx"></span>Remote</label></div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="sh_etoh"><span class="bx"></span>Etoh</label> <label class="cb"><input type="checkbox" name="sh_etoh_abuse"><span class="bx"></span>Alcohol Abuse history</label> &nbsp; <label class="cb"><input type="checkbox" name="sh_etoh_remote"><span class="bx"></span>Remote</label></div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="sh_drugs"><span class="bx"></span>Drugs</label> &nbsp; <label class="cb"><input type="checkbox" name="sh_drugs_remote"><span class="bx"></span>Remote</label></div>
+
+        <div class="b" style="margin-top:.05in">REVIEW OF SYSTEMS:</div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="ros_quest"><span class="bx"></span>See patient questionnaire dated today</label></div>
+        <div class="ind"><label class="cb"><input type="checkbox" name="ros_neg_10"><span class="bx"></span>Full 10 System ROS performed and (-) except for as mentioned below</label></div>
+      </div>
+
+      <!-- OTHER / LABS RIGHT BOX -->
+      <div>
+        <div class="b">OTHER:</div>
+        <textarea class="f fit" name="other_notes" style="width:100%;height:.75in;font-size:7pt;line-height:1.2;margin-bottom:.06in" placeholder="PMHx/PSHx notes..."></textarea>
+
+        <div class="b">LABS:</div>
+        <div class="labs-box">
+          <textarea class="f fit" name="labs_text" placeholder="(08/07/24) @ Quest&#10;ESR - 2&#10;&#10;(08/28/24) @ Scripps&#10;Mg - 6.8..."></textarea>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="pageno">2</div>
+</section>
+
+<!-- ===================================================================
+     PAGE 3
+     =================================================================== -->
+<section class="page" id="page-3" aria-label="Page 3 of 4">
+  <div class="page-hdr-bar">
+    <div>Page 3 of 4</div>
+    <div class="field">Patient Name: <input class="f sync-name" name="p3_name" style="width:2.4in"></div>
+    <div class="field">DOB: <input class="f sync-dob" name="p3_dob" style="width:1.1in"></div>
+    <div class="field">Date: <input class="f sync-date" name="p3_date" style="width:1.0in"></div>
+  </div>
+
+  <main class="body">
+    <div class="exam-subhead">
+      Otoneurologic Exam: On Exam today, I find (* Note: check or vertical line through normal means item was assessed, slash means not assessed): X means abnormal
+    </div>
+
+    <!-- VITALS BAR -->
+    <div class="vitals-bar">
+      <span>Constitutional</span>
+      <span>BP: <input class="f" name="v_bp" style="width:.6in"></span>
+      <span>HR: <input class="f" name="v_hr" style="width:.32in"></span>
+      <span>RR: <input class="f" name="v_rr" style="width:.3in"></span>
+      <span>Weight: <input class="f" name="v_wt" style="width:.36in"></span>
+      <span>Height: <input class="f" name="v_ht_ft" style="width:.22in"> <input class="f" name="v_ht_in" style="width:.22in"></span>
+      <span>BMI: <input class="f" name="v_bmi" style="width:.45in"></span>
+      <span>Temperature: <input class="f" name="v_temp" style="width:.4in"></span>
+      <span>Pain: <input class="f" name="v_pain" style="width:.28in"> /10</span>
+    </div>
+
+    <!-- PHYSICAL & OTONEUROLOGIC EXAM TABLE -->
+    <table class="exam-tbl">
+      <thead>
+        <tr>
+          <th style="width:1.05in">Category</th>
+          <th style="width:2.2in">Item</th>
+          <th class="chk-cell">Normal</th>
+          <th>Pertinent Positive Findings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>General</td>
+          <td>Appearance is WD / WN / NAD</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_gen_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_gen_pos"></td>
+        </tr>
+        <tr>
+          <td>Head</td>
+          <td>Normocephalic/ Atraumatic</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_head_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_head_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="3">Eyes</td>
+          <td>Fundi visualized no papilledema or hemorrhage</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_eye_fundi_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_eye_fundi_pos"></td>
+        </tr>
+        <tr>
+          <td>Visual fields intact</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_eye_vf_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_eye_vf_pos"></td>
+        </tr>
+        <tr>
+          <td>PERRLA</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_eye_perrla_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_eye_perrla_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">ENT</td>
+          <td>Oropharynx</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_ent_oro_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_ent_oro_pos"></td>
+        </tr>
+        <tr>
+          <td>Tympanic membranes & ear canals w/ microscopy</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_ent_tm_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_ent_tm_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Cardiovascular</td>
+          <td>Regular rate & rhythm</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cv_rrr_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cv_rrr_pos"></td>
+        </tr>
+        <tr>
+          <td>No murmurs or carotid bruits</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cv_murmur_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cv_murmur_pos"></td>
+        </tr>
+        <tr>
+          <td>Lungs</td>
+          <td>Clear to auscultation bilaterally</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_lungs_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_lungs_pos"></td>
+        </tr>
+        <tr>
+          <td>Extremities</td>
+          <td>No clubbing / cyanosis / edema</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_ext_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_ext_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="7">Neurologic</td>
+          <td>Oriented to person / place / time</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_orient_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_orient_pos"></td>
+        </tr>
+        <tr>
+          <td>Intact recent & remote memory</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_mem_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_mem_pos"></td>
+        </tr>
+        <tr>
+          <td>Appropriate mood & affect</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_mood_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_mood_pos"></td>
+        </tr>
+        <tr>
+          <td>Normal attention span/ concentrate</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_att_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_att_pos"></td>
+        </tr>
+        <tr>
+          <td>Normal language functions</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_lang_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_lang_pos"></td>
+        </tr>
+        <tr>
+          <td>Normal fund of knowledge</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_fok_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_fok_pos"></td>
+        </tr>
+        <tr>
+          <td>No neglect or inattention</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_neuro_neglect_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_neuro_neglect_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="8">Cranial Nerves</td>
+          <td>Cranial nerve II</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn2_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn2_pos"></td>
+        </tr>
+        <tr>
+          <td>Cranial nerve III, IV & VI</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn346_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn346_pos"></td>
+        </tr>
+        <tr>
+          <td>Cranial nerve V</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn5_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn5_pos"></td>
+        </tr>
+        <tr>
+          <td>Cranial nerve VII</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn7_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn7_pos"></td>
+        </tr>
+        <tr>
+          <td style="font-size:6.3pt">
+            Cranial nerve VIII &nbsp; Otoneurologic exam<br>
+            <label class="cb"><input type="checkbox" name="ex_cn8_debris"><span class="bx"></span>Keratinous debris</label>
+            <label class="cb"><input type="checkbox" name="ex_cn8_cerumen"><span class="bx"></span>cerumen occluding TM</label>
+          </td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn8_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <input class="f" name="ex_cn8_pos" style="width:2.2in" placeholder="No deficits to finger friction rubs...">
+              <span style="font-size:6.4pt">
+                Weber: <input class="f" name="ex_weber" style="width:.55in">
+                Rinne A>B: <input class="f" name="ex_rinne_ab" style="width:.32in">
+                Rinne B>A: <input class="f" name="ex_rinne_ba" style="width:.32in">
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Cranial nerve IX & X</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn910_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn910_pos"></td>
+        </tr>
+        <tr>
+          <td>Cranial nerve XI</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn11_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn11_pos"></td>
+        </tr>
+        <tr>
+          <td>Cranial nerve XII</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_cn12_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_cn12_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Motor</td>
+          <td>5/5 strength x 4 extremities</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_motor_str_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_motor_str_pos"></td>
+        </tr>
+        <tr>
+          <td>Normal tone throughout</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_motor_tone_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_motor_tone_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Sensory</td>
+          <td>Intact touch / position / vibration</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_sens_tpv_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_sens_tpv_pos"></td>
+        </tr>
+        <tr>
+          <td>Intact pin / temperature</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_sens_pt_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_sens_pt_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Reflexes</td>
+          <td>
+            DTRs symmetric in all 4 extremities
+          </td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_ref_sym_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell" style="font-size:6.3pt">
+            (R) <input class="f" name="r_bi" style="width:.18in">Bi &nbsp;
+            <input class="f" name="r_tri" style="width:.18in">Tri &nbsp;
+            <input class="f" name="r_br" style="width:.18in">BR &nbsp;
+            <input class="f" name="r_pat" style="width:.18in">Pat &nbsp;
+            <input class="f" name="r_ach" style="width:.18in">Ach &nbsp;&nbsp;&nbsp;
+            (L) <input class="f" name="l_bi" style="width:.18in">Bi &nbsp;
+            <input class="f" name="l_tri" style="width:.18in">Tri &nbsp;
+            <input class="f" name="l_br" style="width:.18in">BR &nbsp;
+            <input class="f" name="l_pat" style="width:.18in">Pat &nbsp;
+            <input class="f" name="l_ach" style="width:.18in">Ach
+          </td>
+        </tr>
+        <tr>
+          <td>Toes downgoing bilaterally</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_ref_toes_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_ref_toes_pos"></td>
+        </tr>
+        <tr>
+          <td rowspan="2">Coordination</td>
+          <td>No ataxia on FTN and HTS</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_coord_ataxia_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_coord_ataxia_pos"></td>
+        </tr>
+        <tr>
+          <td>Normal rapid finger movements</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_coord_rfm_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_coord_rfm_pos"></td>
+        </tr>
+        <tr>
+          <td>Gait</td>
+          <td>Normal based gait</td>
+          <td class="chk-cell"><label class="cb"><input type="checkbox" name="ex_gait_norm"><span class="bx"></span></label></td>
+          <td class="pos-cell"><input class="f" name="ex_gait_pos"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- VIDEO INFRARED GOGGLE STUDY -->
+    <div class="goggle-section">
+      <div class="goggle-header">Video Infrared Goggle Study:</div>
+      <div style="font-size:6.8pt; margin:.02in 0">
+        Performed directly on the patient by: <input class="f" name="goggle_performer" style="width:1.5in">
+        &nbsp;&nbsp;Date: <input class="f" name="goggle_date" style="width:1.0in">
+        &nbsp;&nbsp;<label class="cb"><input type="checkbox" name="goggle_chair_report"><span class="bx"></span>See Epley Chair/CRM Chair Report</label>
+      </div>
+      <div class="goggle-desc">
+        Performed to mask visual suppression secondary to balance complaints where a diagnosis of an atypical Nystagmus would allow proper diagnosis, a focal workup, and management of the patient.
+      </div>
+
+      <div class="goggle-grid">
+        <div>
+          <div class="b">Dix-Hallpike Testing:</div>
+          <div class="ind">
+            Head Right: &nbsp;
+            <label class="cb"><input type="checkbox" name="dh_r_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_r_torsion"><span class="bx"></span>Torsional & vertical Nystagmus</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_r_fatigue"><span class="bx"></span>Fatiguing</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_r_latency"><span class="bx"></span>Latency</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_r_atyp"><span class="bx"></span>Atypical</label>
+          </div>
+          <div class="ind">
+            Head Left: &nbsp;&nbsp;&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_l_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_l_torsion"><span class="bx"></span>Torsional & vertical Nystagmus</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_l_fatigue"><span class="bx"></span>Fatiguing</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_l_latency"><span class="bx"></span>Latency</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="dh_l_atyp"><span class="bx"></span>Atypical</label>
+          </div>
+
+          <div class="b" style="margin-top:.04in">Supine Positional testing:</div>
+          <div class="ind">
+            Head Center:
+            <label class="cb"><input type="checkbox" name="sup_c_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_c_lbeat"><span class="bx"></span>Left Beat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_c_rbeat"><span class="bx"></span>Right Beat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_c_down"><span class="bx"></span>Down Beat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_c_up"><span class="bx"></span>Upbeat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_c_atyp"><span class="bx"></span>Atypical</label>
+          </div>
+          <div class="ind">
+            Head Right: &nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_geo"><span class="bx"></span>Geotropic</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_ageo"><span class="bx"></span>Ageotropic</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_down"><span class="bx"></span>Down Beat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_up"><span class="bx"></span>Upbeat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_r_atyp"><span class="bx"></span>Atypical</label>
+          </div>
+          <div class="ind">
+            Head Left: &nbsp;&nbsp;&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_geo"><span class="bx"></span>Geotropic</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_ageo"><span class="bx"></span>Ageotropic</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_down"><span class="bx"></span>Down Beat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_up"><span class="bx"></span>Upbeat</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="sup_l_atyp"><span class="bx"></span>Atypical</label>
+          </div>
+
+          <div class="b" style="margin-top:.04in">Gaze Evoked Study:</div>
+          <div class="ind">
+            Gaze Right: &nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_r_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_r_left"><span class="bx"></span>Left Evoked</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_r_right"><span class="bx"></span>Right Evoked</label>
+          </div>
+          <div class="ind">
+            Gaze Left: &nbsp;&nbsp;&nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_l_norm"><span class="bx"></span>Normal</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_l_left"><span class="bx"></span>Left Evoked</label>&nbsp;
+            <label class="cb"><input type="checkbox" name="gaze_l_right"><span class="bx"></span>Right Evoked</label>
+          </div>
+
+          <div class="b" style="margin-top:.04in">Comments/treatment:</div>
+          <textarea class="f fit" name="goggle_comments" style="width:100%;height:.35in;font-size:6.7pt"></textarea>
+        </div>
+
+        <div>
+          <div class="b">Study Impression:</div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_normal"><span class="bx"></span>Normal Study</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_r_post_bppv"><span class="bx"></span>Right Posterior Canal BPPV</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_l_post_bppv"><span class="bx"></span>Left Posterior Canal BPPV</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_atypical"><span class="bx"></span>Atypical Nystagmus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_r_cupulo"><span class="bx"></span>Right Cupulolithiasis</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_l_cupulo"><span class="bx"></span>Left Cupulolithiasis</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_r_sust"><span class="bx"></span>Right Sustained Nystagmus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_l_sust"><span class="bx"></span>Left Sustained Nystagmus</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_l_lat_bppv"><span class="bx"></span>Left Lateral Canal BPPV</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_r_lat_bppv"><span class="bx"></span>Right Lateral Canal BPPV</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_l_ant_bppv"><span class="bx"></span>Left Anterior Canal BPPV</label></div>
+          <div class="ind"><label class="cb"><input type="checkbox" name="imp_r_ant_bppv"><span class="bx"></span>Right Anterior Canal BPPV</label></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="pageno">3</div>
+</section>
+
+<!-- ===================================================================
+     PAGE 4
+     =================================================================== -->
+<section class="page" id="page-4" aria-label="Page 4 of 4">
+  <div class="page-hdr-bar">
+    <div>Page 4 of 4</div>
+    <div class="field">Patient Name: <input class="f sync-name" name="p4_name" style="width:2.4in"></div>
+    <div class="field">DOB: <input class="f sync-dob" name="p4_dob" style="width:1.1in"></div>
+    <div class="field">Date: <input class="f sync-date" name="p4_date" style="width:1.0in"></div>
+  </div>
+
+  <main class="body">
+    <!-- IMAGING / STUDIES TABLE -->
+    <table class="studies-tbl">
+      <thead>
+        <tr>
+          <th style="width:2.2in">Imaging / Studies</th>
+          <th style="width:.9in">Date</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="f" name="study_1_name" placeholder="MRI Brain w/wo @ Scripps"></td>
+          <td><input class="f" name="study_1_date" placeholder="MM/DD/YY"></td>
+          <td><input class="f" name="study_1_res" placeholder="No acute intracranial abnormality..."></td>
+        </tr>
+        <tr>
+          <td><input class="f" name="study_2_name" placeholder="MRI C-spine w/o @ Scripps"></td>
+          <td><input class="f" name="study_2_date" placeholder="MM/DD/YY"></td>
+          <td><input class="f" name="study_2_res" placeholder="C6-7: Mild-mod right and mild left NFS..."></td>
+        </tr>
+        <tr>
+          <td><input class="f" name="study_3_name" placeholder="MRI L-spine w/o @ Scripps"></td>
+          <td><input class="f" name="study_3_date" placeholder="MM/DD/YY"></td>
+          <td><input class="f" name="study_3_res" placeholder="2 cm posterior right iliac bone sclerotic lesion..."></td>
+        </tr>
+        <tr>
+          <td><input class="f" name="study_4_name"></td>
+          <td><input class="f" name="study_4_date"></td>
+          <td><input class="f" name="study_4_res"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- IMPRESSION / PLAN -->
+    <div class="imp-section">
+      <div class="b" style="font-size:7.5pt; margin-bottom:.03in;">IMPRESSION/PLAN:</div>
+      <textarea class="f fit imp-box" name="impression_plan" placeholder="1) Headaches - Patient consulted with...&#10;2) Query tension headache vs migraine...&#10;3) Sleep disturbance unsp...&#10;4) Myofascial pain syndrome..."></textarea>
+    </div>
+
+    <!-- ENCOUNTER TIME STATEMENT -->
+    <div class="encounter-statement">
+      Total encounter time of <input class="f" name="enc_time_min" style="width:.32in; text-align:center; font-weight:700"> minutes, of which included direct patient counseling; previsit review of records to include imaging studies, outside records and/or laboratory data; ordering and coordinating treatment care/medication management; documentation.<br>
+      Additionally, I spent up to <input class="f" name="enc_addl_time" style="width:.35in"> &nbsp;&nbsp;
+      <label class="cb"><input type="checkbox" name="enc_cb_1"><span class="bx"></span></label>&nbsp;
+      <label class="cb"><input type="checkbox" name="enc_cb_2"><span class="bx"></span></label>
+    </div>
+
+    <!-- PLAN CHECKBOXES -->
+    <div class="plan-grid">
+      <div>
+        <span class="b">PLAN:</span>&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_balance_log"><span class="bx"></span>Balance log</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_ha_log"><span class="bx"></span>HA log</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_fall_prec"><span class="bx"></span>Fall precautions</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_home_ex"><span class="bx"></span>Continue home vis/vest exercises</label>
+      </div>
+      <div style="margin:.02in 0;">
+        <input class="f" name="plan_custom_line" style="width:100%" placeholder="1) D/c'd RISE PT &nbsp;&nbsp;&nbsp;&nbsp; 3) Cont mgmt with Keeran Kumar, MD &nbsp;&nbsp;&nbsp;&nbsp; 5) Reinforced GF diet...">
+      </div>
+      <div>
+        <label class="cb"><input type="checkbox" name="plan_meds"><span class="bx"></span>Medications</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_bc"><span class="bx"></span>Patient advised to use two forms of birth control while on this/these medications.</label>
+      </div>
+      <div class="row" style="margin:.02in 0;">
+        <label class="cb"><input type="checkbox" name="plan_disc_risks"><span class="bx"></span>We discussed the indications / contraindications / adverse affects of</label>&nbsp;
+        <input class="f" name="plan_risks_meds" style="flex:1" placeholder="Ajovy, Voltaren gel, Indomethacin, Lyrica, Flexeril">
+      </div>
+      <div>
+        <label class="cb"><input type="checkbox" name="plan_head_horiz"><span class="bx"></span>Keep head greater than earth horizontal</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_sleep_45"><span class="bx"></span>Sleep head 45 degrees</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="plan_rtc_asap"><span class="bx"></span>Return to clinic ASAP vertigo / <u>worsening</u> symptoms</label>
+      </div>
+      <div>
+        <label class="cb"><input type="checkbox" name="plan_no_drive"><span class="bx"></span>Patient instructed not to drive when experiencing episodes of vertigo or disequilibrium</label>
+      </div>
+      <div>
+        <label class="cb"><input type="checkbox" name="plan_pt"><span class="bx"></span>PT</label>
+      </div>
+
+      <div class="appt-row">
+        Next Appointment: &nbsp;<input class="f" name="next_appt_num" style="width:.35in; text-align:center"> &nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="next_appt_days"><span class="bx"></span>Days</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="next_appt_wks"><span class="bx"></span>Weeks</label>&nbsp;&nbsp;
+        <label class="cb"><input type="checkbox" name="next_appt_mos"><span class="bx"></span>Months</label>
+      </div>
+
+      <div style="margin-top:.05in">
+        <span class="b">Referrals:</span>
+        <div class="ref-grid">
+          <div>
+            Physician: <input class="f" name="ref_1_phys" style="width:2.2in"><br>
+            Specialty: &nbsp;<input class="f" name="ref_1_spec" style="width:2.2in"><br>
+            Diagnosis: <input class="f" name="ref_1_diag" style="width:2.2in">
+          </div>
+          <div>
+            Physician: <input class="f" name="ref_2_phys" style="width:2.2in"><br>
+            Specialty: &nbsp;<input class="f" name="ref_2_spec" style="width:2.2in"><br>
+            Diagnosis: <input class="f" name="ref_2_diag" style="width:2.2in">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:.05in">
+        <span class="b">Imaging/Orders:</span>&nbsp;
+        <input class="f" name="imaging_orders" style="flex:1">
+      </div>
+    </div>
+
+    <!-- PROVIDER SIGNATURE BLOCK -->
+    <div class="sig-section">
+      <div class="sig-title"><u>Provider</u></div>
+      <div class="sig-grid">
+        <div>
+          <div>Ian Purcell, M.D., Ph.D. <span class="sig-line"></span></div>
+          <div>Touraj Yari, MSPA, PA-C <span class="sig-line"></span></div>
+          <div>Emily Jing Jairam, MHS, PA-C <span class="sig-line"></span></div>
+          <div>Melanie Glover, MPAS, PA-C <span class="sig-line"></span></div>
+        </div>
+        <div>
+          <div>Monali Patel, M.D. <span class="sig-line"></span></div>
+          <div>Jake Ryan Perkins, MPAP, PA-C <span class="sig-line"></span></div>
+          <div>Carter Copeland, MPAS, PA-C <span class="sig-line"></span></div>
+          <div>Haleigh Boe, MSPA, PA-C <span class="sig-line"></span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="pageno">4</div>
+</section>
+
+</form>
+
+<script>
+(() => {
+  const form = document.getElementById('chart');
+  let dirty = false;
+
+  const pad = n => String(n).padStart(2, '0');
+  const fmt = d => `${pad(d.getMonth() + 1)}/${pad(d.getDate())}/${d.getFullYear()}`;
+
+  function parseDate(s) {
+    const m = String(s || '').trim().match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2}|\d{4})$/);
+    if (!m) return null;
+    let y = +m[3]; if (y < 100) y += y > (new Date().getFullYear() % 100) ? 1900 : 2000;
+    const d = new Date(y, +m[1] - 1, +m[2]);
+    return d.getMonth() === +m[1] - 1 ? d : null;
+  }
+
+  function fit(el) {
+    if (!el.dataset.base) el.dataset.base = parseFloat(getComputedStyle(el).fontSize);
+    let size = +el.dataset.base;
+    el.style.fontSize = size + 'px';
+    while (el.scrollHeight > el.clientHeight + 1 && size > 5.5) {
+      size -= 0.25; el.style.fontSize = size + 'px';
+    }
+  }
+  const fitAll = () => form.querySelectorAll('textarea.fit').forEach(fit);
+
+  // Sync Name, DOB, Date from Page 1 to Pages 2, 3, 4
+  function syncHeaders() {
+    const name = form.pt_name.value;
+    const dob = form.pt_dob.value;
+    const date = form.visit_date.value;
+
+    form.querySelectorAll('.sync-name').forEach(el => el.value = name);
+    form.querySelectorAll('.sync-dob').forEach(el => el.value = dob);
+    form.querySelectorAll('.sync-date').forEach(el => el.value = date);
+
+    // Calculate age
+    const dobD = parseDate(dob);
+    const refD = parseDate(date) || new Date();
+    if (dobD) {
+      let age = refD.getFullYear() - dobD.getFullYear();
+      if (refD.getMonth() < dobD.getMonth() || (refD.getMonth() === dobD.getMonth() && refD.getDate() < dobD.getDate())) age--;
+      if (age >= 0 && age < 130) form.pt_age.value = age;
+    }
+  }
+
+  function printTitle() {
+    const [last = '', first = ''] = form.pt_name.value.split(',').map(s => s.trim().replace(/[^A-Za-z'\-]/g, ''));
+    const d = parseDate(form.visit_date.value);
+    if (!last) return 'Senta Clinic — Progress Note';
+    return `${last}${first}` + (d ? ` ${pad(d.getMonth() + 1)} ${pad(d.getDate())} ${String(d.getFullYear()).slice(-2)}` : '');
+  }
+
+  function collect() {
+    const data = {};
+    form.querySelectorAll('input[name], textarea[name]').forEach(el => {
+      data[el.name] = el.type === 'checkbox' ? el.checked : el.value;
+    });
+    return { form: 'senta-progress-note-4page', version: 1, data };
+  }
+
+  function restore(obj) {
+    const data = (obj && obj.data) || {};
+    form.querySelectorAll('input[name], textarea[name]').forEach(el => {
+      if (!(el.name in data)) return;
+      if (el.type === 'checkbox') el.checked = !!data[el.name]; else el.value = data[el.name];
+    });
+    syncHeaders();
+    fitAll();
+    dirty = false;
+  }
+
+  // Load sample patient (Debora Elias from PDF)
+  function loadSampleData() {
+    const sample = {
+      // Page 1
+      pt_name: 'Elias, Debora',
+      pt_dob: '10/12/1953',
+      visit_date: '12/23/2025',
+      vt_progress: true,
+      consult_by: 'Self',
+      pmd: 'Gay Walker, MD\n(F): 760-753-8175',
+      cc_1: 'Sandeep Chaudhary, MD\nEndocrinology\nRobert Ziering, MD\nAllergist\nZachary Fellows, MD',
+      cc_2: 'Stephen Dent, MD\nENT\nMarc Lebovits, MD\nENT\nDavies Eye Center',
+      cc_3: 'Michael Smith, MD\nCardiology\nAndre Aung, MD\nNeuro-Ophthalmology\nWilliam Zhu, MD',
+      pt_age: '72',
+      sex_f: true,
+      pmhx_brief: '',
+      chief_complaint: 'Headaches',
+      onset: '2022',
+      allergies: 'Augmentin, CT',
+      hpi: "Ms. Elias is a RHD 72 yo female returning to the clinic today for a f/u regarding headaches, last seen 06/16/25.\n\nPatient consulted with William Zhu, MD (Neurology) who reinitiated patient on Ajovy 225mg/1.5mL which she began on 12/10/25. Patient completed Indomethacin 50mg QD x90 days, and reports overall improvement in headaches within the past month, described as a pressure sensation still occurring daily, rated 3-4/10. She additionally reports she completed occipital NB's with Keeran Kumar, MD on 12/03/25 with mild relief in headaches/occipital neuralgia. She again describes headaches as a pressure/pain primarily in the left>right frontal/temporal region. She attests to associated visual aura, photophobia, and visual fatigue with migraines. Patient also reports she d/c'd therapy with RISE with focus on her cervicalgia/myalgia, however reports she is currently completing myofascial release therapy with Bryan Phillips, LMT. Additionally reports she trialled Baclofen with no clear improvement however reports minimal complaints in bilateral cervicalgia/myalgia at this time. Noncompliant with GF diet. No other focal motor, sensory, or CN deficits reported at this time.\n\n--PA CC reviewed and updated medication list with patient today.",
+      medications: "Budesonide NS QD-BID\nAjovy 225mg/1.5mL\nqmonthly (reinit. 12/10/25)\nLevothyroxine 75mcg T PO QD\nLiothyronine 5mcg T PO QD\nCarvedilol 75mg 1.5T BID\nLosartan 10mg QD\nEzetimibe 10mg T PO QD\nAleve PO QD PRN\nVit B5 PO QD\nMag PO QHS\nAtrovent NS QD\nAzelastine NS QD\nLyrica 50mg BID\n--------T/F Medications--------\nAimovig 70mg/mL, Qulipta 60mg (AE), Botox, Topamax (LOE), Naratriptan (CI), Depakote (LOE), Maxalt (LOE), Nurtec, Cymbalta (LOE), Tizanidine 2mg (AE), Emgality, Gabapentin, Ajovy, Flexeril 10mg T PO",
+      dz_denies: true,
+      dz_note_1: "-- CONT'D --",
+      dz_note_2: "Keeran Kumar, MD",
+      hl_denies: true,
+
+      // Page 2
+      tin_denies: true,
+      gait_denies: true,
+      gait_weak_denies: true,
+      gait_sensory_denies: true,
+      gait_bowel_denies: true,
+      gait_bladder_denies: true,
+      falls_no: true,
+      ha_present: true,
+      ha_onset: ">20 yr hx",
+      ha_loc_r: true,
+      ha_loc_l: true,
+      ha_loc_frontal: true,
+      ha_loc_occipital: true,
+      ha_adl_mod: true,
+      ha_scale: "3-4",
+      ha_c_chronic: true,
+      ha_freq_mo: "QD",
+      ha_freq_wk: "QD",
+      ha_c_worse: true,
+      ha_q_dull: true,
+      ha_q_const: true,
+      ha_q_press: true,
+      ha_a_scot: true,
+      ha_a_aura: true,
+      ha_a_photo: true,
+      ha_w_lights: true,
+      ha_w_stress: true,
+      ha_d_hr: true,
+      ha_d_day: true,
+      ha_b_meds: true,
+      ha_b_meds_txt: "Amitriptyline, Indomethacin",
+      pmh_questionnaire: true,
+      pmh_htn: true,
+      pmh_dyslip: true,
+      pmh_migraine: true,
+      pmh_other: true,
+      pmh_no_changes: true,
+      pmh_trauma_denies: true,
+      pmh_ear_denies: true,
+      pmh_ototoxic_denies: true,
+      fh_quest: true,
+      fh_no_changes: true,
+      sh_quest: true,
+      sh_no_changes: true,
+      sh_denies_all: true,
+      sh_etoh_remote: true,
+      ros_quest: true,
+      other_notes: "PMHx/PSHx: HLD, HTN, chronic migraines, hashimoto's disease (mgmt w/ Sandeep Chaudhary, MD), 2x unspecified left sphenoid procedures (2021, w/ Stephen Dent, MD)",
+      labs_text: "(08/07/24) @ Quest\nESR - 2\n\n(08/28/24) @ Scripps\nMg - 6.8\nVit B1 - 142\nVit B12 - 575\nVit B2 - 20.8\nVit D - 38.5\nBMP - WNL\n\n(1/2/25) @ Quest\nT4, free - 1.9 (H)\nTSH - 0.25 (L)\nT3, free - 4.8 (H)\nCMP - WNL\n\n(2/4/25) @ Quest/Scripps\nVit B2 - <5.0 (L)\nFolate - 13.5\nZinc - 71.9\nVit D - 37.9\nVit C - 47\nCoQ10 - 1.5\nCarotene - 91\nVit B12 - 712\nVit B1 - 185 (H)\nLipid panel - WNL w/ exception of\n  Cholesterol - 231 (H)\n  LDL-Chol - 140 (H)\nCMP - WNL\nTSH - 0.53",
+
+      // Page 3
+      v_bp: "110/57",
+      v_hr: "75",
+      v_rr: "16",
+      v_wt: "141",
+      v_ht_ft: "5",
+      v_ht_in: "2",
+      v_bmi: "25.78",
+      v_temp: "97.4",
+      v_pain: "-",
+      ex_gen_norm: true,
+      ex_gen_pos: "HST (12/23/24) negative for OSA, AHI - 2.7",
+      ex_head_pos: "mild TTP over B/L occipital ridges, traps, rhomboids, cervical paraspinals",
+      ex_eye_fundi_norm: true,
+      ex_eye_vf_norm: true,
+      ex_eye_perrla_norm: true,
+      ex_ent_oro_pos: "Scalloping of tongue",
+      ex_ent_tm_norm: true,
+      ex_cv_rrr_norm: true,
+      ex_cv_rrr_pos: "RRR",
+      ex_cv_murmur_norm: true,
+      ex_lungs_norm: true,
+      ex_ext_norm: true,
+      ex_neuro_orient_norm: true,
+      ex_neuro_mem_norm: true,
+      ex_neuro_mood_norm: true,
+      ex_neuro_att_norm: true,
+      ex_neuro_lang_norm: true,
+      ex_neuro_fok_norm: true,
+      ex_neuro_neglect_norm: true,
+      ex_cn2_norm: true,
+      ex_cn346_norm: true,
+      ex_cn5_norm: true,
+      ex_cn7_norm: true,
+      ex_cn8_norm: true,
+      ex_cn8_pos: "No deficits to finger friction rubs or 128hz tuning fork.",
+      ex_weber: "Midline",
+      ex_rinne_ab: "AU",
+      ex_cn910_norm: true,
+      ex_cn11_norm: true,
+      ex_cn12_norm: true,
+      ex_motor_str_norm: true,
+      ex_motor_tone_norm: true,
+      ex_sens_tpv_norm: true,
+      ex_sens_pt_norm: true,
+      ex_ref_sym_norm: true,
+      r_bi: "1", r_tri: "1", r_br: "1", r_pat: "1", r_ach: "1",
+      l_bi: "1", l_tri: "1", l_br: "1", l_pat: "1", l_ach: "1",
+      ex_ref_toes_norm: true,
+      ex_coord_ataxia_norm: true,
+      ex_coord_rfm_norm: true,
+      ex_gait_norm: true,
+
+      // Page 4
+      study_1_name: "MRI Brain w/wo @ Scripps",
+      study_1_date: "07/30/24",
+      study_1_res: "No acute intracranial abnormality. - Rev HB/CC/IMP",
+      study_2_name: "MRI C-spine w/o @ Scripps",
+      study_2_date: "11/16/23",
+      study_2_res: "C6-7: Mild-mod right and mild left NFS. Otherwise no high grade CCS/NFS. - Rev HB/IMP",
+      study_3_name: "MRI L-spine w/o @ Scripps",
+      study_3_date: "08/23/24",
+      impression_plan: "1) Headaches - Patient consulted with William Zhu, MD (Neurology) who reinitiated patient on Ajovy 225mg/1.5mL which she began on 12/10/25. Patient completed Indomethacin 50mg QD x90 days, and reports overall improvement in headaches. Initially reported >20 yr hx of headaches w/ change in semiology in 2022, w/ daily sxs that wax and wane in nature, severity rated: 3-4/10. HAs described as a nonpulsatile 'constant/dull/pressure' pain affecting the frontal and L>R temporal aspect of her head or over the bilateral occipital ridges. She notes intermittent associated photophobia. She also endorses prior aura symptoms to include 'squiggly' visual scotomas/scintillating scotomas OU lasting 20 minutes prior to headache onset. Denies any associated autonomic features or clustering of sx w/ above headaches. Metabolic wu (09/13/24-08/07/24) as on pg 2. MRI Brain w/wo (07/30/24) non-focal. MRI C-spine w/o (11/16/23) C6-7: Mild-mod right and mild left NFS. Otherwise no high grade CCS/NFS. PE as on pg 3. Highest on DDx today is tension headache vs migraine w/ superimposed myofascial pain syndrome/occipital neuralgia. T/F Nurtec 75mg ODT QOD, Amitriptyline 10mg QHS, Indomethacine 50mg QD, as well as several other therapies as noted on page 1. Pt instructed to continue Ajovy 225mg/1.5mL per William Zhu, MD. Cont mgmt with Dr. Keeran Kumar. Cont to remain well hydrated w/ electrolytes, reduce caffeine intake, improve sleep hygiene and reduce erratic meals. GF diet reinforced. D/c'd RISE PT. Cont HA log. Consider extended prednisone course at a later date. We will consider LP at a later date. RTC if sxs worsen. There is no hx or exam finding to further suggest VBI.\n\n2) Query tension headache vs migraine - See #1 above. Unlikely to be cluster HA or CPH with lack of autonomic symptoms. Plan as in #1. Follow clinically.\n\n3) Sleep disturbance unsp - PE as on pg 3, notable for tongue scalloping. HST (12/23/24) not suggestive of OSA. Keep sx log. Follow clinically.\n\n4) Myofascial pain syndrome/cervicalgia/occipital neuralgia - Associated w/ #1. Patient reports she completed occipital NB's with Keeran Kumar, MD on 12/03/25 with mild relief in headaches/occipital neuralgia. Mild transient improvement s/p ONBs w/ kenalog 2/17/25. Pt is s/p Cervical TPIs on 10/29/24. Has previously completed multiple months of myofascial release PT without improvement in sxs. PE as on pg 3. Continue optimal mgmt with Keeran Kumar, MD. Consider further TPIs/ONBs at later date as deemed appropriate. Defers compound cream. Reinforced OTC Voltaren gel BID PRN over affected area. Cont sx log. RTC w/ worsening sxs. Follow clinically.",
+      enc_time_min: "40",
+      plan_ha_log: true,
+      plan_custom_line: "1) D/c'd RISE PT                3) Cont mgmt with Keeran Kumar, MD                5) Reinforced GF diet    7) Cont. Lyrica 50mg BID",
+      plan_meds: true,
+      plan_bc: true,
+      plan_disc_risks: true,
+      plan_risks_meds: "Ajovy, Voltaren gel, Indomethacin, Lyrica, Flexeril",
+      plan_rtc_asap: true,
+      plan_no_drive: true,
+      next_appt_num: "4",
+      next_appt_mos: true
+    };
+
+    restore({ data: sample });
+  }
+
+  // Events
+  form.addEventListener('input', e => {
+    dirty = true;
+    if (e.target.matches('textarea.fit')) fit(e.target);
+    if (e.target === form.pt_name || e.target === form.pt_dob || e.target === form.visit_date) syncHeaders();
+  });
+
+  form.addEventListener('change', e => {
+    const t = e.target;
+    if (t.type === 'checkbox' && t.checked && t.dataset.group) {
+      form.querySelectorAll(`input[data-group="${t.dataset.group}"]`).forEach(o => { if (o !== t) o.checked = false; });
+    }
+    if (t === form.nkda && t.checked) form.allergies.value = form.allergies.value || 'NKDA';
+    dirty = true;
+  });
+
+  document.getElementById('btn-print').addEventListener('click', () => window.print());
+  document.getElementById('btn-sample').addEventListener('click', () => {
+    loadSampleData();
+  });
+
+  window.addEventListener('beforeprint', () => { document.title = printTitle(); fitAll(); });
+  window.addEventListener('afterprint', () => { document.title = 'Senta Clinic — Progress Note'; });
+
+  document.getElementById('btn-export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(collect(), null, 2)], { type: 'application/json' });
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: printTitle() + '.json' });
+    a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); dirty = false;
+  });
+
+  document.getElementById('file-import').addEventListener('change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try { restore(JSON.parse(await f.text())); } catch { alert('That file is not a valid chart export.'); }
+    e.target.value = '';
+  });
+
+  document.getElementById('btn-clear').addEventListener('click', () => {
+    if (!confirm('Clear every field on this 4-page chart?')) return;
+    form.reset();
+    form.visit_date.value = fmt(new Date());
+    syncHeaders();
+    fitAll();
+    dirty = false;
+  });
+
+  window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  // Init
+  form.visit_date.value = fmt(new Date());
+  syncHeaders();
+  fitAll();
+})();
+</script>
+</body>
+</html>

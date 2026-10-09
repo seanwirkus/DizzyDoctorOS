@@ -1,0 +1,41 @@
+.login-gate { position: fixed; inset: 0; display: grid; place-items: center; padding: 24px; background: linear-gradient(145deg, #eef4fb, #f7f7fa 55%, #e8eef5); }
+.login-card { width: min(390px, 100%); display: grid; gap: 14px; padding: 30px; border: 1px solid var(--hair2); border-radius: 18px; background: var(--card); box-shadow: 0 22px 70px -28px rgba(11,42,58,.45); }
+.login-card > img { width: 50px; height: 50px; border-radius: 12px; box-shadow: var(--shadow); }
+.login-card h1 { margin: 2px 0 -8px; font-size: 25px; letter-spacing: -.03em; }
+.login-card p { margin: 0 0 4px; color: var(--muted); }
+.login-card label { display: grid; gap: 6px; font-weight: 650; font-size: 12px; }
+.login-card input { height: 39px; border: 1px solid var(--line); border-radius: 9px; padding: 0 11px; background: #fff; font-size: 14px; }
+.login-card input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); outline: 0; }
+.login-card .btn { height: 40px; margin-top: 4px; }
+.login-error { padding: 9px 10px; border-radius: 8px; color: var(--red); background: var(--red-soft); font-size: 12.5px; }
+.user-btn { max-width: 150px; }
+.user-btn span { overflow: hidden; text-overflow: ellipsis; }
+
+.users-page { display: grid; gap: 16px; }
+.users-grid { display: grid; grid-template-columns: minmax(360px, 1.1fr) minmax(320px, .9fr); gap: 16px; align-items: start; }
+.admin-list { display: grid; gap: 8px; }
+.admin-row { border: 1px solid var(--hair); border-radius: 10px; background: #fff; padding: 11px 12px; display: grid; gap: 8px; }
+.admin-row-head { display: flex; align-items: center; gap: 9px; }
+.admin-row-head b { font-size: 14px; }
+.admin-row-head .spacer { flex: 1; }
+.admin-meta { color: var(--muted); font-size: 12px; }
+.admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.admin-form label { display: grid; gap: 5px; color: var(--ink2); font-size: 12px; font-weight: 650; }
+.admin-form label.wide, .admin-form .wide { grid-column: 1 / -1; }
+.admin-form input, .admin-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 8px 9px; }
+.group-checks, .permission-checks { display: flex; flex-wrap: wrap; gap: 6px; }
+.group-checks label, .permission-checks label { display: inline-flex; flex-direction: row; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid var(--hair2); border-radius: 8px; background: var(--field); font-weight: 550; }
+.group-card { border-top: 1px solid var(--hair); padding: 11px 0; }
+.group-card:first-child { border-top: 0; padding-top: 0; }
+.group-card h3 { margin: 0 0 4px; font-size: 14px; }
+@media (max-width: 1050px) { .users-grid { grid-template-columns: 1fr; } }
+
+/* checkboxes are not text boxes; every permission chip looks the same */
+.admin-form input[type="checkbox"] { width: auto; flex: none; padding: 0; margin: 0; }
+.group-checks label, .permission-checks label { font-size: 12.5px; white-space: nowrap; }
+.permission-checks label { font-family: var(--mono); font-size: 11.5px; font-weight: 600; }
+.users-grid > .card { grid-column: auto; }
+.admin-row input[type="password"], .group-card > input { height: 32px; width: 100%; max-width: 420px; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 0 10px; font-size: 13px; }
+.admin-row .row > input[type="password"] { flex: 1 1 220px; }
+.group-card { display: grid; gap: 8px; }
+.group-card h3 { margin: 0; }

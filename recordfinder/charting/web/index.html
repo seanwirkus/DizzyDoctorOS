@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>DizzyDoctor</title>
+<link rel="icon" href="/static/icon.png">
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/shell.css">
+<link rel="stylesheet" href="/static/modules/notes.css">
+<link rel="stylesheet" href="/static/modules/today.css">
+<link rel="stylesheet" href="/static/modules/settings.css">
+<link rel="stylesheet" href="/static/modules/testing.css">
+<link rel="stylesheet" href="/static/modules/meds.css">
+<link rel="stylesheet" href="/static/modules/users.css">
+<link rel="stylesheet" href="/static/modules/superbill.css">
+<link rel="stylesheet" href="/static/modules/snapshot.css">
+</head>
+<body>
+<div class="app" id="appShell" hidden>
+  <header class="tabbar">
+    <div class="app-brand">
+      <img src="/static/icon.png" alt="">
+      <b>DizzyDoctor</b>
+      <span class="demo-badge" id="demoBadge" title="Made-up patients only" hidden>Demo</span>
+    </div>
+    <nav class="tabstrip" id="tabstrip" aria-label="Home and open patients"></nav>
+    <div class="patient-search">
+      <label class="sr-only" for="globalSearch">Find a patient</label>
+      <span class="search-icon" id="searchIcon" aria-hidden="true"></span>
+      <input id="globalSearch" type="search" placeholder="Find a patient" title="Search by name, Pt #, or date of birth" autocomplete="off" spellcheck="false">
+      <kbd class="search-key" id="searchKey" aria-hidden="true"></kbd>
+      <div id="globalResults" class="results" hidden></div>
+    </div>
+    <div id="headTools"></div>
+    <button type="button" class="btn quiet bar-btn" id="billingBtn" title="Billing requests, superbills, balances and MIPS, in the office app"><span class="btn-text">Billing</span></button>
+    <button type="button" class="btn quiet bar-btn" id="settingsBtn" title="Settings: folders, dictation, clinic data"><span class="btn-text">Settings</span></button>
+    <button type="button" class="btn quiet bar-btn user-btn" id="userBtn" title="Sign out"><span id="topUser">User</span></button>
+  </header>
+  <div id="view" class="view"></div>
+  <footer class="statusbar" id="statusbar">
+    <span id="statusLeft"></span>
+    <span id="noteStatus"></span>
+    <span class="spacer"></span>
+    <span id="statusRight"></span>
+  </footer>
+</div>
+<div class="login-gate" id="loginGate" hidden>
+  <form class="login-card" id="loginForm">
+    <img src="/static/icon.png" alt="">
+    <h1>DizzyDoctor</h1>
+    <p>Sign in to the clinic workspace.</p>
+    <label>Username<input id="loginUsername" name="username" autocomplete="username" required></label>
+    <label>Password<input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label>
+    <div class="login-error" id="loginError" hidden></div>
+    <button class="btn primary" id="loginSubmit" type="submit">Sign in</button>
+  </form>
+</div>
+<div id="shellToast" class="toast" hidden></div>
+<script src="/static/shell.js"></script>
+<script src="/static/modules/today.js"></script>
+<script src="/static/modules/patients.js"></script>
+<script src="/static/modules/notes.js"></script>
+<script src="/static/modules/settings.js"></script>
+<script src="/static/modules/users.js"></script>
+<script src="/static/modules/bodymap.js"></script>
+<script src="/static/modules/snapshot.js"></script>
+<script src="/static/modules/review.js"></script>
+<script src="/static/modules/datepick.js"></script>
+<script src="/static/modules/meds.js"></script>
+<script src="/static/modules/note.js"></script>
+<script src="/static/modules/testing.js"></script>
+<script src="/static/modules/billing.js"></script>
+<script src="/static/modules/superbill.js"></script>
+<script>DDOS.start()</script>
+</body>
+</html>

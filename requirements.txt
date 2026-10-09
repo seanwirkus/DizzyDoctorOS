@@ -1,0 +1,22 @@
+# Superbill workflow: render scanned PDFs, OCR them with the engine built into Windows, read Outlook.
+pymupdf>=1.24
+pywin32>=306; sys_platform == "win32"
+winrt-runtime>=3.0; sys_platform == "win32"
+winrt-Windows.Foundation>=3.0; sys_platform == "win32"
+winrt-Windows.Foundation.Collections>=3.0; sys_platform == "win32"
+winrt-Windows.Globalization>=3.0; sys_platform == "win32"
+winrt-Windows.Graphics.Imaging>=3.0; sys_platform == "win32"
+winrt-Windows.Media.Ocr>=3.0; sys_platform == "win32"
+winrt-Windows.Storage.Streams>=3.0; sys_platform == "win32"
+pyobjc-framework-Vision>=10; sys_platform == "darwin"   # the Mac's own OCR engine
+numpy          # superbill batch check: finding the provider's marks on the scanned form
+# MIPS: reads the office's measure workbooks (.xlsx).
+openpyxl>=3.1
+# Optional Claude reading/drafting (Messages API) and Windows Credential Manager for its key.
+anthropic
+keyring
+# Charting: dictation runs on the PC (Whisper via CTranslate2); first use downloads the model.
+faster-whisper
+av<16          # faster-whisper 1.2 still calls PyAV's older open(); the chart records WAV, which needs no decoder
+# The app window (native WebView: WKWebView on macOS, Edge WebView2 on Windows).
+pywebview
