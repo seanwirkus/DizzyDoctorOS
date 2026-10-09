@@ -236,7 +236,7 @@ class Handler(BaseHTTPRequestHandler):
             return "billing.view"
         if path in ("/api/patients", "/api/chart", "/api/snapshot"):
             return "patients.view"
-        if path in ("/api/notes", "/api/note", "/api/doc", "/api/report", "/api/drafts", "/api/print-log"):
+        if path in ("/api/notes", "/api/note", "/api/doc", "/api/report", "/api/drafts", "/api/print-log", "/api/printers"):
             return "notes.view"
         if path == "/api/superbill" or path == "/api/superbills" or path.startswith("/api/superbill/"):
             return "notes.view"
@@ -368,6 +368,9 @@ class Handler(BaseHTTPRequestHandler):
             if not pdf or not os.path.isfile(pdf):
                 return self._send(404, b"", "text/plain")
             return self._send(200, note.render_page(pdf, int(q.get("page", "0")), float(q.get("zoom", "1.5"))), "image/png")
+        if path == "/api/printers":
+            from .. import printer as pr_mod
+            return self._json(pr_mod.get_printers())
         if path == "/api/print-log":
             log_path = os.path.join(self.ctx.data_dir, "print-log.jsonl")
             events = []
@@ -675,6 +678,45 @@ class Handler(BaseHTTPRequestHandler):
             note.fill(self._with_practice(data.get("values", {})), out, note.template_path(self.ctx.cfg))
             self.ctx.previews[pid] = out
             return self._json({"id": pid, "pages": note.SCHEMA["pages"]})
+        if path == "/api/print" or path == "/api/superbill/print":
+            values = data.get("values", {})
+            printer_target = str(data.get("printer") or "").strip()
+            copies = max(1, int(data.get("copies") or 1))
+            system_dialog = bool(data.get("system_dialog"))
+            doc_type = str(data.get("document") or ("superbill" if "superbill" in path else "progress note")).strip()
+            pid = secrets.token_hex(8)
+            out = os.path.join(tempfile.gettempdir(), f"ddos-print-{pid}.pdf")
+            try:
+                if doc_type.lower() == "superbill":
+                    superbill.fill(values, out)
+                else:
+                    note.fill(self._with_practice(values), out, note.template_path(self.ctx.cfg))
+            except Exception as ex:
+                log.exception("could not fill %s for printing", doc_type)
+                return self._json({"error": f"Could not prepare {doc_type} for printing: {ex}"}, 500)
+
+            from .. import printer as pr_mod
+            doc_title = f"DizzyDoctor Superbill - {values.get('Name', 'Patient')}" if doc_type.lower() == "superbill" else f"DizzyDoctor - {values.get('Name', 'Note')}"
+            ok, msg = pr_mod.print_file(out, printer=printer_target, copies=copies,
+                                        title=doc_title,
+                                        system_dialog=system_dialog)
+            if not ok:
+                return self._json({"error": msg or "Print command failed."}, 500)
+
+            attempt = str(data.get("attempt") or pid)
+            printer_name = printer_target or ("System print dialog" if system_dialog else "Default printer")
+            row = {"attempt": attempt, "status": "printed",
+                   "name": str(values.get("Name") or "")[:200], "dos": str(values.get("Date") or "")[:40],
+                   "document": doc_type,
+                   "printer": printer_name,
+                   "user": str((self.current_user or {}).get("display_name") or (self.current_user or {}).get("username") or "")[:120],
+                   "at": datetime.now().isoformat(timespec="seconds"), "when": datetime.now().strftime("%m/%d/%Y %I:%M %p")}
+            log_path = os.path.join(self.ctx.data_dir, "print-log.jsonl")
+            os.makedirs(os.path.dirname(log_path), exist_ok=True)
+            with self.ctx.print_lock:
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            return self._json({"ok": True, "entry": row, "printer": printer_name, "message": msg})
         if path == "/api/print-log":
             status = str(data.get("status") or "")
             if status not in ("requested", "printed", "not_printed"):
@@ -682,6 +724,7 @@ class Handler(BaseHTTPRequestHandler):
             row = {"attempt": str(data.get("attempt") or secrets.token_hex(8)), "status": status,
                    "name": str(data.get("name") or "")[:200], "dos": str(data.get("dos") or "")[:40],
                    "document": str(data.get("document") or "progress note")[:80],
+                   "printer": str(data.get("printer") or "")[:120],
                    "user": str((self.current_user or {}).get("display_name") or (self.current_user or {}).get("username") or "")[:120],
                    "at": datetime.now().isoformat(timespec="seconds"), "when": datetime.now().strftime("%m/%d/%Y %I:%M %p")}
             log_path = os.path.join(self.ctx.data_dir, "print-log.jsonl")

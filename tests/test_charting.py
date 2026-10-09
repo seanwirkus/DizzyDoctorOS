@@ -45,6 +45,14 @@ class NoteTests(unittest.TestCase):
         self.assertFalse(back["worse-walking"])
         self.assertTrue(back["normal1"])        # the form's default stays
 
+    def test_pt_referral_sync_and_unhidden(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = os.path.join(tmp, "pt_test.pdf")
+            note.fill({"referral-for": "Vestibular PT. Dx: gait and balance difficulties."}, out)
+            back = note.read(out)
+            self.assertTrue(back["PTcheck"])
+            self.assertEqual(back["referral-for"], "Vestibular PT. Dx: gait and balance difficulties.")
+
     def test_the_name_keeps_the_forms_bold_font(self):
         import pymupdf
         values = note.blank()

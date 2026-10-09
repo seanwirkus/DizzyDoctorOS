@@ -51,14 +51,14 @@
 
 /* ---------------------------------------------------------------- the note screen */
 .note-app { height: 100%; min-height: 0; min-width: 0; display: flex; flex-direction: column; background: var(--bg); }
-.note-head { flex: none; display: flex; align-items: center; gap: 12px; padding: 6px 12px; background: var(--card); border-bottom: 1px solid var(--hair); min-width: 0; }
-.note-patient { min-width: 0; flex: 1 1 260px; }
+.note-head { flex: none; display: flex; align-items: center; gap: 12px; padding: 7px 14px; background: var(--card); border-bottom: 1px solid var(--hair); min-width: 0; }
+.note-patient { min-width: 0; flex: 1 1 260px; display: flex; flex-direction: column; justify-content: center; }
 /* the name as the note prints it: Last, First in bold */
-.np-name { font-size: 21px; font-weight: 750; letter-spacing: -.02em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np-name { font-size: 20px; font-weight: 750; letter-spacing: -.02em; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 1px; }
 .np-name.empty { color: var(--muted); font-weight: 600; }
-.np-meta { display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; margin-top: 3px; color: var(--ink2); font-size: 13px; min-height: 20px; }
+.np-meta { display: flex; align-items: center; gap: 6px 10px; flex-wrap: nowrap; margin-top: 3px; color: var(--ink2); font-size: 13px; line-height: 1.4; min-height: 19px; }
 .np-meta > span:empty { display: none; }
-.np-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.np-tags { display: flex; gap: 5px; flex-wrap: nowrap; align-items: center; }
 .note-visit { display: flex; gap: 18px; margin: 0; flex: none; }
 .note-visit > div { min-width: 0; }
 .note-visit dt { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
@@ -97,10 +97,9 @@
 .note-head { container-type: inline-size; }
 @container (max-width: 1400px) { #superbillBtn .btn-text, #previewBtn .btn-text { display: none; } #superbillBtn, #previewBtn { padding: 0 10px; } }
 @container (max-width: 1100px) { .note-actions .btn .btn-text { display: none; } .note-actions .btn { padding: 0 10px; } }
-#sbIdent { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#sbIdent { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.4; }
 /* name with its tags on one line; the identity line under it has the full width and shortens with an ellipsis */
-/* the whole name first; each tag shows whole or moves to a hidden second row (never cut in half) */
-.np-top { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; column-gap: 5px; row-gap: 0; height: calc(21px * 1.15); overflow: hidden; min-width: 0; }
+.np-top { display: flex; flex-wrap: nowrap; align-items: center; column-gap: 6px; min-height: 28px; line-height: 1.3; overflow: hidden; min-width: 0; }
 .np-top .np-name { flex: 0 1 auto; min-width: 0; margin-right: 5px; }   /* a name too long even alone ends in an ellipsis */
 .np-top .np-tags { display: contents; }
 /* the visit type beside the name, in its colour; a click goes to Patient to change it */

@@ -68,6 +68,23 @@
     }
     if (name === "Allergies" && String(val).trim() && S.values.nkda) { S.values.nkda = false; refresh("nkda"); }
     if (name === "nkda" && val && String(S.values.Allergies || "").trim()) { toast("Clear the allergy list before ticking NKDA."); val = false; }
+    if (name === "referral-for") {
+      const hasText = !!String(val || "").trim();
+      if (!!S.values.PTcheck !== hasText) {
+        S.values.PTcheck = hasText;
+        refresh("PTcheck");
+      }
+    }
+    if (name === "PTcheck") {
+      if (val && !String(S.values["referral-for"] || "").trim()) {
+        const defaultText = (S.phrases?.PT_REFERRAL && (S.phrases.PT_REFERRAL[1] || S.phrases.PT_REFERRAL[0])) || "Vestibular PT. Dx: gait and balance difficulties. 2x/week for 6-8 weeks.";
+        S.values["referral-for"] = defaultText;
+        refresh("referral-for");
+      } else if (!val && String(S.values["referral-for"] || "").trim()) {
+        S.values["referral-for"] = "";
+        refresh("referral-for");
+      }
+    }
     const before = S.values[name];
     if (S.defaulted instanceof Set && S.defaulted.size) { const twin = name.endsWith("-denies") ? name : name + "-denies"; if (S.defaulted.has(twin) && SYMPTOMS.some(x => x.deny === twin)) S.defaulted.delete(twin); }
     S.values[name] = val;
@@ -2119,46 +2136,89 @@
       target.append(h("div", { class: "print-history-head" }, h("b", {}, "Print history"), h("span", { class: "muted" }, rows.length ? "Latest attempts for this note" : "Nothing printed yet")));
       for (const row of rows.slice(0, 10)) target.append(h("div", { class: "print-history-row" },
         h("span", { class: "print-state " + (row.status === "printed" ? "ok" : row.status === "not_printed" ? "no" : "pending") }, row.status === "printed" ? "Printed" : row.status === "not_printed" ? "Did not print" : "Print opened"),
-        h("span", {}, row.when || ""), h("span", { class: "muted" }, row.user || "")));
+        h("span", {}, [row.when || "", row.printer ? `(${row.printer})` : ""].filter(Boolean).join(" · ")),
+        h("span", { class: "muted" }, row.user || "")));
     } catch { target.append(h("div", { class: "muted" }, "Print history is unavailable.")); }
   }
 
-  async function logPrint(attempt, status) {
-    return api.post("/api/print-log", { attempt, status, name: S.values.Name || "", dos: S.values.Date || "", document: "progress note" });
-  }
-  function confirmPrintOutcome(attempt) {
-    if (document.querySelector(".print-confirm")) return;
-    const modal = h("div", { class: "modal print-confirm", role: "dialog", "aria-modal": "true", "aria-label": "Print result" });
-    const done = async (status) => { try { await logPrint(attempt, status); } catch { /* the dialog result is still useful locally */ } modal.remove(); renderPrintHistory(); };
-    modal.append(h("div", { class: "modal-box" }, h("h2", {}, "Did the note print?"),
-      h("p", {}, "The system print window cannot tell DizzyDoctor whether the printer actually produced the pages. Confirm the result so the print log is accurate."),
-      h("div", { class: "row modal-actions" }, h("button", { class: "btn", type: "button", onclick: () => done("not_printed") }, "Did not print"),
-        h("button", { class: "btn primary", type: "button", onclick: () => done("printed") }, "Printed"))));
-    document.body.append(modal);
+  async function logPrint(attempt, status, printer = "") {
+    return api.post("/api/print-log", { attempt, status, printer, name: S.values.Name || "", dos: S.values.Date || "", document: "progress note" });
   }
   async function printNote() {
+    if (S.tab === "superbill") {
+      const mod = DDOS.modules && DDOS.modules.superbill;
+      if (mod && mod.print) return mod.print();
+    }
     const buttons = [$("#printBtn"), ...document.querySelectorAll(".print-note-tool")].filter(Boolean);
     buttons.forEach((b) => { b.disabled = true; });
     try {
-      const r = await api.post("/api/preview", { values: S.values });
-      if (!r || r.error) throw new Error((r && r.error) || "The note could not be prepared for printing.");
-      const attempt = (globalThis.crypto && crypto.randomUUID) ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-      await logPrint(attempt, "requested");
-      const frame = document.createElement("iframe");
-      frame.className = "print-frame"; frame.setAttribute("aria-hidden", "true"); document.body.append(frame);
-      const doc = frame.contentDocument;
-      doc.open();
-      doc.write(`<!doctype html><html><head><title>Print progress note</title><style>@page{size:letter;margin:0}html,body{margin:0;background:#fff}img{display:block;width:8.5in;height:11in;object-fit:contain;page-break-after:always}img:last-child{page-break-after:auto}</style></head><body>${Array.from({ length: r.pages }, (_, i) => `<img src="/api/preview?id=${encodeURIComponent(r.id)}&page=${i}&zoom=2.5">`).join("")}</body></html>`);
-      doc.close();
-      const imgs = [...doc.images];
-      await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : new Promise((resolve) => { img.onload = img.onerror = resolve; })));
-      let asked = false;
-      const ask = () => { if (!asked) { asked = true; setTimeout(() => { frame.remove(); confirmPrintOutcome(attempt); }, 0); } };
-      frame.contentWindow.addEventListener("afterprint", ask, { once: true });
-      frame.contentWindow.focus(); frame.contentWindow.print();
-      setTimeout(ask, 750);
-    } catch (e) { toast("Couldn't print: " + (e.message || e)); }
-    finally { buttons.forEach((b) => { b.disabled = false; }); }
+      const prData = await api.get("/api/printers").catch(() => ({ printers: [], default: "" }));
+      const printers = prData.printers || [];
+      const defaultPrinter = prData.default || (printers[0]?.id || "");
+      if (document.querySelector(".print-dialog")) document.querySelector(".print-dialog").remove();
+      const modal = h("div", { class: "modal print-dialog", role: "dialog", "aria-modal": "true", "aria-label": "Print progress note" });
+      const select = h("select", { class: "input", style: "width:100%;height:34px;margin-top:6px;border-radius:8px;border:1px solid var(--hair2);background:var(--field);color:var(--ink);padding:0 10px;font-size:13px;" });
+      if (printers.length) {
+        for (const p of printers) {
+          const opt = h("option", { value: p.id }, p.name + (p.is_default ? " (Default)" : ""));
+          if (p.id === defaultPrinter || (!defaultPrinter && p.is_default)) opt.selected = true;
+          select.append(opt);
+        }
+      } else {
+        select.append(h("option", { value: "" }, "Default printer"));
+      }
+      const copiesInput = h("input", { type: "number", min: "1", max: "20", value: "1", style: "width:70px;height:34px;border-radius:8px;border:1px solid var(--hair2);background:var(--field);padding:0 8px;font-size:13px;" });
+      const sysDialogCheck = h("input", { type: "checkbox", id: "printSysDialog", style: "margin-right:6px;" });
+      const close = () => modal.remove();
+      const doPrint = async () => {
+        const selectedPrinter = select.value;
+        const copies = parseInt(copiesInput.value, 10) || 1;
+        const useSysDialog = sysDialogCheck.checked;
+        modal.remove();
+        toast("Sending note to printer...");
+        try {
+          const res = await api.post("/api/print", {
+            values: S.values,
+            printer: selectedPrinter,
+            copies,
+            system_dialog: useSysDialog
+          });
+          if (res && res.error) throw new Error(res.error);
+          toast(res.printer ? `Printed to ${res.printer}.` : "Print job sent successfully.");
+          renderPrintHistory();
+        } catch (err) {
+          toast("Print failed: " + (err.message || err));
+        }
+      };
+      modal.append(h("div", { class: "modal-box", style: "max-width:440px;" },
+        h("h2", {}, "Print progress note"),
+        h("p", { class: "muted", style: "margin:0 0 14px 0;font-size:13px;" },
+          [S.values.Name || "New patient", S.values.Date ? `DOS ${S.values.Date}` : ""].filter(Boolean).join(" · ")),
+        h("div", { style: "margin-bottom:14px;" },
+          h("label", { style: "font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;" }, "Select Printer"),
+          select
+        ),
+        h("div", { style: "display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;" },
+          h("label", { style: "font-size:13px;font-weight:550;" }, "Copies"),
+          copiesInput
+        ),
+        h("div", { style: "display:flex;align-items:center;margin-bottom:18px;" },
+          h("label", { style: "font-size:12.5px;color:var(--ink2);cursor:pointer;display:flex;align-items:center;" },
+            sysDialogCheck,
+            "Open system print dialog"
+          )
+        ),
+        h("div", { class: "row modal-actions", style: "display:flex;gap:10px;justify-content:flex-end;" },
+          h("button", { class: "btn", type: "button", onclick: close }, "Cancel"),
+          h("button", { class: "btn primary", type: "button", onclick: doPrint }, icon("print"), "Print")
+        )
+      ));
+      document.body.append(modal);
+    } catch (e) {
+      toast("Couldn't open print dialog: " + (e.message || e));
+    } finally {
+      buttons.forEach((b) => { b.disabled = false; });
+    }
   }
 
   // ------------------------------------------------------------------ Storyboard
@@ -2779,6 +2839,8 @@
     showTab,
     get coding() { return S.coding; },
     get values() { return S.values; },
+    get patient() { return S.patient; },
+    get payer() { return S.payer; },
     set: (name, val) => setValue(name, val),      // a chart screen (SnapShot's body map) writing into the open note
     addStudy: (d) => addStudy(d),                 // Results / testing putting a drive report (a Zeto EEG) in a study row
     set onUpdate(fn) { hooks.onUpdate = fn; },

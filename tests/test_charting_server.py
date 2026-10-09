@@ -109,6 +109,28 @@ class ChartServerTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "printed")
         self.assertEqual(rows[0]["user"], "Administrator")
 
+    def test_printers_and_print_endpoints(self):
+        from unittest.mock import patch
+        self.post("/api/auth/login", {"username": "admin", "password": "change-me-now"})
+        pr = self.get("/api/printers")
+        self.assertIn("printers", pr)
+        self.assertIn("default", pr)
+        with patch("recordfinder.printer.print_file", return_value=(True, "Mock job submitted")):
+            res = self.post("/api/print", {"values": {"Name": "Test, Patient", "Date": "10/09/2026", "referral-for": "Vestibular PT"},
+                                           "printer": "Office Printer", "copies": 1})
+            self.assertTrue(res.get("ok"))
+            self.assertEqual(res.get("printer"), "Office Printer")
+        rows = self.get("/api/print-log?" + urlencode({"name": "Test, Patient"}))
+        self.assertTrue(rows)
+        self.assertEqual(rows[0]["printer"], "Office Printer")
+        with patch("recordfinder.printer.print_file", return_value=(True, "Mock job submitted")):
+            sb_res = self.post("/api/superbill/print", {"values": {"Name": "Test, Patient", "Date": "10/09/2026", "diagnoses": [{"code": "R42", "description": "Dizziness"}], "procedures": [{"cpt": "99214", "units": "1", "description": "Office visit"}]},
+                                                        "printer": "Office Printer", "copies": 1})
+            self.assertTrue(sb_res.get("ok"))
+            self.assertEqual(sb_res.get("printer"), "Office Printer")
+        sb_rows = self.get("/api/print-log?" + urlencode({"name": "Test, Patient"}))
+        self.assertTrue(any(r.get("document") == "superbill" for r in sb_rows))
+
     def test_calendar_can_create_day_provider_superbill_batches(self):
         self.post("/api/auth/login", {"username": "admin", "password": "change-me-now"})
         schedule = self.get("/api/schedule?start=2026-10-05&end=2026-10-12")

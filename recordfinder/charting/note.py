@@ -281,6 +281,8 @@ def fill(values: dict, out_path: str, template: str = TEMPLATE_PATH) -> str:
     import pymupdf
 
     values = coerce(values)
+    if str(values.get("referral-for") or "").strip():
+        values["PTcheck"] = True
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     with pymupdf.open(template) as doc:
         fonts = _form_fonts(doc)
@@ -302,6 +304,11 @@ def fill(values: dict, out_path: str, template: str = TEMPLATE_PATH) -> str:
                     if name in CONTINUATION_FIELDS:
                         continuation_metrics.setdefault(name, (pymupdf.Rect(w.rect), float(w.text_fontsize or 8)))
                 w.update()
+                # Clear the Hidden flag (bit 2) so filled fields with template /F 6 (like referral-for) display and print
+                try:
+                    doc.xref_set_key(w.xref, "F", "4")
+                except Exception:
+                    pass
                 if font in fonts:
                     _keep_font(doc, w, font, fonts[font])
         continuations = []

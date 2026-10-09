@@ -18,6 +18,11 @@
     for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
     return el;
   }
+  const icon = (name) => {
+    const t = document.createElement("template");
+    t.innerHTML = (window.DDOS && DDOS.icon) ? DDOS.icon(name) : "";
+    return t.content.firstChild || document.createTextNode("");
+  };
   const apiDefault = {
     async get(p) { const r = await fetch(p, { credentials: "same-origin" }); const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || r.statusText); return d; },
     async post(p, body) { const r = await fetch(p, { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) }); const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || r.statusText); return d; },
@@ -99,7 +104,7 @@
   async function mount(host, ctx) {
     ctx = ctx || {};
     const api = ctx.api || apiDefault;
-    const S = { values: blankValues(), patient: ctx.notePatient || ctx.patient || null, sheets: [], preview: null, view: "sheet", focus: "", dirty: false };
+    const S = { values: blankValues(), patient: ctx.notePatient || ctx.patient || null, sheets: [], focus: "", dirty: false };
     host.innerHTML = "";
     const wrap = h("div", { class: "sb-wrap" });
     host.append(wrap);
@@ -121,7 +126,7 @@
 
     function paint() {
       wrap.innerHTML = "";
-      wrap.append(toolbar(), S.view === "pdf" ? pdfPage() : sheet(), sheetsCard());
+      wrap.append(toolbar(), sheet(), sheetsCard());
       requestAnimationFrame(() => {
         wrap.querySelectorAll("input.sb-in:not(.grow)").forEach(fit);
         if (S.focus) { const el = wrap.querySelector(`[data-focus="${S.focus}"] input`); S.focus = ""; if (el) el.focus(); }
@@ -162,21 +167,16 @@
       });
       search.addEventListener("keydown", (e) => { if (e.key === "Escape") results.hidden = true; });
       const payer = h("input", { type: "text", class: "sb-payer-in", value: S.values.payer || "", placeholder: "Payer", list: "sb-dl-payers", "aria-label": "Payer, for the coding rules", title: "Payer, for the coding rules (not printed)", autocomplete: "off" });
-      payer.addEventListener("input", () => setValue("payer", payer.value));
-      const view = h("div", { class: "seg sb-view", role: "group", "aria-label": "View" },
-        h("button", { type: "button", class: S.view === "sheet" ? "on" : "", onclick: () => { S.view = "sheet"; paint(); } }, "Sheet"),
-        h("button", { type: "button", class: S.view === "pdf" ? "on" : "", onclick: showPdf, title: "The PDF exactly as it will file" }, "PDF"));
-      // two groups: who and what it starts from, then where it stands and what to do with it.
-      // When the bar is narrow the second group moves under the first as a whole, right-aligned.
+      payer.addEventListener("input", () => { setValue("payer", payer.value); syncFromNote(); });
+
       return h("div", { class: "sb-toolbar" },
         h("div", { class: "sb-group" },
           h("div", { class: "sb-search sb-assign" }, search, results),
           S.patient ? h("span", { class: "tag green", title: "Demographics and insurance came from the chart" }, "Assigned") : h("span", { class: "tag" }, "Unassigned"),
-          payer,
-          h("button", { class: "btn", type: "button", title: "Start from the open note's visit level, procedures and ICD-10", onclick: fromOpenNote }, "From open note")),
+          payer),
         h("div", { class: "sb-group sb-group-end" },
           h("span", { class: "sb-status tag" }),
-          view,
+          h("button", { class: "btn sb-print-btn", type: "button", title: "Print this superbill to a printer", onclick: printSuperbill }, icon("print"), "Print"),
           h("button", { class: "btn", type: "button", onclick: () => doSave("draft") }, "Save draft"),
           h("button", { class: "btn primary sb-file", type: "button", onclick: () => doSave("final") }, "File superbill")),
         h("datalist", { id: "sb-dl-payers" }, PAYERS.map((x) => h("option", { value: x }))),
@@ -262,12 +262,6 @@
       inp.addEventListener("keydown", (e) => { if (e.key === "Escape") box.hidden = true; if (e.key === "Enter" && hits.length) { e.preventDefault(); onPick(hits[0]); } });
       return h("div", { class: "sb-add sb-search", "data-focus": key }, h("span", { class: "sb-plus", "aria-hidden": "true" }, "+"), inp, box);
     }
-    function pdfPage() {
-      const body = h("div", { class: "sb-page sb-pdf" });
-      if (!S.preview) body.append(h("div", { class: "sb-sheet sb-loading" }, h("div", { class: "spinner" }), "Drawing the PDF…"));
-      else for (let i = 0; i < S.preview.pages; i++) body.append(h("img", { src: `/api/superbill/preview?id=${S.preview.id}&page=${i}&zoom=2`, alt: `Superbill page ${i + 1}` }));
-      return body;
-    }
     function sheetsCard() {
       const list = h("div", { class: "sb-rows" });
       if (!S.sheets.length) list.append(h("div", { class: "muted" }, S.patient ? "No superbills on file for this patient." : "Assign the patient to see their superbills."));
@@ -295,24 +289,113 @@
       if (CPT && CPT.length) return searchLocal(CPT, q, true);
       try { return await api.get("/api/superbill/cpt?q=" + encodeURIComponent(q)); } catch { return []; }
     }
-    async function fromOpenNote() {
-      const noteValues = (window.NoteWriter && NoteWriter.values) || ctx.noteValues || null;
-      if (!noteValues || !noteValues.Name) { toast("Open the patient's note first, then start the superbill from it.", ctx); return; }
+
+    async function printSuperbill() {
+      const btn = wrap.querySelector(".sb-print-btn");
+      if (btn) btn.disabled = true;
       try {
-        const patient = S.patient || (window.DDOS && DDOS.context ? DDOS.context().patient : null) || {};
-        const r = await api.post("/api/superbill/from-note", { values: noteValues, payer: S.values.payer || "", patient });
-        S.values = { ...S.values, ...(r.values || {}) };
-        S.dirty = true;
-        toast("Started from the open note.", ctx);
-      } catch (e) { toast(e.message, ctx); }
-      paint();
+        const prData = await api.get("/api/printers").catch(() => ({ printers: [], default: "" }));
+        const printers = prData.printers || [];
+        const defaultPrinter = prData.default || (printers[0]?.id || "");
+        if (document.querySelector(".sb-print-dialog")) document.querySelector(".sb-print-dialog").remove();
+        const modal = h("div", { class: "modal sb-print-dialog", role: "dialog", "aria-modal": "true", "aria-label": "Print superbill" });
+        const select = h("select", { class: "input", style: "width:100%;height:34px;margin-top:6px;border-radius:8px;border:1px solid var(--hair2);background:var(--field);color:var(--ink);padding:0 10px;font-size:13px;" });
+        if (printers.length) {
+          for (const p of printers) {
+            const opt = h("option", { value: p.id }, p.name + (p.is_default ? " (Default)" : ""));
+            if (p.id === defaultPrinter || (!defaultPrinter && p.is_default)) opt.selected = true;
+            select.append(opt);
+          }
+        } else {
+          select.append(h("option", { value: "" }, "Default printer"));
+        }
+        const copiesInput = h("input", { type: "number", min: "1", max: "20", value: "1", style: "width:70px;height:34px;border-radius:8px;border:1px solid var(--hair2);background:var(--field);padding:0 8px;font-size:13px;" });
+        const sysDialogCheck = h("input", { type: "checkbox", id: "sbPrintSysDialog", style: "margin-right:6px;" });
+        const close = () => modal.remove();
+        const doPrint = async () => {
+          const selectedPrinter = select.value;
+          const copies = parseInt(copiesInput.value, 10) || 1;
+          const useSysDialog = sysDialogCheck.checked;
+          modal.remove();
+          toast("Sending superbill to printer...", ctx);
+          try {
+            const res = await api.post("/api/superbill/print", {
+              values: S.values,
+              printer: selectedPrinter,
+              copies,
+              system_dialog: useSysDialog,
+              document: "superbill"
+            });
+            if (res && res.error) throw new Error(res.error);
+            toast(res.printer ? `Superbill printed to ${res.printer}.` : "Superbill print job sent.", ctx);
+          } catch (err) {
+            toast("Print failed: " + (err.message || err), ctx);
+          }
+        };
+        modal.append(h("div", { class: "modal-box", style: "max-width:440px;" },
+          h("h2", {}, "Print superbill"),
+          h("p", { class: "muted", style: "margin:0 0 14px 0;font-size:13px;" },
+            [S.values.Name || "Patient", S.values.Date ? `DOS ${S.values.Date}` : ""].filter(Boolean).join(" · ")),
+          h("div", { style: "margin-bottom:14px;" },
+            h("label", { style: "font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;" }, "Select Printer"),
+            select
+          ),
+          h("div", { style: "display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;" },
+            h("label", { style: "font-size:13px;font-weight:550;" }, "Copies"),
+            copiesInput
+          ),
+          h("div", { style: "display:flex;align-items:center;margin-bottom:18px;" },
+            h("label", { style: "font-size:12.5px;color:var(--ink2);cursor:pointer;display:flex;align-items:center;" },
+              sysDialogCheck,
+              "Open system print dialog"
+            )
+          ),
+          h("div", { class: "row modal-actions", style: "display:flex;gap:10px;justify-content:flex-end;" },
+            h("button", { class: "btn", type: "button", onclick: close }, "Cancel"),
+            h("button", { class: "btn primary", type: "button", onclick: doPrint }, icon("print"), "Print")
+          )
+        ));
+        document.body.append(modal);
+      } catch (e) {
+        toast("Couldn't open print dialog: " + (e.message || e), ctx);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
     }
-    async function showPdf() {
-      S.view = "pdf"; S.preview = null; paint();
-      try { S.preview = await api.post("/api/superbill/preview", { values: S.values }); }
-      catch (e) { toast(e.message, ctx); S.view = "sheet"; }
+
+    async function syncFromNote() {
+      const noteVals = ctx.noteValues || (window.NoteWriter && NoteWriter.values) || null;
+      const patient = S.patient || ctx.notePatient || (window.NoteWriter && NoteWriter.patient) || (window.DDOS && DDOS.context ? DDOS.context().patient : null) || {};
+      const payer = S.values.payer || ctx.payer || (window.NoteWriter && NoteWriter.payer) || "";
+      if (payer && !S.values.payer) S.values.payer = payer;
+      if (noteVals && Object.keys(noteVals).length > 0) {
+        try {
+          const r = await api.post("/api/superbill/from-note", { values: noteVals, payer: S.values.payer || "", patient });
+          if (r && r.values) {
+            if (!S.dirty) {
+              S.values = { ...S.values, ...r.values };
+            } else {
+              for (const [k, v] of Object.entries(r.values)) {
+                if (!S.values[k] || (Array.isArray(S.values[k]) && !S.values[k].length)) {
+                  S.values[k] = v;
+                }
+              }
+            }
+          }
+        } catch { /* proceed with available values */ }
+      }
+      if (patient && (patient.last || patient.first || patient.id)) {
+        S.patient = patient;
+        try {
+          const a = await api.post("/api/superbill/attach", { values: S.values, patient }).catch(() => null);
+          if (a && a.values) S.values = { ...S.values, ...a.values };
+          S.sheets = await api.get("/api/superbills?" + new URLSearchParams({ last: patient.last || "", first: patient.first || "" })).catch(() => []);
+        } catch { /* list is convenience */ }
+      }
+      if (!S.values.Date) S.values.Date = todayStr();
       if (host.isConnected) paint();
     }
+
     async function doSave(kind) {
       try {
         const r = await api.post("/api/superbill/save", { values: S.values, kind });
@@ -326,33 +409,24 @@
       try {
         const r = await api.get("/api/superbill?path=" + encodeURIComponent(path));
         S.values = { ...blankValues(), ...(r.values || {}) };
-        S.preview = null; S.view = "sheet"; S.dirty = false;
+        S.dirty = false;
         toast("Opened " + path.split(/[\\/]/).pop(), ctx);
       } catch (e) { toast(e.message, ctx); }
       paint();
     }
 
-    // First paint, then the data behind it: from the note when there is one, else the patient's demographics.
+    // Automatically generate from the open note upon mounting, and load lists
     paint();
     loadLists();
-    try {
-      if (ctx.noteValues && (ctx.noteValues.Name || (ctx.noteValues.diagnoses || []).length)) {
-        const r = await api.post("/api/superbill/from-note", { values: ctx.noteValues, payer: ctx.payer || "", patient: S.patient || {} });
-        S.values = { ...S.values, ...(r.values || {}) };
-        if (S.patient && (S.patient.last || S.patient.first || S.patient.id)) {
-          const a = await api.post("/api/superbill/attach", { values: S.values, patient: S.patient }).catch(() => null);
-          if (a && a.values) S.values = { ...S.values, ...a.values };
-          try { S.sheets = await api.get("/api/superbills?" + new URLSearchParams({ last: S.patient.last || "", first: S.patient.first || "" })); } catch { S.sheets = []; }
-        }
-      } else if (S.patient && (S.patient.last || S.patient.first || S.patient.id)) {
-        const r = await api.post("/api/superbill/attach", { values: S.values, patient: S.patient });
-        S.values = { ...S.values, ...(r.values || {}) };
-        if (!S.values.Date) S.values.Date = todayStr();
-        try { S.sheets = await api.get("/api/superbills?" + new URLSearchParams({ last: S.patient.last || "", first: S.patient.first || "" })); } catch { S.sheets = []; }
-      } else if (!S.values.Date) S.values.Date = todayStr();
-    } catch { /* an empty sheet is still usable */ }
-    if (host.isConnected) paint();
+    syncFromNote();
+    activeSuperbill = { print: printSuperbill, sync: syncFromNote, get values() { return S.values; } };
   }
 
-  DDOS.register("superbill", { mount });
+  let activeSuperbill = null;
+  DDOS.register("superbill", {
+    mount,
+    print() { if (activeSuperbill) return activeSuperbill.print(); },
+    sync() { if (activeSuperbill) return activeSuperbill.sync(); },
+    unmount() { activeSuperbill = null; }
+  });
 })();
